@@ -1,0 +1,115 @@
+.autoslider-container {
+  width: 100%;
+  height: 600px; /* Fixed height */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.autoslider-slide {
+  min-width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.autoslider-slide.inactive {
+  display: none;
+}
+
+.autoslider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container */
+}
+
+.autoslider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autoslider-button.prev {
+  left: 10px;
+}
+
+.autoslider-button.next {
+  right: 10px;
+}
+
+.newsletter-container {
+  width: 100%;
+  height: 600px; /* Same height as the carousel */
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.newsletter-content {
+  max-height: 100%; /* Ensure the content fits within the container */
+}
+
+.newsletter-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.newsletter-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.newsletter-text {
+  flex: 1;
+}
+
+.newsletter-text h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.newsletter-text p {
+  margin: 5px 0 0;
+}
+
+.links-container {
+  width: 100%;
+  height: 600px; /* Same height as the carousel */
+  background-color: #f9f9f9;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.links-content {
+  max-height: 100%; /* Ensure the content fits within the container */
+}
+
+.links-container h2 {
+  margin-bottom: 20px;
+}
+
+.links-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.links-container ul li {
+  margin-bottom: 10px;
+}
+
+.links-container ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.links-container ul li a:hover {
+  text-decoration: underline;
+}

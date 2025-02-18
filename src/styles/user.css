@@ -1,0 +1,84 @@
+/* Add your user-specific styles here */
+
+.header-container {
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-bar {
+  height: 4px;
+  background-color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.whats-new-container {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.whats-new-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.whats-new-item {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.whats-new-image {
+  width: 100px;
+  height: auto;
+  margin-right: 1rem;
+}
+
+.whats-new-text {
+  flex: 1;
+}
+
+.links-container {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.links-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.links-content li {
+  margin-bottom: 0.5rem;
+}
+
+.links-content a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.links-content a:hover {
+  text-decoration: underline;
+}
+
+.ticker {
+  background-color: #007bff;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
