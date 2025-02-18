@@ -31,6 +31,8 @@ const newsItemsReducer = (state = initialState.newsItems, action) => {
       return [...state, action.payload];
     case 'DELETE_NEWS_ITEM':
       return state.filter(item => item.id !== action.payload);
+    case 'SYNC_NEWSITEMS':
+      return action.payload;
     default:
       return state;
   }
@@ -42,6 +44,8 @@ const tickerMessagesReducer = (state = initialState.tickerMessages, action) => {
       return [...state, action.payload];
     case 'DELETE_TICKER_MESSAGE':
       return state.filter((_, index) => index !== action.payload);
+    case 'SYNC_TICKERMESSAGES':
+      return action.payload;
     default:
       return state;
   }
@@ -53,6 +57,8 @@ const quickLinksReducer = (state = initialState.quickLinks, action) => {
       return [...state, action.payload];
     case 'DELETE_QUICK_LINK':
       return state.filter(link => link.id !== action.payload);
+    case 'SYNC_QUICKLINKS':
+      return action.payload;
     default:
       return state;
   }
@@ -64,6 +70,8 @@ const policiesReducer = (state = initialState.policies, action) => {
       return [...state, action.payload];
     case 'DELETE_POLICY':
       return state.filter(policy => policy.id !== action.payload);
+    case 'SYNC_POLICIES':
+      return action.payload;
     default:
       return state;
   }
@@ -75,6 +83,8 @@ const safetyPoliciesCarouselImagesReducer = (state = initialState.safetyPolicies
       return [...state, action.payload];
     case 'DELETE_SAFETY_POLICY_CAROUSEL_IMAGE':
       return state.filter(image => image.id !== action.payload);
+    case 'SYNC_SAFETYPOLICIESCAROUSELIMAGES':
+      return action.payload;
     default:
       return state;
   }
@@ -86,6 +96,8 @@ const carouselImages1Reducer = (state = initialState.carouselImages1, action) =>
       return [...state, action.payload];
     case 'DELETE_CAROUSEL_IMAGE1':
       return state.filter(image => image.id !== action.payload);
+    case 'SYNC_CAROUSELIMAGES1':
+      return action.payload;
     default:
       return state;
   }
@@ -97,6 +109,8 @@ const carouselImages2Reducer = (state = initialState.carouselImages2, action) =>
       return [...state, action.payload];
     case 'DELETE_CAROUSEL_IMAGE2':
       return state.filter(image => image.id !== action.payload);
+    case 'SYNC_CAROUSELIMAGES2':
+      return action.payload;
     default:
       return state;
   }

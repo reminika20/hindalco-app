@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import {
@@ -28,6 +28,30 @@ const AdminDashboard = () => {
   const carouselImages1 = useSelector((state) => state.carouselImages1) || [];
   const carouselImages2 = useSelector((state) => state.carouselImages2) || [];
   const safetyPoliciesCarouselImages = useSelector((state) => state.safetyPoliciesCarouselImages) || [];
+
+  // Listen for changes in localStorage from other tabs
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === 'persist:root') {
+        const persistedState = JSON.parse(e.newValue);
+        
+        // Update each slice of the state
+        Object.keys(persistedState).forEach(key => {
+          if (key !== '_persist') {
+            try {
+              const stateValue = JSON.parse(persistedState[key]);
+              dispatch({ type: `SYNC_${key.toUpperCase()}`, payload: stateValue });
+            } catch (error) {
+              console.error(`Error parsing ${key} state:`, error);
+            }
+          }
+        });
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, [dispatch]);
 
   // Debugging effect to monitor state updates
   useEffect(() => {

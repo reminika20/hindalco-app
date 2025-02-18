@@ -2,83 +2,228 @@
 
 .header-container {
   background-color: #fff;
-  padding: 1rem;
+  padding: 0.25rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-bar {
-  height: 4px;
+  height: 3px;
   background-color: #007bff;
-  margin-bottom: 1rem;
 }
 
 .header {
   display: flex;
   align-items: center;
+  gap: 1rem;
+  padding: 0.25rem 0;
 }
 
-.logo {
-  width: 50px;
+.header img {
+  width: 112px;
   height: auto;
+  object-fit: contain;
 }
 
-.whats-new-container {
+.header h1 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-right: 128px;
+}
+
+/* Common container styles for all sections */
+.whats-new-container,
+.quick-links-container,
+.policies-content,
+.carousel-container {
   background-color: #fff;
-  padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
-}
-
-.whats-new-content {
+  min-height: 500px;
+  max-height: 500px;
+  padding: 1.5rem;
+  margin: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-.whats-new-item {
-  display: flex;
-  margin-bottom: 1rem;
+/* Grid layout styles */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
-.whats-new-image {
-  width: 100px;
-  height: auto;
-  margin-right: 1rem;
+.grid-cols-2 > * {
+  min-width: 0; /* Prevent content from breaking grid */
 }
 
-.whats-new-text {
+/* News section styles */
+.whats-new-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
 }
 
-.links-container {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.links-content ul {
-  list-style: none;
+.highlighted-news-item,
+.smaller-news-items {
   padding: 0;
 }
 
-.links-content li {
+.highlighted-news-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
   margin-bottom: 0.5rem;
 }
 
-.links-content a {
+.smaller-news-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+/* Quick links styles */
+.quick-links-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.quick-links-item {
+  background-color: #f8f9fa;
+  padding: 0.75rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  margin: 0;
+}
+
+.quick-links-item:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.quick-links-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   color: #007bff;
   text-decoration: none;
 }
 
-.links-content a:hover {
-  text-decoration: underline;
+/* Policies section styles */
+.policies-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
+.policy-item {
+  background-color: #f8f9fa;
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.2s ease;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.policy-item h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.policy-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.policy-item:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.policy-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Carousel container styles */
+.carousel-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-images {
+  flex: 1;
+  min-height: 300px;
+}
+
+/* Ticker styles */
 .ticker {
   background-color: #007bff;
   color: #fff;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 6rem;
+}
+
+/* Section headers */
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+/* Remove any extra margins from news items */
+.smaller-news-item {
+  margin-bottom: 1rem;
+}
+
+.smaller-news-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Scrollbar styling */
+.whats-new-content::-webkit-scrollbar,
+.quick-links-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.whats-new-content::-webkit-scrollbar-track,
+.quick-links-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.whats-new-content::-webkit-scrollbar-thumb,
+.quick-links-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.whats-new-content::-webkit-scrollbar-thumb:hover,
+.quick-links-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }

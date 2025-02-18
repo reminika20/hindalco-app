@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import AutoSlider from '../components/AutoSlider';
 import Ticker from '../components/Ticker';
 import hindalcoLogo from '../assets/hindalco-logo.png';
@@ -14,6 +14,33 @@ const Home = () => {
   const carouselImages2 = useSelector((state) => state.carouselImages2) || [];
   const safetyPoliciesCarouselImages = useSelector((state) => state.safetyPoliciesCarouselImages) || [];
 
+  const dispatch = useDispatch();
+
+  // Listen for changes in localStorage from other tabs
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === 'persist:root') {
+        const persistedState = JSON.parse(e.newValue);
+        
+        // Update each slice of the state
+        Object.keys(persistedState).forEach(key => {
+          if (key !== '_persist') {
+            try {
+              const stateValue = JSON.parse(persistedState[key]);
+              dispatch({ type: `SYNC_${key.toUpperCase()}`, payload: stateValue });
+            } catch (error) {
+              console.error(`Error parsing ${key} state:`, error);
+            }
+          }
+        });
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, [dispatch]);
+
+  // Debug logging
   useEffect(() => {
     console.log("🔄 State updated in Home Page:", {
       newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetyPoliciesCarouselImages
@@ -35,18 +62,18 @@ const Home = () => {
       </div>
 
       {/* First Row: Two Carousels */}
-      <div className="flex flex-grow">
-        <div className="w-1/2 p-2">
+      <div className="grid grid-cols-2 min-h-[400px] bg-white rounded-lg shadow-sm mb-4 gap-4">
+        <div className="p-4">
           <AutoSlider slides={carouselImages1} />
         </div>
-        <div className="w-1/2 p-2">
+        <div className="p-4">
           <AutoSlider slides={carouselImages2} />
         </div>
       </div>
 
       {/* Second Row: News Items and Quick Links */}
-      <div className="flex flex-grow mt-4">
-        <div className="w-1/2 p-2">
+      <div className="grid grid-cols-2 mt-4 gap-4">
+        <div>
           <div className="whats-new-container">
             <h2>What's New</h2>
             <p>Stay updated with our latest news and updates.</p>
@@ -85,7 +112,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-1/2 p-2">
+        <div>
           <div className="quick-links-container">
             <h2>Quick Links</h2>
             <div className="quick-links-content flex flex-wrap">
@@ -102,8 +129,8 @@ const Home = () => {
       </div>
 
       {/* Third Row: Policies and Safety Policies Carousel */}
-      <div className="flex mt-4">
-        <div className="w-1/2 p-2">
+      <div className="grid grid-cols-2 mt-4 gap-4">
+        <div>
           <h2>Policies</h2>
           <div className="policies-content grid grid-cols-3 gap-4">
             {policies.map(policy => (
@@ -116,7 +143,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className="w-1/2 p-2">
+        <div>
           <h2>Safety Policies</h2>
           <div className="carousel-container">
             <div className="carousel-images">
