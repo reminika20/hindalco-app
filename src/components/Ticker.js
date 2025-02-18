@@ -17,7 +17,6 @@ const Ticker = ({ announcements }) => {
         {tickerItems.map((announcement, index) => (
           <span key={index} className="ticker-item">
             {announcement}
-            {index < tickerItems.length - 1 && ' | '}
           </span>
         ))}
       </div>

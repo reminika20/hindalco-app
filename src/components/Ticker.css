@@ -12,7 +12,11 @@
 
 .ticker-item {
   display: inline-block;
-  padding-right: 2rem;
+}
+
+.ticker-item:not(:last-child)::after {
+  content: '|';
+  margin: 0 1rem;
 }
 
 @keyframes ticker {

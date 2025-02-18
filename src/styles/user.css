@@ -1,8 +1,8 @@
 /* Add your user-specific styles here */
 
 .header-container {
-  background-color: #fff;
-  padding: 0.25rem;
+  background-color: #fff !important;
+  padding: 0.25rem !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -12,42 +12,71 @@
 }
 
 .header {
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
   gap: 1rem;
-  padding: 0.25rem 0;
+  padding: 0.25rem 0 !important;
+  margin-bottom: 0 !important;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  border-bottom: none !important;
 }
 
 .header img {
-  width: 112px;
+  width: 112px !important;
   height: auto;
   object-fit: contain;
+  margin-right: 0 !important;
 }
 
 .header h1 {
   flex: 1;
   text-align: center;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.8rem !important;
   text-transform: uppercase;
   margin-right: 128px;
+  color: inherit !important;
 }
 
 /* Common container styles for all sections */
 .whats-new-container,
-.quick-links-container,
-.policies-content,
-.carousel-container {
+.quick-links-container {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  min-height: 500px;
-  max-height: 500px;
-  padding: 1.5rem;
-  margin: 0;
+  height: 500px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-sizing: border-box;
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.policies-container,
+.safety-policies-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+
+/* Ensure consistent header spacing */
+.whats-new-container h2,
+.quick-links-container h2 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  height: 1.8rem;
 }
 
 /* Grid layout styles */
@@ -62,40 +91,85 @@
 }
 
 /* News section styles */
-.whats-new-content {
+.whats-new-container > p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  height: 1.1rem;
+}
+
+.whats-new-content,
+.quick-links-content {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   flex: 1;
   overflow-y: auto;
   padding-right: 8px;
+  margin: 0;
+  height: calc(500px - 5rem);
+}
+
+.whats-new-content {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .highlighted-news-item,
 .smaller-news-items {
-  padding: 0;
+  padding: 0 0.5rem;
 }
 
 .highlighted-news-image {
   width: 100%;
-  height: 200px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.smaller-news-image {
+  width: 100%;
+  height: 100px;
   object-fit: cover;
   border-radius: 4px;
   margin-bottom: 0.5rem;
 }
 
-.smaller-news-image {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
+.highlighted-news-item {
+  font-size: 1.1rem;
+}
+
+.smaller-news-items {
+  font-size: 0.9rem;
+  max-height: 450px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.smaller-news-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.smaller-news-items::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.smaller-news-items::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.smaller-news-items::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
 
 /* Quick links styles */
 .quick-links-content {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   flex: 1;
   overflow-y: auto;
@@ -104,9 +178,15 @@
 
 .quick-links-item {
   background-color: #f8f9fa;
-  padding: 0.75rem;
+  padding: 1.5rem 1rem;
   border-radius: 4px;
+  text-align: center;
   transition: all 0.2s ease;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   margin: 0;
 }
 
@@ -117,17 +197,44 @@
 
 .quick-links-item a {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   color: #007bff;
   text-decoration: none;
+  font-weight: 500;
+}
+
+.quick-links-item a img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.quick-links-item:hover img {
+  transform: scale(1.1);
 }
 
 /* Policies section styles */
+.policies-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .policies-content {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
 }
 
 .policy-item {
@@ -168,14 +275,57 @@
 
 /* Carousel container styles */
 .carousel-container {
-  height: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 400px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  margin-top: 1.25rem;
+}
+
+/* Safety policies container styles */
+.safety-policies-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 500px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .carousel-images {
   flex: 1;
-  min-height: 300px;
+  height: calc(500px - 5rem);
+  overflow: hidden;
+}
+
+.carousel-container .react-slideshow-container {
+  height: 100%;
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+}
+
+.carousel-container .react-slideshow-container .nav {
+  width: 30px;
+  height: 30px;
+  margin: 0 -1rem;
+}
+
+.carousel-images .react-slideshow-container {
+  height: 100%;
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+}
+
+.carousel-images .react-slideshow-container .nav {
+  width: 30px;
+  height: 30px;
+  margin: 0 -1rem;
 }
 
 /* Ticker styles */
@@ -185,7 +335,7 @@
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 6rem;
+  margin-top: 1.25rem;
 }
 
 /* Section headers */

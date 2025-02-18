@@ -62,24 +62,24 @@ const Home = () => {
       </div>
 
       {/* First Row: Two Carousels */}
-      <div className="grid grid-cols-2 min-h-[400px] bg-white rounded-lg shadow-sm mb-4 gap-4">
-        <div className="p-4">
+      <div className="grid grid-cols-2 gap-4">
+        <div className="carousel-container">
           <AutoSlider slides={carouselImages1} />
         </div>
-        <div className="p-4">
+        <div className="carousel-container">
           <AutoSlider slides={carouselImages2} />
         </div>
       </div>
 
       {/* Second Row: News Items and Quick Links */}
-      <div className="grid grid-cols-2 mt-4 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         <div>
           <div className="whats-new-container">
             <h2>What's New</h2>
             <p>Stay updated with our latest news and updates.</p>
-            <div className="whats-new-content flex">
+            <div className="whats-new-content">
               {highlightedNews && (
-                <div className="highlighted-news-item w-1/2 p-2">
+                <div className="highlighted-news-item w-1/2">
                   <img src={highlightedNews.image} alt={highlightedNews.title} className="highlighted-news-image" />
                   <div className="highlighted-news-text">
                     <h3>{highlightedNews.title}</h3>
@@ -92,7 +92,7 @@ const Home = () => {
                   </div>
                 </div>
               )}
-              <div className="smaller-news-items w-1/2 p-2">
+              <div className="smaller-news-items w-1/2">
                 {smallerNewsItems.map(news => (
                   <div key={news.id} className="smaller-news-item mb-4">
                     <img src={news.image} alt={news.title} className="smaller-news-image" />
@@ -115,11 +115,12 @@ const Home = () => {
         <div>
           <div className="quick-links-container">
             <h2>Quick Links</h2>
-            <div className="quick-links-content flex flex-wrap">
+            <div className="quick-links-content">
               {quickLinks.map(link => (
-                <div key={link.id} className="quick-links-item m-2">
+                <div key={link.id} className="quick-links-item">
                   <a href={link.url} target="_blank" rel="noopener noreferrer">
-                    <img src="https://img.icons8.com/ios-filled/50/000000/link.png" alt="Link Icon" /> {link.text}
+                    <img src="https://img.icons8.com/ios-filled/50/000000/link.png" alt="Link Icon" />
+                    <span>{link.text}</span>
                   </a>
                 </div>
               ))}
@@ -129,10 +130,10 @@ const Home = () => {
       </div>
 
       {/* Third Row: Policies and Safety Policies Carousel */}
-      <div className="grid grid-cols-2 mt-4 gap-4">
-        <div>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="policies-container">
           <h2>Policies</h2>
-          <div className="policies-content grid grid-cols-3 gap-4">
+          <div className="policies-content">
             {policies.map(policy => (
               <div key={policy.id} className="policy-item">
                 <h3>{policy.title}</h3>
@@ -143,12 +144,10 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div>
+        <div className="safety-policies-container">
           <h2>Safety Policies</h2>
-          <div className="carousel-container">
-            <div className="carousel-images">
-              <AutoSlider slides={safetyPoliciesCarouselImages} />
-            </div>
+          <div className="carousel-images">
+            <AutoSlider slides={safetyPoliciesCarouselImages} />
           </div>
         </div>
       </div>
