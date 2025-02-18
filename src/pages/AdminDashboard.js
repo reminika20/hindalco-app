@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import hindalcoLogo from '../assets/hindalco-logo.png';
 import {
   addNewsItem,
   deleteNewsItem,
@@ -124,7 +125,8 @@ const AdminDashboard = () => {
     if (carouselImage1) {
       const image = {
         id: uuidv4(),
-        image: URL.createObjectURL(carouselImage1)
+        image: URL.createObjectURL(carouselImage1),
+        title: `Carousel 1 Image ${carouselImages1.length + 1}`
       };
       dispatch(addCarouselImage1(image));
       setCarouselImage1(null);
@@ -135,7 +137,8 @@ const AdminDashboard = () => {
     if (carouselImage2) {
       const image = {
         id: uuidv4(),
-        image: URL.createObjectURL(carouselImage2)
+        image: URL.createObjectURL(carouselImage2),
+        title: `Carousel 2 Image ${carouselImages2.length + 1}`
       };
       dispatch(addCarouselImage2(image));
       setCarouselImage2(null);
@@ -146,7 +149,8 @@ const AdminDashboard = () => {
     if (safetyPolicyImage) {
       const image = {
         id: uuidv4(),
-        image: URL.createObjectURL(safetyPolicyImage)
+        image: URL.createObjectURL(safetyPolicyImage),
+        title: `Safety Policy Image ${safetyPoliciesCarouselImages.length + 1}`
       };
       dispatch(addSafetyPolicyCarouselImage(image));
       setSafetyPolicyImage(null);
@@ -155,7 +159,13 @@ const AdminDashboard = () => {
 
   return (
     <div className="admin-dashboard">
-      <h2>Admin Dashboard</h2>
+      <div className="header-container">
+        <div className="header-bar"></div>
+        <div className="header">
+          <img src={hindalcoLogo} alt="Hindalco Logo" />
+          <h1>Admin Dashboard</h1>
+        </div>
+      </div>
 
       {/* Manage Policies Section */}
       <div className="section">

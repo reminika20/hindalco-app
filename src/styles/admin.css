@@ -1,15 +1,17 @@
+/* Login Container */
 .login-container {
   max-width: 400px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #f9f9f9;
+  background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .login-container h2 {
   margin-bottom: 1rem;
   text-align: center;
+  color: #2c3e50;
 }
 
 .login-container form {
@@ -23,78 +25,283 @@
 
 .login-container form label {
   margin-bottom: 0.5rem;
+  color: #2c3e50;
 }
 
 .login-container form input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
+  padding: 0.75rem;
+  border: 1px solid #e9ecef;
   border-radius: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.login-container form input:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
 .login-container form button {
-  padding: 0.5rem;
+  padding: 0.75rem;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .login-container form button:hover {
   background-color: #0056b3;
 }
 
-.admin-dashboard {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.admin-dashboard h2 {
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.admin-dashboard .section {
+/* Header Styles */
+.header-container {
+  background-color: #fff;
+  padding: 0.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
+  width: 100%;
 }
 
-.admin-dashboard .section h3 {
-  margin-bottom: 1rem;
+.header-bar {
+  height: 3px;
+  background-color: #007bff;
 }
 
-.admin-dashboard .section form {
+.header {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
 }
 
-.admin-dashboard .section form div {
+.header img {
+  width: 112px;
+  height: auto;
+  object-fit: contain;
+  margin-right: 0;
+}
+
+.header h1 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  margin-right: 128px;
+  color: #2c3e50;
+}
+
+/* Admin Dashboard Styles */
+.admin-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+}
+
+/* Section Styles */
+.section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  height: fit-content;
+}
+
+.section h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #007bff;
+}
+
+/* Form Elements */
+.section input[type="text"],
+.section textarea {
+  width: 100%;
+  padding: 0.75rem;
   margin-bottom: 1rem;
-}
-
-.admin-dashboard .section form label {
-  margin-bottom: 0.5rem;
-}
-
-.admin-dashboard .section form input,
-.admin-dashboard .section form textarea {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
+  border: 1px solid #e9ecef;
   border-radius: 4px;
+  transition: border-color 0.2s ease;
+  font-size: 1rem;
+  background-color: #fff;
 }
 
-.admin-dashboard .section form button {
-  padding: 0.5rem;
+.section input[type="file"] {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  border: 2px dashed #e9ecef;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.section input[type="file"]::-webkit-file-upload-button {
+  padding: 0.5rem 1rem;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 1rem;
 }
 
-.admin-dashboard .section form button:hover {
+.section input[type="file"]::-webkit-file-upload-button:hover {
   background-color: #0056b3;
+}
+
+.section input[type="file"]:hover {
+  border-color: #007bff;
+  background-color: #e9ecef;
+}
+
+.section input[type="text"]:focus,
+.section textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.section textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.section button {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.section button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* List Styles */
+.section ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.section li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+  border: 1px solid #e9ecef;
+}
+
+.section li:last-child {
+  margin-bottom: 0;
+}
+
+.section li:hover {
+  background-color: #e9ecef;
+  transform: translateX(2px);
+}
+
+.section li button {
+  padding: 0.5rem 1rem;
+  background-color: #dc3545;
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  min-width: 80px;
+}
+
+.section li button:hover {
+  background-color: #c82333;
+}
+
+/* Image Preview */
+.section li img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 1rem;
+  border: 1px solid #e9ecef;
+}
+
+/* Grid Layout for Sections */
+@media (min-width: 768px) {
+  .admin-dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .admin-dashboard > .header-container {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+  }
+
+  .section {
+    margin-bottom: 0;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section ul {
+    flex: 1;
+    margin-top: 1rem;
+  }
+}
+
+/* Scrollbar Styling */
+.section ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+.section ul::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.section ul::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.section ul::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Form Group Spacing */
+.section > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+/* Delete Button Specific Styles */
+.section li button[onClick*="delete"] {
+  background-color: #dc3545;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.section li button[onClick*="delete"]:hover {
+  background-color: #c82333;
 }
