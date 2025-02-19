@@ -8,6 +8,9 @@ const initialState = {
   carouselImages1: [],
   carouselImages2: [],
   newsItems: [],
+  birthdays: [],
+  videoBytes: [],
+  leadersBoard: [],
   quickLinks: [
     { id: '1', text: 'Google', url: 'https://www.google.com' },
     { id: '2', text: 'Facebook', url: 'https://www.facebook.com' },
@@ -121,6 +124,48 @@ const persistConfig = {
   storage,
 };
 // Combine reducers
+// Birthdays reducer
+const birthdaysReducer = (state = initialState.birthdays, action) => {
+  switch (action.type) {
+    case 'ADD_BIRTHDAY':
+      return [...state, action.payload];
+    case 'DELETE_BIRTHDAY':
+      return state.filter(birthday => birthday.id !== action.payload);
+    case 'SYNC_BIRTHDAYS':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Videos reducer
+const videoBytesReducer = (state = initialState.videoBytes, action) => {
+  switch (action.type) {
+    case 'ADD_VIDEO':
+      return [...state, action.payload];
+    case 'DELETE_VIDEO':
+      return state.filter(video => video.id !== action.payload);
+    case 'SYNC_VIDEOS':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Leaders board reducer
+const leadersBoardReducer = (state = initialState.leadersBoard, action) => {
+  switch (action.type) {
+    case 'ADD_LEADER':
+      return [...state, action.payload];
+    case 'DELETE_LEADER':
+      return state.filter(leader => leader.id !== action.payload);
+    case 'SYNC_LEADERS':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   newsItems: newsItemsReducer,
   tickerMessages: tickerMessagesReducer,
@@ -128,7 +173,10 @@ const rootReducer = combineReducers({
   policies: policiesReducer,
   safetyPoliciesCarouselImages: safetyPoliciesCarouselImagesReducer,
   carouselImages1: carouselImages1Reducer,
-  carouselImages2: carouselImages2Reducer
+  carouselImages2: carouselImages2Reducer,
+  birthdays: birthdaysReducer,
+  videoBytes: videoBytesReducer,
+  leadersBoard: leadersBoardReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

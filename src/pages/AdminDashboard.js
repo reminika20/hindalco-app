@@ -16,7 +16,13 @@ import {
   addCarouselImage1,
   deleteCarouselImage1,
   addCarouselImage2,
-  deleteCarouselImage2
+  deleteCarouselImage2,
+  addBirthday,
+  deleteBirthday,
+  addVideo,
+  deleteVideo,
+  addLeader,
+  deleteLeader
 } from '../store/actions';
 import "../styles/admin.css";
 
@@ -29,6 +35,9 @@ const AdminDashboard = () => {
   const carouselImages1 = useSelector((state) => state.carouselImages1) || [];
   const carouselImages2 = useSelector((state) => state.carouselImages2) || [];
   const safetyPoliciesCarouselImages = useSelector((state) => state.safetyPoliciesCarouselImages) || [];
+  const birthdays = useSelector((state) => state.birthdays) || [];
+  const videoBytes = useSelector((state) => state.videoBytes) || [];
+  const leadersBoard = useSelector((state) => state.leadersBoard) || [];
 
   // Listen for changes in localStorage from other tabs
   useEffect(() => {
@@ -71,6 +80,15 @@ const AdminDashboard = () => {
   const [carouselImage1, setCarouselImage1] = useState(null);
   const [carouselImage2, setCarouselImage2] = useState(null);
   const [safetyPolicyImage, setSafetyPolicyImage] = useState(null);
+  const [birthdayName, setBirthdayName] = useState('');
+  const [birthdayDate, setBirthdayDate] = useState('');
+  const [birthdayImage, setBirthdayImage] = useState(null);
+  const [videoTitle, setVideoTitle] = useState('');
+  const [videoUrl, setVideoUrl] = useState('');
+  const [videoPreviewImage, setVideoPreviewImage] = useState(null);
+  const [leaderName, setLeaderName] = useState('');
+  const [leaderImage, setLeaderImage] = useState(null);
+  const [leaderDescription, setLeaderDescription] = useState('');
 
   // Action handlers
   const handleAddPolicy = () => {
@@ -154,6 +172,51 @@ const AdminDashboard = () => {
       };
       dispatch(addSafetyPolicyCarouselImage(image));
       setSafetyPolicyImage(null);
+    }
+  };
+
+  const handleAddBirthday = () => {
+    if (birthdayImage) {
+      const birthday = {
+        id: uuidv4(),
+        name: birthdayName,
+        date: birthdayDate,
+        image: URL.createObjectURL(birthdayImage)
+      };
+      dispatch(addBirthday(birthday));
+      setBirthdayName('');
+      setBirthdayDate('');
+      setBirthdayImage(null);
+    }
+  };
+
+  const handleAddVideo = () => {
+    if (videoPreviewImage && videoUrl) {
+      const video = {
+        id: uuidv4(),
+        title: videoTitle,
+        video: videoUrl,
+        image: URL.createObjectURL(videoPreviewImage)
+      };
+      dispatch(addVideo(video));
+      setVideoTitle('');
+      setVideoUrl('');
+      setVideoPreviewImage(null);
+    }
+  };
+
+  const handleAddLeader = () => {
+    if (leaderImage) {
+      const leader = {
+        id: uuidv4(),
+        name: leaderName,
+        description: leaderDescription,
+        image: URL.createObjectURL(leaderImage)
+      };
+      dispatch(addLeader(leader));
+      setLeaderName('');
+      setLeaderDescription('');
+      setLeaderImage(null);
     }
   };
 
@@ -317,6 +380,97 @@ const AdminDashboard = () => {
             <li key={image.id}>
               <img src={image.image} alt="Safety Policy" width="100" />
               <button onClick={() => dispatch(deleteSafetyPolicyCarouselImage(image.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Birthdays Section */}
+      <div className="section">
+        <h3>Manage Birthdays</h3>
+        <input
+          type="text"
+          placeholder="Name"
+          value={birthdayName}
+          onChange={(e) => setBirthdayName(e.target.value)}
+        />
+        <input
+          type="date"
+          value={birthdayDate}
+          onChange={(e) => setBirthdayDate(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setBirthdayImage(e.target.files[0])}
+        />
+        <button onClick={handleAddBirthday}>Add Birthday</button>
+        <ul>
+          {birthdays.map(birthday => (
+            <li key={birthday.id}>
+              {birthday.name} - {birthday.date}
+              <button onClick={() => dispatch(deleteBirthday(birthday.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Videos Section */}
+      <div className="section">
+        <h3>Manage Videos</h3>
+        <input
+          type="text"
+          placeholder="Video Title"
+          value={videoTitle}
+          onChange={(e) => setVideoTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Video URL (YouTube, Vimeo, etc.)"
+          value={videoUrl}
+          onChange={(e) => setVideoUrl(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setVideoPreviewImage(e.target.files[0])}
+        />
+        <button onClick={handleAddVideo}>Add Video</button>
+        <ul>
+          {videoBytes.map(video => (
+            <li key={video.id}>
+              {video.title}
+              <button onClick={() => dispatch(deleteVideo(video.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Leaders Board Section */}
+      <div className="section">
+        <h3>Manage Leaders Board</h3>
+        <input
+          type="text"
+          placeholder="Leader Name"
+          value={leaderName}
+          onChange={(e) => setLeaderName(e.target.value)}
+        />
+        <textarea
+          placeholder="Leader Description"
+          value={leaderDescription}
+          onChange={(e) => setLeaderDescription(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setLeaderImage(e.target.files[0])}
+        />
+        <button onClick={handleAddLeader}>Add Leader</button>
+        <ul>
+          {leadersBoard.map(leader => (
+            <li key={leader.id}>
+              {leader.name}
+              <button onClick={() => dispatch(deleteLeader(leader.id))}>Delete</button>
             </li>
           ))}
         </ul>

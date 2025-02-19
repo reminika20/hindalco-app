@@ -15,7 +15,7 @@
 }
 
 .bg-gray-100 {
-  background-color: #f7fafc;
+  background: linear-gradient(135deg, #f8f9fa, #f0f7ff);
 }
 
 .min-h-screen {
@@ -26,28 +26,9 @@
   padding: 0.5rem;
 }
 
-.header-container {
-  background-color: #800000; /* Maroon strip */
-  padding: 1rem;
+body {
+  background: linear-gradient(135deg, #f0f7ff, #ffffff);
+  min-height: 100vh;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  background-color: #f0f0f0; /* Light background color */
-  padding: 1rem;
-  border-radius: 8px;
-  border-bottom: 2px solid #d32f2f; /* Border below the header */
-}
-
-.logo {
-  width: 300px; /* Increased logo size */
-  height: auto;
-  margin-right: 2rem;
-}
-
-.header h1 {
-  font-size: 2.5rem; /* Larger title */
-  color: black; /* Black title */
-}
+/* Remove conflicting header styles as they're handled in user.css */

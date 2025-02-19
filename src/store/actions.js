@@ -69,3 +69,36 @@ export const deleteCarouselImage2 = (id) => ({
   type: 'DELETE_CAROUSEL_IMAGE2',
   payload: id,
 });
+
+// Birthday actions
+export const addBirthday = (birthday) => ({
+  type: 'ADD_BIRTHDAY',
+  payload: birthday,
+});
+
+export const deleteBirthday = (id) => ({
+  type: 'DELETE_BIRTHDAY',
+  payload: id,
+});
+
+// Video actions
+export const addVideo = (video) => ({
+  type: 'ADD_VIDEO',
+  payload: video,
+});
+
+export const deleteVideo = (id) => ({
+  type: 'DELETE_VIDEO',
+  payload: id,
+});
+
+// Leaders board actions
+export const addLeader = (leader) => ({
+  type: 'ADD_LEADER',
+  payload: leader,
+});
+
+export const deleteLeader = (id) => ({
+  type: 'DELETE_LEADER',
+  payload: id,
+});

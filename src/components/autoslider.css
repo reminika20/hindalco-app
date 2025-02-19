@@ -4,7 +4,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  background-color: #f0f0f0;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
 }
 
 .autoslider-slide {
@@ -40,11 +41,24 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.8), rgba(0, 86, 179, 0.8));
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px;
   cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.autoslider-button:hover {
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.9), rgba(0, 86, 179, 0.9));
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .autoslider-button.prev {
@@ -57,11 +71,13 @@
 
 .newsletter-container {
   width: 100%;
-  height: 600px; /* Same height as the carousel */
-  background-color: #f9f9f9;
+  height: 600px;
+  background: linear-gradient(to bottom right, #ffffff, #f0f7ff);
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
+  border-radius: 8px;
 }
 
 .newsletter-content {
@@ -71,6 +87,16 @@
 .newsletter-item {
   display: flex;
   margin-bottom: 20px;
+  padding: 15px;
+  background: linear-gradient(to right, #ffffff, #f8f9fa);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.05);
+}
+
+.newsletter-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.1);
 }
 
 .newsletter-image {
@@ -95,11 +121,13 @@
 
 .links-container {
   width: 100%;
-  height: 600px; /* Same height as the carousel */
-  background-color: #f9f9f9;
+  height: 600px;
+  background: linear-gradient(to bottom right, #ffffff, #f5f9ff);
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
+  border-radius: 8px;
 }
 
 .links-content {
@@ -122,8 +150,15 @@
 .links-container ul li a {
   text-decoration: none;
   color: #007bff;
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background: linear-gradient(to right, transparent, transparent);
 }
 
 .links-container ul li a:hover {
-  text-decoration: underline;
+  background: linear-gradient(to right, #f0f7ff, transparent);
+  transform: translateX(5px);
+  color: #0056b3;
 }
