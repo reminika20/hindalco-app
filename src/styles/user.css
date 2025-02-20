@@ -448,6 +448,15 @@
   overflow: hidden;
 }
 
+.safety-snapshots-container .carousel-images {
+  flex: 1;
+  height: calc(100% - 3rem); /* Subtract the height of the title */
+}
+
+.safety-snapshots-container .autoslider-container {
+  height: 100%;
+}
+
 .safety-sop-content {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

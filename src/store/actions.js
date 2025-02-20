@@ -40,13 +40,13 @@ export const deletePolicy = (id) => ({
   payload: id,
 });
 
-export const addSafetyPolicyCarouselImage = (image) => ({
-  type: 'ADD_SAFETY_POLICY_CAROUSEL_IMAGE',
+export const addSafetySnapshot = (image) => ({
+  type: 'ADD_SAFETY_SNAPSHOT',
   payload: image,
 });
 
-export const deleteSafetyPolicyCarouselImage = (id) => ({
-  type: 'DELETE_SAFETY_POLICY_CAROUSEL_IMAGE',
+export const deleteSafetySnapshot = (id) => ({
+  type: 'DELETE_SAFETY_SNAPSHOT',
   payload: id,
 });
 

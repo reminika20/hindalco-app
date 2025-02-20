@@ -23,7 +23,7 @@ const initialState = {
     { id: '2', title: 'Terms of Service', url: 'https://www.example.com/terms-of-service.pdf' },
     { id: '3', title: 'Cookie Policy', url: 'https://www.example.com/cookie-policy.pdf' }
   ],
-  safetyPoliciesCarouselImages: [],
+  safetySnapshots: [],
   tickerMessages: []
 };
 
@@ -80,13 +80,13 @@ const policiesReducer = (state = initialState.policies, action) => {
   }
 };
 
-const safetyPoliciesCarouselImagesReducer = (state = initialState.safetyPoliciesCarouselImages, action) => {
+const safetySnapshotsReducer = (state = initialState.safetySnapshots, action) => {
   switch (action.type) {
-    case 'ADD_SAFETY_POLICY_CAROUSEL_IMAGE':
+    case 'ADD_SAFETY_SNAPSHOT':
       return [...state, action.payload];
-    case 'DELETE_SAFETY_POLICY_CAROUSEL_IMAGE':
+    case 'DELETE_SAFETY_SNAPSHOT':
       return state.filter(image => image.id !== action.payload);
-    case 'SYNC_SAFETYPOLICIESCAROUSELIMAGES':
+    case 'SYNC_SAFETYSNAPSHOTS':
       return action.payload;
     default:
       return state;
@@ -122,6 +122,7 @@ const carouselImages2Reducer = (state = initialState.carouselImages2, action) =>
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['newsItems', 'tickerMessages', 'quickLinks', 'policies', 'safetySnapshots', 'carouselImages1', 'carouselImages2', 'birthdays', 'videoBytes', 'leadersBoard']
 };
 // Combine reducers
 // Birthdays reducer
@@ -171,7 +172,7 @@ const rootReducer = combineReducers({
   tickerMessages: tickerMessagesReducer,
   quickLinks: quickLinksReducer,
   policies: policiesReducer,
-  safetyPoliciesCarouselImages: safetyPoliciesCarouselImagesReducer,
+  safetySnapshots: safetySnapshotsReducer,
   carouselImages1: carouselImages1Reducer,
   carouselImages2: carouselImages2Reducer,
   birthdays: birthdaysReducer,

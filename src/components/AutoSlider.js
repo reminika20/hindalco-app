@@ -12,12 +12,17 @@ const AutoSlider = ({ slides: propSlides }) => {
 
   const slides = propSlides.length === 0 ? defaultSlides : propSlides;
 
+  // Reset current slide when slides change
+  useEffect(() => {
+    setCurrent(0);
+  }, [propSlides]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((current + 1) % slides.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [current, slides.length]);
+  }, [current, slides.length, slides]);
 
   const prevSlide = () => {
     setCurrent(current === 0 ? slides.length - 1 : current - 1);

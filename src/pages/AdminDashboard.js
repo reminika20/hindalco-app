@@ -11,8 +11,8 @@ import {
   deleteQuickLink,
   addPolicy,
   deletePolicy,
-  addSafetyPolicyCarouselImage,
-  deleteSafetyPolicyCarouselImage,
+  addSafetySnapshot,
+  deleteSafetySnapshot,
   addCarouselImage1,
   deleteCarouselImage1,
   addCarouselImage2,
@@ -34,7 +34,7 @@ const AdminDashboard = () => {
   const tickerMessages = useSelector((state) => state.tickerMessages) || [];
   const carouselImages1 = useSelector((state) => state.carouselImages1) || [];
   const carouselImages2 = useSelector((state) => state.carouselImages2) || [];
-  const safetyPoliciesCarouselImages = useSelector((state) => state.safetyPoliciesCarouselImages) || [];
+  const safetySnapshots = useSelector((state) => state.safetySnapshots) || [];
   const birthdays = useSelector((state) => state.birthdays) || [];
   const videoBytes = useSelector((state) => state.videoBytes) || [];
   const leadersBoard = useSelector((state) => state.leadersBoard) || [];
@@ -50,7 +50,11 @@ const AdminDashboard = () => {
           if (key !== '_persist') {
             try {
               const stateValue = JSON.parse(persistedState[key]);
-              dispatch({ type: `SYNC_${key.toUpperCase()}`, payload: stateValue });
+              if (key === 'safetySnapshots') {
+                dispatch({ type: 'SYNC_SAFETYSNAPSHOTS', payload: stateValue });
+              } else {
+                dispatch({ type: `SYNC_${key.toUpperCase()}`, payload: stateValue });
+              }
             } catch (error) {
               console.error(`Error parsing ${key} state:`, error);
             }
@@ -65,8 +69,8 @@ const AdminDashboard = () => {
 
   // Debugging effect to monitor state updates
   useEffect(() => {
-    console.log("Admin Dashboard State Updated!", { newsItems, tickerMessages, quickLinks });
-  }, [newsItems, tickerMessages, quickLinks]);
+    console.log("Admin Dashboard State Updated!", { newsItems, tickerMessages, quickLinks, safetySnapshots });
+  }, [newsItems, tickerMessages, quickLinks, safetySnapshots]);
 
   const [policyTitle, setPolicyTitle] = useState('');
   const [policyFile, setPolicyFile] = useState(null);
@@ -79,7 +83,7 @@ const AdminDashboard = () => {
   const [tickerMessage, setTickerMessage] = useState('');
   const [carouselImage1, setCarouselImage1] = useState(null);
   const [carouselImage2, setCarouselImage2] = useState(null);
-  const [safetyPolicyImage, setSafetyPolicyImage] = useState(null);
+  const [safetySnapshotImage, setSafetySnapshotImage] = useState(null);
   const [birthdayName, setBirthdayName] = useState('');
   const [birthdayDate, setBirthdayDate] = useState('');
   const [birthdayImage, setBirthdayImage] = useState(null);
@@ -93,44 +97,61 @@ const AdminDashboard = () => {
   // Action handlers
   const handleAddPolicy = () => {
     if (policyFile) {
-      const policy = {
-        id: uuidv4(),
-        title: policyTitle,
-        url: URL.createObjectURL(policyFile)
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const policy = {
+          id: uuidv4(),
+          title: policyTitle,
+          url: reader.result
+        };
+        dispatch(addPolicy(policy));
+        setPolicyTitle('');
+        setPolicyFile(null);
       };
-      dispatch(addPolicy(policy));
-      setPolicyTitle('');
-      setPolicyFile(null);
+      reader.readAsDataURL(policyFile);
     }
   };
 
   const handleAddQuickLink = () => {
     if (quickLinkFile) {
-      const link = {
-        id: uuidv4(),
-        text: quickLinkText,
-        url: URL.createObjectURL(quickLinkFile)
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const link = {
+          id: uuidv4(),
+          text: quickLinkText,
+          url: reader.result
+        };
+        dispatch(addQuickLink(link));
+        setQuickLinkText('');
+        setQuickLinkFile(null);
       };
-      dispatch(addQuickLink(link));
-      setQuickLinkText('');
-      setQuickLinkFile(null);
+      reader.readAsDataURL(quickLinkFile);
     }
   };
 
   const handleAddNewsItem = () => {
     if (newsImage && newsPdfLink) {
-      const news = {
-        id: uuidv4(),
-        title: newsTitle,
-        content: newsContent,
-        image: URL.createObjectURL(newsImage),
-        pdfLink: URL.createObjectURL(newsPdfLink)
+      const imageReader = new FileReader();
+      const pdfReader = new FileReader();
+      
+      imageReader.onloadend = () => {
+        pdfReader.onloadend = () => {
+          const news = {
+            id: uuidv4(),
+            title: newsTitle,
+            content: newsContent,
+            image: imageReader.result,
+            pdfLink: pdfReader.result
+          };
+          dispatch(addNewsItem(news));
+          setNewsTitle('');
+          setNewsContent('');
+          setNewsImage(null);
+          setNewsPdfLink(null);
+        };
+        pdfReader.readAsDataURL(newsPdfLink);
       };
-      dispatch(addNewsItem(news));
-      setNewsTitle('');
-      setNewsContent('');
-      setNewsImage(null);
-      setNewsPdfLink(null);
+      imageReader.readAsDataURL(newsImage);
     }
   };
 
@@ -141,82 +162,106 @@ const AdminDashboard = () => {
 
   const handleAddCarouselImage1 = () => {
     if (carouselImage1) {
-      const image = {
-        id: uuidv4(),
-        image: URL.createObjectURL(carouselImage1),
-        title: `Carousel 1 Image ${carouselImages1.length + 1}`
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const image = {
+          id: uuidv4(),
+          image: reader.result,
+          title: `Carousel 1 Image ${carouselImages1.length + 1}`
+        };
+        dispatch(addCarouselImage1(image));
+        setCarouselImage1(null);
       };
-      dispatch(addCarouselImage1(image));
-      setCarouselImage1(null);
+      reader.readAsDataURL(carouselImage1);
     }
   };
 
   const handleAddCarouselImage2 = () => {
     if (carouselImage2) {
-      const image = {
-        id: uuidv4(),
-        image: URL.createObjectURL(carouselImage2),
-        title: `Carousel 2 Image ${carouselImages2.length + 1}`
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const image = {
+          id: uuidv4(),
+          image: reader.result,
+          title: `Carousel 2 Image ${carouselImages2.length + 1}`
+        };
+        dispatch(addCarouselImage2(image));
+        setCarouselImage2(null);
       };
-      dispatch(addCarouselImage2(image));
-      setCarouselImage2(null);
+      reader.readAsDataURL(carouselImage2);
     }
   };
 
-  const handleAddSafetyPolicyImage = () => {
-    if (safetyPolicyImage) {
-      const image = {
-        id: uuidv4(),
-        image: URL.createObjectURL(safetyPolicyImage),
-        title: `Safety Policy Image ${safetyPoliciesCarouselImages.length + 1}`
+  const handleAddSafetySnapshot = () => {
+    if (safetySnapshotImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const image = {
+          id: uuidv4(),
+          image: reader.result,
+          title: `Safety Snapshot ${safetySnapshots.length + 1}`
+        };
+        dispatch(addSafetySnapshot(image));
+        setSafetySnapshotImage(null);
       };
-      dispatch(addSafetyPolicyCarouselImage(image));
-      setSafetyPolicyImage(null);
+      reader.readAsDataURL(safetySnapshotImage);
     }
   };
 
   const handleAddBirthday = () => {
     if (birthdayImage) {
-      const birthday = {
-        id: uuidv4(),
-        name: birthdayName,
-        date: birthdayDate,
-        image: URL.createObjectURL(birthdayImage)
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const birthday = {
+          id: uuidv4(),
+          name: birthdayName,
+          date: birthdayDate,
+          image: reader.result
+        };
+        dispatch(addBirthday(birthday));
+        setBirthdayName('');
+        setBirthdayDate('');
+        setBirthdayImage(null);
       };
-      dispatch(addBirthday(birthday));
-      setBirthdayName('');
-      setBirthdayDate('');
-      setBirthdayImage(null);
+      reader.readAsDataURL(birthdayImage);
     }
   };
 
   const handleAddVideo = () => {
     if (videoPreviewImage && videoUrl) {
-      const video = {
-        id: uuidv4(),
-        title: videoTitle,
-        video: videoUrl,
-        image: URL.createObjectURL(videoPreviewImage)
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const video = {
+          id: uuidv4(),
+          title: videoTitle,
+          video: videoUrl,
+          image: reader.result
+        };
+        dispatch(addVideo(video));
+        setVideoTitle('');
+        setVideoUrl('');
+        setVideoPreviewImage(null);
       };
-      dispatch(addVideo(video));
-      setVideoTitle('');
-      setVideoUrl('');
-      setVideoPreviewImage(null);
+      reader.readAsDataURL(videoPreviewImage);
     }
   };
 
   const handleAddLeader = () => {
     if (leaderImage) {
-      const leader = {
-        id: uuidv4(),
-        name: leaderName,
-        description: leaderDescription,
-        image: URL.createObjectURL(leaderImage)
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const leader = {
+          id: uuidv4(),
+          name: leaderName,
+          description: leaderDescription,
+          image: reader.result
+        };
+        dispatch(addLeader(leader));
+        setLeaderName('');
+        setLeaderDescription('');
+        setLeaderImage(null);
       };
-      dispatch(addLeader(leader));
-      setLeaderName('');
-      setLeaderDescription('');
-      setLeaderImage(null);
+      reader.readAsDataURL(leaderImage);
     }
   };
 
@@ -367,19 +412,19 @@ const AdminDashboard = () => {
         </ul>
       </div>
 
-      {/* Manage Safety Policies Carousel Images Section */}
+      {/* Manage Safety Snapshots Section */}
       <div className="section">
-        <h3>Manage Safety Policies Carousel Images</h3>
+        <h3>Manage Safety Snapshots</h3>
         <input
           type="file"
-          onChange={(e) => setSafetyPolicyImage(e.target.files[0])}
+          onChange={(e) => setSafetySnapshotImage(e.target.files[0])}
         />
-        <button onClick={handleAddSafetyPolicyImage}>Add Safety Policy Image</button>
+        <button onClick={handleAddSafetySnapshot}>Add Safety Snapshot</button>
         <ul>
-          {safetyPoliciesCarouselImages.map(image => (
+          {safetySnapshots.map(image => (
             <li key={image.id}>
-              <img src={image.image} alt="Safety Policy" width="100" />
-              <button onClick={() => dispatch(deleteSafetyPolicyCarouselImage(image.id))}>Delete</button>
+              <img src={image.image} alt="Safety Snapshot" width="100" />
+              <button onClick={() => dispatch(deleteSafetySnapshot(image.id))}>Delete</button>
             </li>
           ))}
         </ul>

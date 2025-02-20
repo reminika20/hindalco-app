@@ -21,7 +21,7 @@ const Home = () => {
   const quickLinks = useSelector((state) => state.quickLinks) || [];
   const carouselImages1 = useSelector((state) => state.carouselImages1) || [];
   const carouselImages2 = useSelector((state) => state.carouselImages2) || [];
-  const safetyPoliciesCarouselImages = useSelector((state) => state.safetyPoliciesCarouselImages) || [];
+  const safetySnapshots = useSelector((state) => state.safetySnapshots) || [];
   const birthdays = useSelector((state) => state.birthdays) || [];
   const videoBytes = useSelector((state) => state.videoBytes) || [];
   const leadersBoard = useSelector((state) => state.leadersBoard) || [];
@@ -112,6 +112,8 @@ const Home = () => {
                 dispatch({ type: 'SYNC_LEADERSBOARD', payload: stateValue });
               } else if (key === 'videoBytes') {
                 dispatch({ type: 'SYNC_VIDEOBYTES', payload: stateValue });
+              } else if (key === 'safetySnapshots') {
+                dispatch({ type: 'SYNC_SAFETYSNAPSHOTS', payload: stateValue });
               } else {
                 dispatch({ type: `SYNC_${key.toUpperCase()}`, payload: stateValue });
               }
@@ -130,9 +132,9 @@ const Home = () => {
   // Debug logging
   useEffect(() => {
     console.log("🔄 State updated in Home Page:", {
-      newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetyPoliciesCarouselImages, leadersBoard, videoBytes
+      newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetySnapshots, leadersBoard, videoBytes
     });
-  }, [newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetyPoliciesCarouselImages, leadersBoard, videoBytes]);
+  }, [newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetySnapshots, leadersBoard, videoBytes]);
 
   const highlightedNews = newsItems[0];
   const smallerNewsItems = newsItems.slice(1);
@@ -267,7 +269,7 @@ const Home = () => {
           <div className="safety-snapshots-container">
             <h3>Safety Snapshots</h3>
             <div className="carousel-images">
-              <AutoSlider slides={safetyPoliciesCarouselImages} />
+              <AutoSlider slides={safetySnapshots} />
             </div>
           </div>
           <div className="safety-sop-container">
