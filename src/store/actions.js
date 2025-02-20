@@ -102,3 +102,14 @@ export const deleteLeader = (id) => ({
   type: 'DELETE_LEADER',
   payload: id,
 });
+
+// Safety SOP actions
+export const addSafetySOP = (sop) => ({
+  type: 'ADD_SAFETY_SOP',
+  payload: sop,
+});
+
+export const deleteSafetySOP = (id) => ({
+  type: 'DELETE_SAFETY_SOP',
+  payload: id,
+});

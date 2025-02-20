@@ -22,19 +22,22 @@ import {
   addVideo,
   deleteVideo,
   addLeader,
-  deleteLeader
+  deleteLeader,
+  addSafetySOP,
+  deleteSafetySOP
 } from '../store/actions';
 import "../styles/admin.css";
 
 const AdminDashboard = () => {
   const dispatch = useDispatch();
-  const policies = useSelector((state) => state.policies) || [];
-  const quickLinks = useSelector((state) => state.quickLinks) || [];
-  const newsItems = useSelector((state) => state.newsItems) || [];
-  const tickerMessages = useSelector((state) => state.tickerMessages) || [];
-  const carouselImages1 = useSelector((state) => state.carouselImages1) || [];
-  const carouselImages2 = useSelector((state) => state.carouselImages2) || [];
-  const safetySnapshots = useSelector((state) => state.safetySnapshots) || [];
+  const policies = useSelector((state) => state.policies || []);
+  const quickLinks = useSelector((state) => state.quickLinks || []);
+  const newsItems = useSelector((state) => state.newsItems || []);
+  const safetySOPs = useSelector((state) => state.safetySOPs || []);
+  const tickerMessages = useSelector((state) => state.tickerMessages || []);
+  const carouselImages1 = useSelector((state) => state.carouselImages1 || []);
+  const carouselImages2 = useSelector((state) => state.carouselImages2 || []);
+  const safetySnapshots = useSelector((state) => state.safetySnapshots || []);
   const birthdays = useSelector((state) => state.birthdays) || [];
   const videoBytes = useSelector((state) => state.videoBytes) || [];
   const leadersBoard = useSelector((state) => state.leadersBoard) || [];
@@ -73,9 +76,9 @@ const AdminDashboard = () => {
   }, [newsItems, tickerMessages, quickLinks, safetySnapshots]);
 
   const [policyTitle, setPolicyTitle] = useState('');
-  const [policyFile, setPolicyFile] = useState(null);
+  const [policyUrl, setPolicyUrl] = useState('');
   const [quickLinkText, setQuickLinkText] = useState('');
-  const [quickLinkFile, setQuickLinkFile] = useState(null);
+  const [quickLinkUrl, setQuickLinkUrl] = useState('');
   const [newsTitle, setNewsTitle] = useState('');
   const [newsContent, setNewsContent] = useState('');
   const [newsImage, setNewsImage] = useState(null);
@@ -86,46 +89,40 @@ const AdminDashboard = () => {
   const [safetySnapshotImage, setSafetySnapshotImage] = useState(null);
   const [birthdayName, setBirthdayName] = useState('');
   const [birthdayDate, setBirthdayDate] = useState('');
-  const [birthdayImage, setBirthdayImage] = useState(null);
   const [videoTitle, setVideoTitle] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
   const [videoPreviewImage, setVideoPreviewImage] = useState(null);
   const [leaderName, setLeaderName] = useState('');
   const [leaderImage, setLeaderImage] = useState(null);
   const [leaderDescription, setLeaderDescription] = useState('');
+  const [sopTitle, setSopTitle] = useState('');
+  const [sopUrl, setSopUrl] = useState('');
 
   // Action handlers
   const handleAddPolicy = () => {
-    if (policyFile) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const policy = {
-          id: uuidv4(),
-          title: policyTitle,
-          url: reader.result
-        };
-        dispatch(addPolicy(policy));
-        setPolicyTitle('');
-        setPolicyFile(null);
+    if (policyTitle && policyUrl) {
+      const policy = {
+        id: uuidv4(),
+        title: policyTitle,
+        url: policyUrl
       };
-      reader.readAsDataURL(policyFile);
+      dispatch(addPolicy(policy));
+      setPolicyTitle('');
+      setPolicyUrl('');
     }
   };
 
   const handleAddQuickLink = () => {
-    if (quickLinkFile) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const link = {
-          id: uuidv4(),
-          text: quickLinkText,
-          url: reader.result
-        };
-        dispatch(addQuickLink(link));
-        setQuickLinkText('');
-        setQuickLinkFile(null);
+    if (quickLinkText && quickLinkUrl) {
+      const link = {
+        id: uuidv4(),
+        text: quickLinkText,
+        url: quickLinkUrl,
+        image: '/images/image1.jpg' // Using default image
       };
-      reader.readAsDataURL(quickLinkFile);
+      dispatch(addQuickLink(link));
+      setQuickLinkText('');
+      setQuickLinkUrl('');
     }
   };
 
@@ -209,21 +206,16 @@ const AdminDashboard = () => {
   };
 
   const handleAddBirthday = () => {
-    if (birthdayImage) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const birthday = {
-          id: uuidv4(),
-          name: birthdayName,
-          date: birthdayDate,
-          image: reader.result
-        };
-        dispatch(addBirthday(birthday));
-        setBirthdayName('');
-        setBirthdayDate('');
-        setBirthdayImage(null);
+    if (birthdayName && birthdayDate) {
+      const birthday = {
+        id: uuidv4(),
+        name: birthdayName,
+        date: birthdayDate,
+        image: '/images/image1.jpg' // Using default image
       };
-      reader.readAsDataURL(birthdayImage);
+      dispatch(addBirthday(birthday));
+      setBirthdayName('');
+      setBirthdayDate('');
     }
   };
 
@@ -265,6 +257,19 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleAddSafetySOP = () => {
+    if (sopTitle && sopUrl) {
+      const sop = {
+        id: uuidv4(),
+        title: sopTitle,
+        url: sopUrl
+      };
+      dispatch(addSafetySOP(sop));
+      setSopTitle('');
+      setSopUrl('');
+    }
+  };
+
   return (
     <div className="admin-dashboard">
       <div className="header-container">
@@ -285,8 +290,10 @@ const AdminDashboard = () => {
           onChange={(e) => setPolicyTitle(e.target.value)}
         />
         <input
-          type="file"
-          onChange={(e) => setPolicyFile(e.target.files[0])}
+          type="text"
+          placeholder="Policy URL"
+          value={policyUrl}
+          onChange={(e) => setPolicyUrl(e.target.value)}
         />
         <button onClick={handleAddPolicy}>Add Policy</button>
         <ul>
@@ -309,8 +316,10 @@ const AdminDashboard = () => {
           onChange={(e) => setQuickLinkText(e.target.value)}
         />
         <input
-          type="file"
-          onChange={(e) => setQuickLinkFile(e.target.files[0])}
+          type="text"
+          placeholder="Quick Link URL"
+          value={quickLinkUrl}
+          onChange={(e) => setQuickLinkUrl(e.target.value)}
         />
         <button onClick={handleAddQuickLink}>Add Quick Link</button>
         <ul>
@@ -444,11 +453,6 @@ const AdminDashboard = () => {
           value={birthdayDate}
           onChange={(e) => setBirthdayDate(e.target.value)}
         />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setBirthdayImage(e.target.files[0])}
-        />
         <button onClick={handleAddBirthday}>Add Birthday</button>
         <ul>
           {birthdays.map(birthday => (
@@ -516,6 +520,32 @@ const AdminDashboard = () => {
             <li key={leader.id}>
               {leader.name}
               <button onClick={() => dispatch(deleteLeader(leader.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Safety SOPs Section */}
+      <div className="section">
+        <h3>Manage Safety SOPs</h3>
+        <input
+          type="text"
+          placeholder="SOP Title"
+          value={sopTitle}
+          onChange={(e) => setSopTitle(e.target.value)}
+        />
+          <input
+            type="text"
+            placeholder="SOP URL"
+            value={sopUrl}
+            onChange={(e) => setSopUrl(e.target.value)}
+          />
+        <button onClick={handleAddSafetySOP}>Add Safety SOP</button>
+        <ul>
+          {safetySOPs.map(sop => (
+            <li key={sop.id}>
+              {sop.title}
+              <button onClick={() => dispatch(deleteSafetySOP(sop.id))}>Delete</button>
             </li>
           ))}
         </ul>

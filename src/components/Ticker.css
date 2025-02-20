@@ -2,8 +2,8 @@
   overflow: hidden;
   white-space: nowrap;
   box-sizing: border-box;
-  background: linear-gradient(90deg, #007bff, #0056b3);
-  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
 }
 
 .ticker-content {

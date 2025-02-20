@@ -3,7 +3,7 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #fff;
+  background: linear-gradient(135deg, var(--bg-bluegray-light), var(--bg-bluegray));
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -12,6 +12,8 @@
   margin-bottom: 1rem;
   text-align: center;
   color: #2c3e50;
+  font-family: 'Lora', serif;
+  font-weight: 500;
 }
 
 .login-container form {
@@ -30,9 +32,10 @@
 
 .login-container form input {
   padding: 0.75rem;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--bg-bluegray-dark);
   border-radius: 4px;
   transition: border-color 0.2s ease;
+  background: var(--bg-bluegray-light);
 }
 
 .login-container form input:focus {
@@ -56,16 +59,27 @@
 
 /* Header Styles */
 .header-container {
-  background-color: #fff;
+  background: linear-gradient(135deg, var(--teal-light), var(--gradient-start));
   padding: 0.25rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(79, 209, 197, 0.15);
   margin-bottom: 2rem;
   width: 100%;
 }
 
 .header-bar {
-  height: 3px;
-  background-color: #007bff;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    var(--teal-light),
+    var(--teal),
+    var(--teal-dark));
+  background-size: 200% 200%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .header {
@@ -89,8 +103,9 @@
   margin: 0;
   font-size: 1.8rem;
   text-transform: uppercase;
-  margin-right: 128px;
-  color: #2c3e50;
+  color: var(--text-primary);
+  font-family: 'Lora', serif;
+  font-weight: 500;
 }
 
 /* Admin Dashboard Styles */
@@ -102,7 +117,7 @@
 
 /* Section Styles */
 .section {
-  background-color: #fff;
+  background: linear-gradient(135deg, var(--bg-bluegray-light), var(--bg-bluegray));
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 2rem;
@@ -117,6 +132,7 @@
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #007bff;
+  font-family: 'Lora', serif;
 }
 
 /* Form Elements */
@@ -125,19 +141,19 @@
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--bg-bluegray-dark);
   border-radius: 4px;
   transition: border-color 0.2s ease;
   font-size: 1rem;
-  background-color: #fff;
+  background: var(--bg-bluegray-light);
 }
 
 .section input[type="file"] {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-color: #f8f9fa;
-  border: 2px dashed #e9ecef;
+  background: var(--bg-bluegray-light);
+  border: 2px dashed var(--bg-bluegray-dark);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -161,7 +177,7 @@
 
 .section input[type="file"]:hover {
   border-color: #007bff;
-  background-color: #e9ecef;
+  background: var(--bg-bluegray);
 }
 
 .section input[type="text"]:focus,
@@ -207,11 +223,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem;
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, var(--bg-bluegray-light), var(--bg-bluegray));
   border-radius: 4px;
   margin-bottom: 0.75rem;
   transition: all 0.2s ease;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--bg-bluegray-dark);
 }
 
 .section li:last-child {
@@ -219,7 +235,7 @@
 }
 
 .section li:hover {
-  background-color: #e9ecef;
+  background: linear-gradient(135deg, var(--bg-bluegray), var(--bg-bluegray-dark));
   transform: translateX(2px);
 }
 
@@ -242,7 +258,7 @@
   object-fit: cover;
   border-radius: 4px;
   margin-right: 1rem;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--bg-bluegray-dark);
 }
 
 /* Grid Layout for Sections */
@@ -277,17 +293,17 @@
 }
 
 .section ul::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg-bluegray-light);
   border-radius: 3px;
 }
 
 .section ul::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: var(--bg-bluegray-dark);
   border-radius: 3px;
 }
 
 .section ul::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: var(--bg-bluegray);
 }
 
 /* Form Group Spacing */

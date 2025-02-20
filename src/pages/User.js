@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AutoSlider from '../components/AutoSlider';
 import Ticker from '../components/Ticker';
@@ -15,16 +15,26 @@ const createConfetti = (canvas) => {
 };
 
 const Home = () => {
-  const newsItems = useSelector((state) => state.newsItems) || [];
-  const tickerMessages = useSelector((state) => state.tickerMessages) || [];
-  const policies = useSelector((state) => state.policies) || [];
-  const quickLinks = useSelector((state) => state.quickLinks) || [];
-  const carouselImages1 = useSelector((state) => state.carouselImages1) || [];
-  const carouselImages2 = useSelector((state) => state.carouselImages2) || [];
-  const safetySnapshots = useSelector((state) => state.safetySnapshots) || [];
-  const birthdays = useSelector((state) => state.birthdays) || [];
-  const videoBytes = useSelector((state) => state.videoBytes) || [];
-  const leadersBoard = useSelector((state) => state.leadersBoard) || [];
+  const newsItems = useSelector((state) => state.newsItems || []);
+  const tickerMessages = useSelector((state) => state.tickerMessages || []);
+  const policies = useSelector((state) => state.policies || []);
+  const quickLinks = useSelector((state) => state.quickLinks || []);
+  const safetySOPs = useSelector((state) => state.safetySOPs || []);
+  const carouselImages1 = useSelector((state) => state.carouselImages1 || []);
+  const carouselImages2 = useSelector((state) => state.carouselImages2 || []);
+  const safetySnapshots = useSelector((state) => state.safetySnapshots || []);
+  const birthdays = useSelector((state) => {
+    const today = new Date();
+    const todayMonth = today.getMonth() + 1; // getMonth() returns 0-11
+    const todayDay = today.getDate();
+    
+    return (state.birthdays || []).filter(birthday => {
+      const bDate = new Date(birthday.date);
+      return bDate.getMonth() + 1 === todayMonth && bDate.getDate() === todayDay;
+    });
+  });
+  const videoBytes = useSelector((state) => state.videoBytes || []);
+  const leadersBoard = useSelector((state) => state.leadersBoard || []);
   const [current, setCurrent] = useState(0);
 
   const canvasRef = useRef(null);
@@ -38,7 +48,7 @@ const Home = () => {
     }
   }, []);
 
-  const startConfetti = () => {
+  const startConfetti = useCallback(() => {
     if (!confettiInstanceRef.current || !birthdays.length) return;
     
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
@@ -59,7 +69,7 @@ const Home = () => {
         scalar: 0.8
       });
     }, 100); // Reduced interval for smoother effect
-  };
+  }, [birthdays]);
 
   const stopConfetti = () => {
     if (confettiIntervalRef.current) {
@@ -82,17 +92,18 @@ const Home = () => {
       { threshold: 0.5 } // Trigger when 50% of the element is visible
     );
 
-    if (birthdayContainerRef.current) {
-      observer.observe(birthdayContainerRef.current);
+    const currentRef = birthdayContainerRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (birthdayContainerRef.current) {
-        observer.unobserve(birthdayContainerRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
       stopConfetti(); // Cleanup on unmount
     };
-  }, [birthdays]);
+  }, [birthdays, startConfetti]);
 
   const dispatch = useDispatch();
 
@@ -275,10 +286,10 @@ const Home = () => {
           <div className="safety-sop-container">
             <h3>Safety SOP</h3>
             <div className="safety-sop-content">
-              {policies.map(policy => (
-                <div key={policy.id} className="policy-item">
-                  <h3>{policy.title}</h3>
-                  <a href={policy.url} target="_blank" rel="noopener noreferrer">
+              {safetySOPs.map(sop => (
+                <div key={sop.id} className="policy-item">
+                  <h3>{sop.title}</h3>
+                  <a href={sop.url} target="_blank" rel="noopener noreferrer">
                     <img src="https://img.icons8.com/ios-filled/50/000000/pdf.png" alt="PDF Icon" />
                   </a>
                 </div>

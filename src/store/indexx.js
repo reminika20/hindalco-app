@@ -11,6 +11,7 @@ const initialState = {
   birthdays: [],
   videoBytes: [],
   leadersBoard: [],
+  safetySOPs: [],
   quickLinks: [
     { id: '1', text: 'Google', url: 'https://www.google.com' },
     { id: '2', text: 'Facebook', url: 'https://www.facebook.com' },
@@ -119,12 +120,20 @@ const carouselImages2Reducer = (state = initialState.carouselImages2, action) =>
   }
 };
 
-const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['newsItems', 'tickerMessages', 'quickLinks', 'policies', 'safetySnapshots', 'carouselImages1', 'carouselImages2', 'birthdays', 'videoBytes', 'leadersBoard']
+// Safety SOPs reducer
+const safetySOPsReducer = (state = initialState.safetySOPs, action) => {
+  switch (action.type) {
+    case 'ADD_SAFETY_SOP':
+      return [...state, action.payload];
+    case 'DELETE_SAFETY_SOP':
+      return state.filter(sop => sop.id !== action.payload);
+    case 'SYNC_SAFETYSOPS':
+      return action.payload;
+    default:
+      return state;
+  }
 };
-// Combine reducers
+
 // Birthdays reducer
 const birthdaysReducer = (state = initialState.birthdays, action) => {
   switch (action.type) {
@@ -167,6 +176,12 @@ const leadersBoardReducer = (state = initialState.leadersBoard, action) => {
   }
 };
 
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['newsItems', 'tickerMessages', 'quickLinks', 'policies', 'safetySnapshots', 'carouselImages1', 'carouselImages2', 'birthdays', 'videoBytes', 'leadersBoard', 'safetySOPs']
+};
+
 const rootReducer = combineReducers({
   newsItems: newsItemsReducer,
   tickerMessages: tickerMessagesReducer,
@@ -177,7 +192,8 @@ const rootReducer = combineReducers({
   carouselImages2: carouselImages2Reducer,
   birthdays: birthdaysReducer,
   videoBytes: videoBytesReducer,
-  leadersBoard: leadersBoardReducer
+  leadersBoard: leadersBoardReducer,
+  safetySOPs: safetySOPsReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
