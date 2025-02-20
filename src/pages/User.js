@@ -107,7 +107,14 @@ const Home = () => {
           if (key !== '_persist') {
             try {
               const stateValue = JSON.parse(persistedState[key]);
-              dispatch({ type: `SYNC_${key.toUpperCase()}`, payload: stateValue });
+              // Handle special cases
+              if (key === 'leadersBoard') {
+                dispatch({ type: 'SYNC_LEADERSBOARD', payload: stateValue });
+              } else if (key === 'videoBytes') {
+                dispatch({ type: 'SYNC_VIDEOBYTES', payload: stateValue });
+              } else {
+                dispatch({ type: `SYNC_${key.toUpperCase()}`, payload: stateValue });
+              }
             } catch (error) {
               console.error(`Error parsing ${key} state:`, error);
             }
@@ -123,9 +130,9 @@ const Home = () => {
   // Debug logging
   useEffect(() => {
     console.log("🔄 State updated in Home Page:", {
-      newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetyPoliciesCarouselImages
+      newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetyPoliciesCarouselImages, leadersBoard, videoBytes
     });
-  }, [newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetyPoliciesCarouselImages]);
+  }, [newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetyPoliciesCarouselImages, leadersBoard, videoBytes]);
 
   const highlightedNews = newsItems[0];
   const smallerNewsItems = newsItems.slice(1);
@@ -316,15 +323,21 @@ const Home = () => {
           <h2>Leaders Board</h2>
           <p>Recognizing excellence and achievements</p>
           <div className="leaders-board-content">
-            {leadersBoard.length > 0 && leadersBoard.map(item => (
-              <div className="leaders-board-item" key={item.id}>
-                <img src={item.image} alt={item.title} className="leaders-board-image" />
-                <div className="leaders-board-text">
-                  <h3>{item.title}</h3>
-                  <p>{item.message}</p>
+            {leadersBoard.length > 0 ? (
+              leadersBoard.map(item => (
+                <div className="leaders-board-item" key={item.id}>
+                  <img src={item.image} alt={item.name} className="leaders-board-image" />
+                  <div className="leaders-board-text">
+                    <h3>{item.name}</h3>
+                    <p>{item.description}</p>
+                  </div>
                 </div>
+              ))
+            ) : (
+              <div className="no-leaders">
+                <p>No leaders to display</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>

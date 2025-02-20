@@ -674,6 +674,22 @@
   line-height: 1.5;
 }
 
+.no-leaders {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.no-leaders p {
+  color: #666;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
 /* Ticker styles */
 .ticker {
   background: linear-gradient(90deg, #007bff, #0056b3);

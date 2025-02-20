@@ -145,7 +145,7 @@ const videoBytesReducer = (state = initialState.videoBytes, action) => {
       return [...state, action.payload];
     case 'DELETE_VIDEO':
       return state.filter(video => video.id !== action.payload);
-    case 'SYNC_VIDEOS':
+    case 'SYNC_VIDEOBYTES':
       return action.payload;
     default:
       return state;
@@ -159,7 +159,7 @@ const leadersBoardReducer = (state = initialState.leadersBoard, action) => {
       return [...state, action.payload];
     case 'DELETE_LEADER':
       return state.filter(leader => leader.id !== action.payload);
-    case 'SYNC_LEADERS':
+    case 'SYNC_LEADERSBOARD':
       return action.payload;
     default:
       return state;
