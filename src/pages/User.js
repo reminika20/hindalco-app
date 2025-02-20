@@ -173,6 +173,17 @@ const Home = () => {
                 </div>
               </div>
             )}
+            <div className="smaller-news-items">
+              {smallerNewsItems.map((news, index) => (
+                <div key={index} className="smaller-news-item">
+                  <img src={news.image} alt={news.title} className="smaller-news-image" />
+                  <div className="smaller-news-text">
+                    <h4>{news.title}</h4>
+                    <p>{news.content.split(' ').slice(0, 10).join(' ')}...</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <div className="quick-links-container">
