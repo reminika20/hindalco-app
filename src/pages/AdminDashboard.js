@@ -82,7 +82,7 @@ const AdminDashboard = () => {
   const [newsTitle, setNewsTitle] = useState('');
   const [newsContent, setNewsContent] = useState('');
   const [newsImage, setNewsImage] = useState(null);
-  const [newsPdfLink, setNewsPdfLink] = useState(null);
+  const [newsPdfLink, setNewsPdfLink] = useState('');
   const [tickerMessage, setTickerMessage] = useState('');
   const [carouselImage1, setCarouselImage1] = useState(null);
   const [carouselImage2, setCarouselImage2] = useState(null);
@@ -129,24 +129,20 @@ const AdminDashboard = () => {
   const handleAddNewsItem = () => {
     if (newsImage && newsPdfLink) {
       const imageReader = new FileReader();
-      const pdfReader = new FileReader();
       
       imageReader.onloadend = () => {
-        pdfReader.onloadend = () => {
-          const news = {
-            id: uuidv4(),
-            title: newsTitle,
-            content: newsContent,
-            image: imageReader.result,
-            pdfLink: pdfReader.result
-          };
-          dispatch(addNewsItem(news));
-          setNewsTitle('');
-          setNewsContent('');
-          setNewsImage(null);
-          setNewsPdfLink(null);
+        const news = {
+          id: uuidv4(),
+          title: newsTitle,
+          content: newsContent,
+          image: imageReader.result,
+          pdfLink: newsPdfLink
         };
-        pdfReader.readAsDataURL(newsPdfLink);
+        dispatch(addNewsItem(news));
+        setNewsTitle('');
+        setNewsContent('');
+        setNewsImage(null);
+        setNewsPdfLink('');
       };
       imageReader.readAsDataURL(newsImage);
     }
@@ -351,8 +347,10 @@ const AdminDashboard = () => {
           onChange={(e) => setNewsImage(e.target.files[0])}
         />
         <input
-          type="file"
-          onChange={(e) => setNewsPdfLink(e.target.files[0])}
+          type="text"
+          placeholder="PDF URL"
+          value={newsPdfLink}
+          onChange={(e) => setNewsPdfLink(e.target.value)}
         />
         <button onClick={handleAddNewsItem}>Add News Item</button>
         <ul>

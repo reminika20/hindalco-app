@@ -190,6 +190,7 @@ const Home = () => {
                 <div className="highlighted-news-text">
                   <h3>{highlightedNews.title}</h3>
                   <p>{highlightedNews.content.split(' ').slice(0, 20).join(' ')}...</p>
+                  <span><a href={highlightedNews.pdfLink} target='blank'>Read More</a></span>
                 </div>
               </div>
             )}
@@ -200,6 +201,7 @@ const Home = () => {
                   <div className="smaller-news-text">
                     <h4>{news.title}</h4>
                     <p>{news.content.split(' ').slice(0, 10).join(' ')}...</p>
+                    <span><a href={news.pdfLink} target='blank'>Read More</a></span>
                   </div>
                 </div>
               ))}
