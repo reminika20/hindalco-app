@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import AutoSlider from '../components/AutoSlider';
 import Ticker from '../components/Ticker';
+import UserPageNavbar from '../components/UserPageNavbar';
 import hindalcoLogo from '../assets/hindalco-logo.png';
 import "../styles/user.css";
 import confetti from 'canvas-confetti';
@@ -41,6 +42,17 @@ const Home = () => {
   const confettiInstanceRef = useRef(null);
   const birthdayContainerRef = useRef(null);
   const confettiIntervalRef = useRef(null);
+  const whatsNewRef = useRef(null);
+  const policiesRef = useRef(null);
+  const safetySectionRef = useRef(null);
+  const videoBytesRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    const element = document.getElementsByClassName(ref)[0];
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     if (canvasRef.current && !confettiInstanceRef.current) {
@@ -165,6 +177,7 @@ const Home = () => {
             <h3>Belagavi Works</h3>
           </div>
         </div>
+        <UserPageNavbar scrollToSection={scrollToSection} />
       </div>
 
       {/* Row 1: Buzz and Snapshots */}
@@ -181,7 +194,7 @@ const Home = () => {
 
       {/* Row 2: What's New and Quick Links */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="whats-new-container">
+        <div className="whats-new-container" ref={whatsNewRef}>
           <h2>What's New !!</h2>
           <div className="whats-new-content">
             {highlightedNews && (
@@ -206,36 +219,6 @@ const Home = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-        <div className="quick-links-container">
-          <h2>Quick Links</h2>
-          <div className="quick-links-content">
-            {quickLinks.map(link => (
-              <div key={link.id} className="quick-links-item">
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  <img src="https://img.icons8.com/ios-filled/50/000000/link.png" alt="Link Icon" />
-                  <span>{link.text}</span>
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Row 3: Policies and Birthday List */}
-      <div className="grid grid-cols-2 gap-4">
-        <div className="policies-container">
-          <h2>Policies</h2>
-          <div className="policies-content">
-            {policies.map(policy => (
-              <div key={policy.id} className="policy-item">
-                <h3>{policy.title}</h3>
-                <a href={policy.url} target="_blank" rel="noopener noreferrer">
-                  <img src="https://img.icons8.com/ios-filled/50/000000/pdf.png" alt="PDF Icon" />
-                </a>
-              </div>
-            ))}
           </div>
         </div>
         <div className="birthday-container" ref={birthdayContainerRef}>
@@ -275,8 +258,38 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Row 3: Policies and Birthday List */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="policies-container" ref={policiesRef}>
+          <h2>Policies</h2>
+          <div className="policies-content">
+            {policies.map(policy => (
+              <div key={policy.id} className="policy-item">
+                <h3>{policy.title}</h3>
+                <a href={policy.url} target="_blank" rel="noopener noreferrer">
+                  <img src="https://img.icons8.com/ios-filled/50/000000/pdf.png" alt="PDF Icon" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="quick-links-container">
+          <h2>Quick Links</h2>
+          <div className="quick-links-content">
+            {quickLinks.map(link => (
+              <div key={link.id} className="quick-links-item">
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  <img src="https://img.icons8.com/ios-filled/50/000000/link.png" alt="Link Icon" />
+                  <span>{link.text}</span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Row 4: Safety Corner */}
-      <div className="safety-corner">
+      <div className="safety-corner" ref={safetySectionRef}>
         <h2>Safety Corner</h2>
         <div className="grid grid-cols-2 gap-4">
           <div className="safety-snapshots-container">
@@ -303,7 +316,7 @@ const Home = () => {
 
       {/* Row 5: Video Bytes and Leaders Board */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="video-bytes-container">
+        <div className="video-bytes-container" ref={videoBytesRef}>
           <h2>Video Bytes</h2>
           <div className="video-bytes-content">
             {videoBytes.length > 0 && (
@@ -358,9 +371,7 @@ const Home = () => {
       </div>
 
       {/* Ticker Section */}
-      <div className="mt-4">
         <Ticker announcements={tickerMessages} speed={20} /> {/* Adjust the speed value as needed */}
-      </div>
     </div>
   );
 };
