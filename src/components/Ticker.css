@@ -5,7 +5,7 @@
   overflow: hidden;
   white-space: nowrap;
   box-sizing: border-box;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  background-color: #F8F8F8;
   box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
   width: 100%;
 }
@@ -18,19 +18,20 @@
 
 .ticker-item {
   display: inline-block;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: #008080; /* Deep Teal */
+  text-shadow: none;
   transition: color 0.3s ease;
+  font-weight: 500;
 }
 
 .ticker-item:hover {
-  color: #ffffff;
+  color: #006666; /* Darker Teal */
 }
 
 .ticker-item:not(:last-child)::after {
   content: '•';
   margin: 0 1rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #B7410E; /* Rust Red */
 }
 
 @keyframes ticker {

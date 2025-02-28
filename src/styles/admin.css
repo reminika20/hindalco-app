@@ -3,7 +3,7 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 2rem;
-  background: linear-gradient(135deg, var(--bg-bluegray-light), var(--bg-bluegray));
+  background-color: #F8F8F8;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -59,7 +59,7 @@
 
 /* Header Styles */
 .header-container {
-  background: linear-gradient(135deg, var(--teal-light), var(--gradient-start));
+  background-color: #F8F8F8;
   padding: 0.25rem;
   box-shadow: 0 4px 12px rgba(79, 209, 197, 0.15);
   margin-bottom: 2rem;
@@ -68,12 +68,8 @@
 
 .header-bar {
   height: 4px;
-  background: linear-gradient(90deg, 
-    var(--teal-light),
-    var(--teal),
-    var(--teal-dark));
+  background-color: #008080; /* Deep Teal */
   background-size: 200% 200%;
-  animation: gradientBG 15s ease infinite;
 }
 
 @keyframes gradientBG {
@@ -117,7 +113,7 @@
 
 /* Section Styles */
 .section {
-  background: linear-gradient(135deg, var(--bg-bluegray-light), var(--bg-bluegray));
+  background-color: #F8F8F8;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 2rem;
@@ -128,11 +124,35 @@
 .section h3 {
   font-size: 1.4rem;
   font-weight: 500;
-  color: #2c3e50;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #007bff;
   font-family: 'Lora', serif;
+}
+
+/* Section title colors */
+.section:nth-child(1) h3 {
+  color: #008080; /* Deep Teal */
+}
+
+.section:nth-child(2) h3 {
+  color: #B7410E; /* Rust Red */
+}
+
+.section:nth-child(3) h3 {
+  color: #4B0082; /* Deep Purple */
+}
+
+.section:nth-child(4) h3 {
+  color: #228B22; /* Forest Green */
+}
+
+.section:nth-child(5) h3 {
+  color: #CC5500; /* Burnt Orange */
+}
+
+.section:nth-child(6) h3 {
+  color: #000080; /* Navy Blue */
 }
 
 /* Form Elements */
@@ -223,7 +243,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem;
-  background: linear-gradient(135deg, var(--bg-bluegray-light), var(--bg-bluegray));
+  background-color: #F8F8F8;
   border-radius: 4px;
   margin-bottom: 0.75rem;
   transition: all 0.2s ease;
@@ -235,7 +255,7 @@
 }
 
 .section li:hover {
-  background: linear-gradient(135deg, var(--bg-bluegray), var(--bg-bluegray-dark));
+  background-color: #F0F0F0; /* Slightly darker white */
   transform: translateX(2px);
 }
 
