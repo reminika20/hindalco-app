@@ -39,14 +39,14 @@
 }
 
 .login-container form input:focus {
-  border-color: #007bff;
+  border-color: #8ee3f5;
   outline: none;
 }
 
 .login-container form button {
   padding: 0.75rem;
-  background-color: #007bff;
-  color: white;
+  background-color: #8ee3f5;
+  color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -54,21 +54,21 @@
 }
 
 .login-container form button:hover {
-  background-color: #0056b3;
+  background-color: #5ccad9;
 }
 
 /* Header Styles */
 .header-container {
   background-color: #F8F8F8;
   padding: 0.25rem;
-  box-shadow: 0 4px 12px rgba(79, 209, 197, 0.15);
+  box-shadow: 0 4px 12px rgba(142, 227, 245, 0.15);
   margin-bottom: 2rem;
   width: 100%;
 }
 
 .header-bar {
   height: 4px;
-  background-color: #008080; /* Deep Teal */
+  background-color: #8ee3f5; /* Light Blue */
   background-size: 200% 200%;
 }
 
@@ -126,13 +126,13 @@
   font-weight: 500;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #007bff;
+  border-bottom: 2px solid #8ee3f5;
   font-family: 'Lora', serif;
 }
 
 /* Section title colors */
 .section:nth-child(1) h3 {
-  color: #008080; /* Deep Teal */
+  color: #8ee3f5; /* Light Blue */
 }
 
 .section:nth-child(2) h3 {
@@ -182,8 +182,8 @@
 
 .section input[type="file"]::-webkit-file-upload-button {
   padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: white;
+  background-color: #8ee3f5;
+  color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -192,19 +192,19 @@
 }
 
 .section input[type="file"]::-webkit-file-upload-button:hover {
-  background-color: #0056b3;
+  background-color: #5ccad9;
 }
 
 .section input[type="file"]:hover {
-  border-color: #007bff;
+  border-color: #8ee3f5;
   background: var(--bg-bluegray);
 }
 
 .section input[type="text"]:focus,
 .section textarea:focus {
-  border-color: #007bff;
+  border-color: #8ee3f5;
   outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+  box-shadow: 0 0 0 2px rgba(142, 227, 245, 0.1);
 }
 
 .section textarea {
@@ -214,8 +214,8 @@
 
 .section button {
   padding: 0.75rem 1.5rem;
-  background-color: #007bff;
-  color: white;
+  background-color: #8ee3f5;
+  color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -225,7 +225,7 @@
 }
 
 .section button:hover {
-  background-color: #0056b3;
+  background-color: #5ccad9;
   transform: translateY(-1px);
 }
 

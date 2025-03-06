@@ -113,3 +113,113 @@ export const deleteSafetySOP = (id) => ({
   type: 'DELETE_SAFETY_SOP',
   payload: id,
 });
+
+// Wellness Wave actions
+export const addWellnessWave = (item) => ({
+  type: 'ADD_WELLNESS_WAVE',
+  payload: item,
+});
+
+export const deleteWellnessWave = (id) => ({
+  type: 'DELETE_WELLNESS_WAVE',
+  payload: id,
+});
+
+// Wellness Tips actions
+export const addWellnessTip = (item) => ({
+  type: 'ADD_WELLNESS_TIP',
+  payload: item,
+});
+
+export const deleteWellnessTip = (id) => ({
+  type: 'DELETE_WELLNESS_TIP',
+  payload: id,
+});
+
+// Victory Vault actions
+export const addVictoryVault = (item) => ({
+  type: 'ADD_VICTORY_VAULT',
+  payload: item,
+});
+
+export const deleteVictoryVault = (id) => ({
+  type: 'DELETE_VICTORY_VAULT',
+  payload: id,
+});
+
+// CSR Initiatives actions
+export const addCSRInitiative = (item) => ({
+  type: 'ADD_CSR_INITIATIVE',
+  payload: item,
+});
+
+export const deleteCSRInitiative = (id) => ({
+  type: 'DELETE_CSR_INITIATIVE',
+  payload: id,
+});
+
+// Welcome Onboard actions
+export const addWelcomeOnboard = (item) => ({
+  type: 'ADD_WELCOME_ONBOARD',
+  payload: item,
+});
+
+export const deleteWelcomeOnboard = (id) => ({
+  type: 'DELETE_WELCOME_ONBOARD',
+  payload: id,
+});
+
+// Best Kaizens actions
+export const addBestKaizen = (item) => ({
+  type: 'ADD_BEST_KAIZEN',
+  payload: item,
+});
+
+export const deleteBestKaizen = (id) => ({
+  type: 'DELETE_BEST_KAIZEN',
+  payload: id,
+});
+
+// Main Hoon Zimedaar actions
+export const addMainHoonZimedaar = (item) => ({
+  type: 'ADD_MAIN_HOON_ZIMEDAAR',
+  payload: item,
+});
+
+export const deleteMainHoonZimedaar = (id) => ({
+  type: 'DELETE_MAIN_HOON_ZIMEDAAR',
+  payload: id,
+});
+
+// Crown Collection actions
+export const addCrownCollection = (item) => ({
+  type: 'ADD_CROWN_COLLECTION',
+  payload: item,
+});
+
+export const deleteCrownCollection = (id) => ({
+  type: 'DELETE_CROWN_COLLECTION',
+  payload: id,
+});
+
+// Bosstomer actions
+export const addBosstomer = (item) => ({
+  type: 'ADD_BOSSTOMER',
+  payload: item,
+});
+
+export const deleteBosstomer = (id) => ({
+  type: 'DELETE_BOSSTOMER',
+  payload: id,
+});
+
+// Elevate IQ actions
+export const addElevateIQ = (item) => ({
+  type: 'ADD_ELEVATE_IQ',
+  payload: item,
+});
+
+export const deleteElevateIQ = (id) => ({
+  type: 'DELETE_ELEVATE_IQ',
+  payload: id,
+});

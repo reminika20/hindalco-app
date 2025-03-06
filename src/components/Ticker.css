@@ -1,13 +1,16 @@
 .ticker {
   position: fixed;
   bottom: 1vh;
+  left: 0;
+  right: 0;
+  margin: 0 20px; /* Add margin on both sides */
   z-index: 100;
   overflow: hidden;
   white-space: nowrap;
   box-sizing: border-box;
-  background-color: #F8F8F8;
-  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
-  width: 100%;
+  background-color: #8ee3f5 !important; /* Darker gray background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2) !important; /* Darker shadow for better visibility */
+  width: calc(100% - 40px); /* Adjust width to account for margins */
 }
 
 .ticker-content {
@@ -18,20 +21,20 @@
 
 .ticker-item {
   display: inline-block;
-  color: #008080; /* Deep Teal */
-  text-shadow: none;
+  color: #000000 !important; /* Black text for better readability */
+  text-shadow: none !important;
   transition: color 0.3s ease;
-  font-weight: 500;
+  font-weight: 600 !important; /* Slightly bolder for better visibility */
 }
 
 .ticker-item:hover {
-  color: #006666; /* Darker Teal */
+  color: #333333 !important; /* Dark gray on hover */
 }
 
 .ticker-item:not(:last-child)::after {
   content: '•';
   margin: 0 1rem;
-  color: #B7410E; /* Rust Red */
+  color: #555555 !important; /* Dark gray for better contrast with new color scheme */
 }
 
 @keyframes ticker {

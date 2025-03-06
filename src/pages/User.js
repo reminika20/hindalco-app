@@ -24,6 +24,16 @@ const Home = () => {
   const carouselImages1 = useSelector((state) => state.carouselImages1 || []);
   const carouselImages2 = useSelector((state) => state.carouselImages2 || []);
   const safetySnapshots = useSelector((state) => state.safetySnapshots || []);
+  const wellnessWave = useSelector((state) => state.wellnessWave || []);
+  const wellnessTips = useSelector((state) => state.wellnessTips || []);
+  const victoryVault = useSelector((state) => state.victoryVault || []);
+  const csrInitiatives = useSelector((state) => state.csrInitiatives || []);
+  const welcomeOnboard = useSelector((state) => state.welcomeOnboard || []);
+  const bestKaizens = useSelector((state) => state.bestKaizens || []);
+  const mainHoonZimedaar = useSelector((state) => state.mainHoonZimedaar || []);
+  const crownCollection = useSelector((state) => state.crownCollection || []);
+  const bosstomer = useSelector((state) => state.bosstomer || []);
+  const elevateIQ = useSelector((state) => state.elevateIQ || []);
   const birthdays = useSelector((state) => {
     const today = new Date();
     const todayMonth = today.getMonth() + 1; // getMonth() returns 0-11
@@ -71,16 +81,27 @@ const Home = () => {
       clearInterval(confettiIntervalRef.current);
     }
 
-    // Start new continuous confetti
+    // Start new continuous confetti with higher density
     confettiIntervalRef.current = setInterval(() => {
       confettiInstanceRef.current({
         ...defaults,
-        particleCount: 15,
+        particleCount: 40, // Increased from 15 for higher density
         origin: { x: randomInRange(0.1, 0.9), y: 0 },
         gravity: 0.8,
         scalar: 0.8
       });
-    }, 100); // Reduced interval for smoother effect
+      
+      // Add a second burst for even more density
+      setTimeout(() => {
+        confettiInstanceRef.current({
+          ...defaults,
+          particleCount: 30,
+          origin: { x: randomInRange(0.1, 0.9), y: 0.1 },
+          gravity: 0.7,
+          scalar: 1.0
+        });
+      }, 50);
+    }, 150); // Adjusted interval for performance
   }, [birthdays]);
 
   const stopConfetti = () => {
@@ -192,7 +213,21 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Row 2: What's New and Quick Links */}
+      {/* Row 2: Victory Vault and Crown Collection */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="carousel-container victory-vault-container">
+          <h2>Victory Vault</h2>
+          <p>Showcasing our prestigious awards and recognitions</p>
+          <AutoSlider slides={victoryVault} />
+        </div>
+        <div className="carousel-container crown-collection-container">
+          <h2>Crown Collection</h2>
+          <p>Honoring achievements with our prestigious certificates and awards</p>
+          <AutoSlider slides={crownCollection} />
+        </div>
+      </div>
+
+      {/* Row 3: What's New and Quick Links */}
       <div className="grid grid-cols-2 gap-4">
         <div className="whats-new-container" ref={whatsNewRef}>
           <h2>What's New !!</h2>
@@ -237,7 +272,7 @@ const Home = () => {
             {birthdays.length > 0 ? (
               <>
                 <div className="birthday-message">
-                  <h3>🎉 Happy Birthday! 🎂</h3>
+                  <h3>Happy Birthday!</h3>
                   <p>Wishing you a fantastic day filled with joy and celebration!</p>
                 </div>
                 <div className="birthday-list">
@@ -258,7 +293,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Row 3: Policies and Birthday List */}
+      {/* Row 4: Policies and Birthday List */}
       <div className="grid grid-cols-2 gap-4">
         <div className="policies-container" ref={policiesRef}>
           <h2>Policies</h2>
@@ -288,7 +323,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Row 4: Safety Corner */}
+      {/* Row 5: Safety Corner */}
       <div className="safety-corner" ref={safetySectionRef}>
         <h2>Safety Corner</h2>
         <div className="grid grid-cols-2 gap-4">
@@ -314,7 +349,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Row 5: Video Bytes and Leaders Board */}
+      {/* Row 6: Video Bytes and Leaders Board */}
       <div className="grid grid-cols-2 gap-4">
         <div className="video-bytes-container" ref={videoBytesRef}>
           <h2>Video Bytes</h2>
@@ -367,6 +402,63 @@ const Home = () => {
               </div>
             )}
           </div>
+        </div>
+      </div>
+
+      {/* Row 7: Wellness Wave and Wellness Tips */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="carousel-container wellness-wave-container">
+          <h2>Wellness Wave</h2>
+          <p>Celebrating health and wellness initiatives across our organization</p>
+          <AutoSlider slides={wellnessWave} />
+        </div>
+        <div className="carousel-container wellness-tips-container">
+          <h2>Wellness Tips !!</h2>
+          <p>Expert advice for maintaining physical and mental well-being</p>
+          <AutoSlider slides={wellnessTips} />
+        </div>
+      </div>
+
+
+      {/* Row 8: Welcome Onboard and Best Kaizens */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="carousel-container welcome-onboard-container">
+          <h2>Welcome Onboard !!</h2>
+          <p>Introducing our newest team members to the Hindalco family</p>
+          <AutoSlider slides={welcomeOnboard} />
+        </div>
+        <div className="carousel-container best-kaizens-container">
+          <h2>Best Kaizens !!</h2>
+          <p>Highlighting continuous improvement projects that drive excellence</p>
+          <AutoSlider slides={bestKaizens} />
+        </div>
+      </div>
+
+      {/* Row 9: Main Hoon Zimedaar and CSR Initiatives */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="carousel-container main-hoon-zimedaar-container">
+          <h2>Main Hi Hoon Zimedaar !!</h2>
+          <p>Celebrating employees who take ownership and responsibility</p>
+          <AutoSlider slides={mainHoonZimedaar} />
+        </div>
+        <div className="carousel-container csr-initiatives-container">
+          <h2>CSR Initiatives !!</h2>
+          <p>Making a positive impact in our communities through social responsibility</p>
+          <AutoSlider slides={csrInitiatives} />
+        </div>
+      </div>
+
+      {/* Row 10: Bosstomer and Elevate IQ */}
+      <div className="grid grid-cols-2 gap-4 bottom-row">
+        <div className="carousel-container bosstomer-container">
+          <h2>Bosstomer</h2>
+          <p>Recognizing exceptional customer service and satisfaction</p>
+          <AutoSlider slides={bosstomer} />
+        </div>
+        <div className="carousel-container elevate-iq-container">
+          <h2>Elevate IQ</h2>
+          <p>Enhancing skills through innovative training and development programs</p>
+          <AutoSlider slides={elevateIQ} />
         </div>
       </div>
 

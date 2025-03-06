@@ -2,9 +2,9 @@
 
 :root {
   /* Brand Colors */
-  --primary-color: #188fa7;
-  --primary-light: #769fb6;
-  --primary-dark: #0e7a8f;
+  --primary-color: #8ee3f5;
+  --primary-light: #b4f1ff;
+  --primary-dark: #5ccad9;
   --secondary-color: #769fb6;
   --secondary-light: #9dbbae;
   --secondary-dark: #5a8a9f;
@@ -31,7 +31,7 @@
   --offwhite: #F8F8F8;
   
   /* Section title colors */
-  --title-whats-new: #008080; /* Deep Teal */
+  --title-whats-new: #8ee3f5; /* Light Blue */
   --title-quick-links: #B7410E; /* Rust Red */
   --title-safety-policies: #4B0082; /* Deep Purple */
   --title-birthday: #228B22; /* Forest Green */
@@ -39,6 +39,12 @@
   --title-safety-sop: #000080; /* Navy Blue */
   --title-video-bytes: #8B4513; /* Saddle Brown */
   --title-leaders-board: #800020; /* Burgundy */
+  
+  /* Birthday colors */
+  --birthday-pink: #ff3366;
+  --birthday-blue: #3366ff;
+  --birthday-red: #ff0000;
+  --birthday-yellow: #ffff00;
 }
 
 /* Replace all gradient backgrounds with off-white */
@@ -53,37 +59,30 @@
   background-image: none !important;
 }
 
-/* Section title colors */
-.whats-new-container h2 {
-  color: var(--title-whats-new);
+/* Section title colors - all set to black */
+.whats-new-container h2,
+.quick-links-container h2,
+.safety-policies-container h2,
+.carousel-container h2,
+.safety-sop-container h2,
+.video-bytes-container h2,
+.leaders-board-container h2,
+.safety-snapshots-container h2 {
+  color: var(--text-primary); /* Black text color */
 }
 
-.quick-links-container h2 {
-  color: var(--title-quick-links);
-}
-
-.safety-policies-container h2 {
-  color: var(--title-safety-policies);
-}
-
+/* Birthday container h2 styling with multicolor animation */
 .birthday-container h2 {
-  color: var(--title-birthday);
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: birthdayColors 6s ease-in-out infinite, float 4s ease-in-out infinite;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
 }
 
-.carousel-container h2 {
-  color: var(--title-carousel);
-}
-
-.safety-sop-container h2 {
-  color: var(--title-safety-sop);
-}
-
-.video-bytes-container h2 {
-  color: var(--title-video-bytes);
-}
-
-.leaders-board-container h2 {
-  color: var(--title-leaders-board);
+.bottom-row{
+  margin-bottom: 4rem;
 }
 
 @keyframes gradientBG {
@@ -105,20 +104,31 @@
 }
 
 @keyframes softGlow {
-  0% { color: var(--primary-light); }
-  50% { color: var(--accent-one); }
-  100% { color: var(--primary-light); }
+  0% { color: #FF5733; } /* Red-Orange */
+  20% { color: #33FF57; } /* Green */
+  40% { color: #3357FF; } /* Blue */
+  60% { color: #F033FF; } /* Purple */
+  80% { color: #FF33F0; } /* Pink */
+  100% { color: #FF5733; } /* Back to Red-Orange */
+}
+
+@keyframes birthdayColors {
+  0% { color: var(--birthday-pink); } /* Pink */
+  25% { color: var(--birthday-blue); } /* Blue */
+  50% { color: var(--birthday-red); } /* Red */
+  75% { color: var(--birthday-yellow); } /* Yellow */
+  100% { color: var(--birthday-pink); } /* Back to Pink */
 }
 
 .header-container {
   background-color: var(--offwhite) !important;
   padding: 0.25rem !important;
-  box-shadow: 0 4px 12px rgba(24, 143, 167, 0.15);
+  box-shadow: 0 4px 12px rgba(142, 227, 245, 0.15);
 }
 
 .header-bar {
   height: 4px;
-  background-color: #008080; /* Deep Teal */
+  background-color: #8ee3f5; /* Light Blue */
 }
 
 .header {
@@ -208,11 +218,15 @@
   position: relative;
   isolation: isolate;
   transition: all 0.3s ease;
+  background: linear-gradient(135deg, var(--birthday-pink) 0%, var(--birthday-yellow) 25%, var(--birthday-blue) 50%, var(--birthday-red) 75%, var(--birthday-pink) 100%) !important;
+  animation: gradientBG 15s ease infinite;
+  background-size: 400% 400% !important;
+  border: 3px solid var(--birthday-pink);
 }
 
 .birthday-container:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 48px rgba(30, 30, 30, 0.3);
+  box-shadow: 0 12px 48px rgba(255, 51, 102, 0.5), 0 12px 48px rgba(51, 102, 255, 0.5);
 }
 
 .birthday-container canvas {
@@ -226,14 +240,6 @@
   overflow: hidden;
 }
 
-.birthday-container h2 {
-  position: relative;
-  z-index: 2;
-  color: var(--title-birthday);
-  text-shadow: none;
-  animation: float 4s ease-in-out infinite;
-}
-
 .birthday-content {
   position: relative;
   z-index: 2;
@@ -243,10 +249,11 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(8px);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px dashed var(--birthday-blue);
+  box-shadow: inset 0 0 20px rgba(255, 51, 102, 0.3), 0 0 30px rgba(255, 255, 0, 0.3);
 }
 
 .birthday-message {
@@ -259,15 +266,15 @@
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  animation: softGlow 4s ease-in-out infinite;
-  text-shadow: none;
-  color: var(--title-birthday);
+  animation: birthdayColors 4s ease-in-out infinite;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .birthday-message p {
-  color: #333333;
+  color: var(--birthday-blue);
   font-size: 1.1rem;
   text-shadow: none;
+  font-weight: bold;
 }
 
 .birthday-list {
@@ -283,27 +290,30 @@
   border-radius: 12px;
   text-align: center;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid var(--birthday-pink);
   backdrop-filter: blur(4px);
   animation: pulse 3s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
 }
 
 .birthday-item span {
-  color: #333333;
+  animation: birthdayColors 6s ease-in-out infinite;
   font-size: 1.2rem;
-  font-weight: 500;
-  text-shadow: none;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .birthday-item:hover {
   transform: translateY(-3px);
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(255, 0, 0, 0.3);
+  border: 2px solid var(--birthday-red);
 }
 
 .no-birthday {
   text-align: center;
-  color: #333333;
+  color: var(--birthday-blue);
+  font-weight: bold;
 }
 
 .no-birthday-image {
@@ -312,8 +322,9 @@
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 1rem;
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  border: 3px solid var(--birthday-yellow);
   animation: float 6s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
 }
 
 /* Grid layout styles */
@@ -332,7 +343,7 @@
   margin: 0;
   padding: 0;
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   line-height: 1.2;
   margin-bottom: 0.75rem;
   height: 1.1rem;
@@ -411,7 +422,7 @@
 
 .smaller-news-text p {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin: 0;
   line-height: 1.4;
 }
@@ -581,8 +592,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #008080; /* Deep Teal */
-  color: white;
+  background-color: #8ee3f5; /* Light Blue */
+  color: black; /* Black for better visibility */
   border: none;
   width: 40px;
   height: 40px;
@@ -597,7 +608,7 @@
 }
 
 .video-nav:hover {
-  background-color: #006666; /* Darker Teal */
+  background-color: #5ccad9; /* Darker Light Blue */
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -647,15 +658,16 @@
   transform: translate(-50%, -50%);
   width: 80px;
   height: 80px;
-  background-color: #008080; /* Deep Teal */
+  background-color: #8ee3f5; /* Light Blue */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   cursor: pointer;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(0, 0, 0, 0.3);
   text-decoration: none;
+  color: black; /* Black for better visibility */
 }
 
 .video-play-icon img {
@@ -719,7 +731,7 @@
   margin: 0;
   padding: 0;
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   line-height: 1.2;
   margin-bottom: 0.75rem;
   height: 1.1rem;
@@ -767,7 +779,7 @@
 
 .leaders-board-text p {
   margin: 0;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -782,7 +794,7 @@
 }
 
 .no-leaders p {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 1.1rem;
   text-align: center;
 }
@@ -797,12 +809,122 @@
   margin-top: 1.25rem;
 }
 
+/* Add margin to the last grid container to prevent ticker overlap */
+.flex.flex-col.p-4.bg-gray-100.min-h-screen > div.grid.grid-cols-2.gap-4:last-of-type {
+  margin-bottom: 4rem;
+}
+
 /* Section headers */
 h2 {
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 1rem;
   font-family: 'Lora', serif !important;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: white;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply light blue background to specific section headings */
+.carousel-container h2,
+.whats-new-container h2,
+.quick-links-container h2,
+.policies-container h2,
+.video-bytes-container h2,
+.leaders-board-container h2,
+.wellness-wave-container h2,
+.wellness-tips-container h2,
+.welcome-onboard-container h2,
+.best-kaizens-container h2,
+.main-hoon-zimedaar-container h2,
+.csr-initiatives-container h2,
+.bosstomer-container h2,
+.elevate-iq-container h2,
+.victory-vault-container h2,
+.crown-collection-container h2 {
+  background-color: #8ee3f5; /* Light Blue */
+  color: #000000; /* Black for better visibility */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Reset styling for Birthday Container and header */
+.birthday-container h2,
+.header-text h2 {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+}
+
+/* Safety Corner main heading - bigger size */
+.safety-corner > h2 {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+  font-size: 2rem; /* Increased font size */
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Apply light blue background to Safety Snapshots and Safety SOP container headings with bigger size */
+.safety-snapshots-container > h3,
+.safety-sop-container > h3 {
+  background-color: #8ee3f5; /* Light Blue */
+  color: #000000; /* Black for better visibility */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.6rem 1.2rem; /* Increased padding */
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 1.6rem; /* Increased font size */
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+
+/* Ensure policy-item h3 elements inside safety-sop-container don't get the cadet blue styling */
+.safety-sop-container .policy-item h3 {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Override birthday container h2 animation */
+.birthday-container h2 {
+  animation: none;
+  text-shadow: none;
+}
+
+/* Style paragraph descriptions for components starting from row 6 */
+.wellness-wave-container > p,
+.wellness-tips-container > p,
+.victory-vault-container > p,
+.csr-initiatives-container > p,
+.welcome-onboard-container > p,
+.best-kaizens-container > p,
+.main-hoon-zimedaar-container > p,
+.crown-collection-container > p,
+.bosstomer-container > p,
+.elevate-iq-container > p {
+  text-align: center;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.1rem;
 }
 
 /* Scrollbar styling */

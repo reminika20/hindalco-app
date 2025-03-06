@@ -41,25 +41,36 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #008080; /* Deep Teal */
-  font-weight: 800;
-  color: white;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  color: #333; /* Dark gray for the icon */
   border: none;
-  padding: 12px;
   cursor: pointer;
   border-radius: 50%;
-  width: 70px;
-  height: auto;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  padding: 0;
+}
+
+.autoslider-button svg {
+  width: 24px;
+  height: 24px;
 }
 
 .autoslider-button:hover {
-  background-color: #006666; /* Darker Teal */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.autoslider-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .autoslider-button.prev {

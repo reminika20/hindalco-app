@@ -24,7 +24,27 @@ import {
   addLeader,
   deleteLeader,
   addSafetySOP,
-  deleteSafetySOP
+  deleteSafetySOP,
+  addWellnessWave,
+  deleteWellnessWave,
+  addWellnessTip,
+  deleteWellnessTip,
+  addVictoryVault,
+  deleteVictoryVault,
+  addCSRInitiative,
+  deleteCSRInitiative,
+  addWelcomeOnboard,
+  deleteWelcomeOnboard,
+  addBestKaizen,
+  deleteBestKaizen,
+  addMainHoonZimedaar,
+  deleteMainHoonZimedaar,
+  addCrownCollection,
+  deleteCrownCollection,
+  addBosstomer,
+  deleteBosstomer,
+  addElevateIQ,
+  deleteElevateIQ
 } from '../store/actions';
 import "../styles/admin.css";
 
@@ -41,6 +61,16 @@ const AdminDashboard = () => {
   const birthdays = useSelector((state) => state.birthdays) || [];
   const videoBytes = useSelector((state) => state.videoBytes) || [];
   const leadersBoard = useSelector((state) => state.leadersBoard) || [];
+  const wellnessWave = useSelector((state) => state.wellnessWave || []);
+  const wellnessTips = useSelector((state) => state.wellnessTips || []);
+  const victoryVault = useSelector((state) => state.victoryVault || []);
+  const csrInitiatives = useSelector((state) => state.csrInitiatives || []);
+  const welcomeOnboard = useSelector((state) => state.welcomeOnboard || []);
+  const bestKaizens = useSelector((state) => state.bestKaizens || []);
+  const mainHoonZimedaar = useSelector((state) => state.mainHoonZimedaar || []);
+  const crownCollection = useSelector((state) => state.crownCollection || []);
+  const bosstomer = useSelector((state) => state.bosstomer || []);
+  const elevateIQ = useSelector((state) => state.elevateIQ || []);
 
   // Listen for changes in localStorage from other tabs
   useEffect(() => {
@@ -97,6 +127,46 @@ const AdminDashboard = () => {
   const [leaderDescription, setLeaderDescription] = useState('');
   const [sopTitle, setSopTitle] = useState('');
   const [sopUrl, setSopUrl] = useState('');
+  
+  // State for Wellness Wave
+  const [wellnessWaveImage, setWellnessWaveImage] = useState(null);
+  const [wellnessWaveCaption, setWellnessWaveCaption] = useState('');
+  
+  // State for Wellness Tips
+  const [wellnessTipImage, setWellnessTipImage] = useState(null);
+  const [wellnessTipText, setWellnessTipText] = useState('');
+  
+  // State for Victory Vault
+  const [victoryVaultImage, setVictoryVaultImage] = useState(null);
+  const [victoryVaultTitle, setVictoryVaultTitle] = useState('');
+  
+  // State for CSR Initiatives
+  const [csrInitiativeImage, setCsrInitiativeImage] = useState(null);
+  const [csrInitiativeText, setCsrInitiativeText] = useState('');
+  
+  // State for Welcome Onboard
+  const [welcomeOnboardImage, setWelcomeOnboardImage] = useState(null);
+  const [welcomeOnboardName, setWelcomeOnboardName] = useState('');
+  
+  // State for Best Kaizens
+  const [bestKaizenImage, setBestKaizenImage] = useState(null);
+  const [bestKaizenTitle, setBestKaizenTitle] = useState('');
+  
+  // State for Main Hoon Zimedaar
+  const [mainHoonZimedaarImage, setMainHoonZimedaarImage] = useState(null);
+  const [mainHoonZimedaarText, setMainHoonZimedaarText] = useState('');
+  
+  // State for Crown Collection
+  const [crownCollectionImage, setCrownCollectionImage] = useState(null);
+  const [crownCollectionTitle, setCrownCollectionTitle] = useState('');
+  
+  // State for Bosstomer
+  const [bosstomerImage, setBosstomerImage] = useState(null);
+  const [bosstomerName, setBosstomerName] = useState('');
+  
+  // State for Elevate IQ
+  const [elevateIQImage, setElevateIQImage] = useState(null);
+  const [elevateIQTitle, setElevateIQTitle] = useState('');
 
   // Action handlers
   const handleAddPolicy = () => {
@@ -263,6 +333,186 @@ const AdminDashboard = () => {
       dispatch(addSafetySOP(sop));
       setSopTitle('');
       setSopUrl('');
+    }
+  };
+
+  // Handler for Wellness Wave
+  const handleAddWellnessWave = () => {
+    if (wellnessWaveImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          caption: wellnessWaveCaption
+        };
+        dispatch(addWellnessWave(item));
+        setWellnessWaveImage(null);
+        setWellnessWaveCaption('');
+      };
+      reader.readAsDataURL(wellnessWaveImage);
+    }
+  };
+
+  // Handler for Wellness Tips
+  const handleAddWellnessTip = () => {
+    if (wellnessTipImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          text: wellnessTipText
+        };
+        dispatch(addWellnessTip(item));
+        setWellnessTipImage(null);
+        setWellnessTipText('');
+      };
+      reader.readAsDataURL(wellnessTipImage);
+    }
+  };
+
+  // Handler for Victory Vault
+  const handleAddVictoryVault = () => {
+    if (victoryVaultImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          title: victoryVaultTitle
+        };
+        dispatch(addVictoryVault(item));
+        setVictoryVaultImage(null);
+        setVictoryVaultTitle('');
+      };
+      reader.readAsDataURL(victoryVaultImage);
+    }
+  };
+
+  // Handler for CSR Initiatives
+  const handleAddCSRInitiative = () => {
+    if (csrInitiativeImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          text: csrInitiativeText
+        };
+        dispatch(addCSRInitiative(item));
+        setCsrInitiativeImage(null);
+        setCsrInitiativeText('');
+      };
+      reader.readAsDataURL(csrInitiativeImage);
+    }
+  };
+
+  // Handler for Welcome Onboard
+  const handleAddWelcomeOnboard = () => {
+    if (welcomeOnboardImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          name: welcomeOnboardName
+        };
+        dispatch(addWelcomeOnboard(item));
+        setWelcomeOnboardImage(null);
+        setWelcomeOnboardName('');
+      };
+      reader.readAsDataURL(welcomeOnboardImage);
+    }
+  };
+
+  // Handler for Best Kaizens
+  const handleAddBestKaizen = () => {
+    if (bestKaizenImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          title: bestKaizenTitle
+        };
+        dispatch(addBestKaizen(item));
+        setBestKaizenImage(null);
+        setBestKaizenTitle('');
+      };
+      reader.readAsDataURL(bestKaizenImage);
+    }
+  };
+
+  // Handler for Main Hoon Zimedaar
+  const handleAddMainHoonZimedaar = () => {
+    if (mainHoonZimedaarImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          text: mainHoonZimedaarText
+        };
+        dispatch(addMainHoonZimedaar(item));
+        setMainHoonZimedaarImage(null);
+        setMainHoonZimedaarText('');
+      };
+      reader.readAsDataURL(mainHoonZimedaarImage);
+    }
+  };
+
+  // Handler for Crown Collection
+  const handleAddCrownCollection = () => {
+    if (crownCollectionImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          title: crownCollectionTitle
+        };
+        dispatch(addCrownCollection(item));
+        setCrownCollectionImage(null);
+        setCrownCollectionTitle('');
+      };
+      reader.readAsDataURL(crownCollectionImage);
+    }
+  };
+
+  // Handler for Bosstomer
+  const handleAddBosstomer = () => {
+    if (bosstomerImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          name: bosstomerName
+        };
+        dispatch(addBosstomer(item));
+        setBosstomerImage(null);
+        setBosstomerName('');
+      };
+      reader.readAsDataURL(bosstomerImage);
+    }
+  };
+
+  // Handler for Elevate IQ
+  const handleAddElevateIQ = () => {
+    if (elevateIQImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          title: elevateIQTitle
+        };
+        dispatch(addElevateIQ(item));
+        setElevateIQImage(null);
+        setElevateIQTitle('');
+      };
+      reader.readAsDataURL(elevateIQImage);
     }
   };
 
@@ -544,6 +794,266 @@ const AdminDashboard = () => {
             <li key={sop.id}>
               {sop.title}
               <button onClick={() => dispatch(deleteSafetySOP(sop.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Wellness Wave Section */}
+      <div className="section">
+        <h3>Manage Wellness Wave</h3>
+        <input
+          type="text"
+          placeholder="Caption"
+          value={wellnessWaveCaption}
+          onChange={(e) => setWellnessWaveCaption(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setWellnessWaveImage(e.target.files[0])}
+        />
+        <button onClick={handleAddWellnessWave}>Add Wellness Wave</button>
+        <ul>
+          {wellnessWave.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Wellness Wave" width="100" />
+              <span>{item.caption}</span>
+              <button onClick={() => dispatch(deleteWellnessWave(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Wellness Tips Section */}
+      <div className="section">
+        <h3>Manage Wellness Tips</h3>
+        <input
+          type="text"
+          placeholder="Tip Text"
+          value={wellnessTipText}
+          onChange={(e) => setWellnessTipText(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setWellnessTipImage(e.target.files[0])}
+        />
+        <button onClick={handleAddWellnessTip}>Add Wellness Tip</button>
+        <ul>
+          {wellnessTips.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Wellness Tip" width="100" />
+              <span>{item.text}</span>
+              <button onClick={() => dispatch(deleteWellnessTip(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Victory Vault Section */}
+      <div className="section">
+        <h3>Manage Victory Vault</h3>
+        <input
+          type="text"
+          placeholder="Title"
+          value={victoryVaultTitle}
+          onChange={(e) => setVictoryVaultTitle(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setVictoryVaultImage(e.target.files[0])}
+        />
+        <button onClick={handleAddVictoryVault}>Add Victory Vault</button>
+        <ul>
+          {victoryVault.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Victory Vault" width="100" />
+              <span>{item.title}</span>
+              <button onClick={() => dispatch(deleteVictoryVault(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage CSR Initiatives Section */}
+      <div className="section">
+        <h3>Manage CSR Initiatives</h3>
+        <input
+          type="text"
+          placeholder="Initiative Text"
+          value={csrInitiativeText}
+          onChange={(e) => setCsrInitiativeText(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setCsrInitiativeImage(e.target.files[0])}
+        />
+        <button onClick={handleAddCSRInitiative}>Add CSR Initiative</button>
+        <ul>
+          {csrInitiatives.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="CSR Initiative" width="100" />
+              <span>{item.text}</span>
+              <button onClick={() => dispatch(deleteCSRInitiative(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Welcome Onboard Section */}
+      <div className="section">
+        <h3>Manage Welcome Onboard</h3>
+        <input
+          type="text"
+          placeholder="Name"
+          value={welcomeOnboardName}
+          onChange={(e) => setWelcomeOnboardName(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setWelcomeOnboardImage(e.target.files[0])}
+        />
+        <button onClick={handleAddWelcomeOnboard}>Add Welcome Onboard</button>
+        <ul>
+          {welcomeOnboard.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Welcome Onboard" width="100" />
+              <span>{item.name}</span>
+              <button onClick={() => dispatch(deleteWelcomeOnboard(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Best Kaizens Section */}
+      <div className="section">
+        <h3>Manage Best Kaizens</h3>
+        <input
+          type="text"
+          placeholder="Title"
+          value={bestKaizenTitle}
+          onChange={(e) => setBestKaizenTitle(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setBestKaizenImage(e.target.files[0])}
+        />
+        <button onClick={handleAddBestKaizen}>Add Best Kaizen</button>
+        <ul>
+          {bestKaizens.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Best Kaizen" width="100" />
+              <span>{item.title}</span>
+              <button onClick={() => dispatch(deleteBestKaizen(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Main Hoon Zimedaar Section */}
+      <div className="section">
+        <h3>Manage Main Hoon Zimedaar</h3>
+        <input
+          type="text"
+          placeholder="Text"
+          value={mainHoonZimedaarText}
+          onChange={(e) => setMainHoonZimedaarText(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setMainHoonZimedaarImage(e.target.files[0])}
+        />
+        <button onClick={handleAddMainHoonZimedaar}>Add Main Hoon Zimedaar</button>
+        <ul>
+          {mainHoonZimedaar.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Main Hoon Zimedaar" width="100" />
+              <span>{item.text}</span>
+              <button onClick={() => dispatch(deleteMainHoonZimedaar(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Crown Collection Section */}
+      <div className="section">
+        <h3>Manage Crown Collection</h3>
+        <input
+          type="text"
+          placeholder="Title"
+          value={crownCollectionTitle}
+          onChange={(e) => setCrownCollectionTitle(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setCrownCollectionImage(e.target.files[0])}
+        />
+        <button onClick={handleAddCrownCollection}>Add Crown Collection</button>
+        <ul>
+          {crownCollection.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Crown Collection" width="100" />
+              <span>{item.title}</span>
+              <button onClick={() => dispatch(deleteCrownCollection(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Bosstomer Section */}
+      <div className="section">
+        <h3>Manage Bosstomer</h3>
+        <input
+          type="text"
+          placeholder="Name"
+          value={bosstomerName}
+          onChange={(e) => setBosstomerName(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setBosstomerImage(e.target.files[0])}
+        />
+        <button onClick={handleAddBosstomer}>Add Bosstomer</button>
+        <ul>
+          {bosstomer.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Bosstomer" width="100" />
+              <span>{item.name}</span>
+              <button onClick={() => dispatch(deleteBosstomer(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Manage Elevate IQ Section */}
+      <div className="section">
+        <h3>Manage Elevate IQ</h3>
+        <input
+          type="text"
+          placeholder="Title"
+          value={elevateIQTitle}
+          onChange={(e) => setElevateIQTitle(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setElevateIQImage(e.target.files[0])}
+        />
+        <button onClick={handleAddElevateIQ}>Add Elevate IQ</button>
+        <ul>
+          {elevateIQ.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Elevate IQ" width="100" />
+              <span>{item.title}</span>
+              <button onClick={() => dispatch(deleteElevateIQ(item.id))}>Delete</button>
             </li>
           ))}
         </ul>

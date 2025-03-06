@@ -25,7 +25,17 @@ const initialState = {
     { id: '3', title: 'Cookie Policy', url: 'https://www.example.com/cookie-policy.pdf' }
   ],
   safetySnapshots: [],
-  tickerMessages: []
+  tickerMessages: [],
+  wellnessWave: [],
+  wellnessTips: [],
+  victoryVault: [],
+  csrInitiatives: [],
+  welcomeOnboard: [],
+  bestKaizens: [],
+  mainHoonZimedaar: [],
+  crownCollection: [],
+  bosstomer: [],
+  elevateIQ: []
 };
 
 // Reducers
@@ -176,10 +186,157 @@ const leadersBoardReducer = (state = initialState.leadersBoard, action) => {
   }
 };
 
+// Wellness Wave reducer
+const wellnessWaveReducer = (state = initialState.wellnessWave, action) => {
+  switch (action.type) {
+    case 'ADD_WELLNESS_WAVE':
+      return [...state, action.payload];
+    case 'DELETE_WELLNESS_WAVE':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_WELLNESSWAVE':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Wellness Tips reducer
+const wellnessTipsReducer = (state = initialState.wellnessTips, action) => {
+  switch (action.type) {
+    case 'ADD_WELLNESS_TIP':
+      return [...state, action.payload];
+    case 'DELETE_WELLNESS_TIP':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_WELLNESSTIPS':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Victory Vault reducer
+const victoryVaultReducer = (state = initialState.victoryVault, action) => {
+  switch (action.type) {
+    case 'ADD_VICTORY_VAULT':
+      return [...state, action.payload];
+    case 'DELETE_VICTORY_VAULT':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_VICTORYVAULT':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// CSR Initiatives reducer
+const csrInitiativesReducer = (state = initialState.csrInitiatives, action) => {
+  switch (action.type) {
+    case 'ADD_CSR_INITIATIVE':
+      return [...state, action.payload];
+    case 'DELETE_CSR_INITIATIVE':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_CSRINITIATIVES':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Welcome Onboard reducer
+const welcomeOnboardReducer = (state = initialState.welcomeOnboard, action) => {
+  switch (action.type) {
+    case 'ADD_WELCOME_ONBOARD':
+      return [...state, action.payload];
+    case 'DELETE_WELCOME_ONBOARD':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_WELCOMEONBOARD':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Best Kaizens reducer
+const bestKaizensReducer = (state = initialState.bestKaizens, action) => {
+  switch (action.type) {
+    case 'ADD_BEST_KAIZEN':
+      return [...state, action.payload];
+    case 'DELETE_BEST_KAIZEN':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_BESTKAIZENS':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Main Hoon Zimedaar reducer
+const mainHoonZimedaarReducer = (state = initialState.mainHoonZimedaar, action) => {
+  switch (action.type) {
+    case 'ADD_MAIN_HOON_ZIMEDAAR':
+      return [...state, action.payload];
+    case 'DELETE_MAIN_HOON_ZIMEDAAR':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_MAINHOONZIMEDAAR':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Crown Collection reducer
+const crownCollectionReducer = (state = initialState.crownCollection, action) => {
+  switch (action.type) {
+    case 'ADD_CROWN_COLLECTION':
+      return [...state, action.payload];
+    case 'DELETE_CROWN_COLLECTION':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_CROWNCOLLECTION':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Bosstomer reducer
+const bosstomerReducer = (state = initialState.bosstomer, action) => {
+  switch (action.type) {
+    case 'ADD_BOSSTOMER':
+      return [...state, action.payload];
+    case 'DELETE_BOSSTOMER':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_BOSSTOMER':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Elevate IQ reducer
+const elevateIQReducer = (state = initialState.elevateIQ, action) => {
+  switch (action.type) {
+    case 'ADD_ELEVATE_IQ':
+      return [...state, action.payload];
+    case 'DELETE_ELEVATE_IQ':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_ELEVATEIQ':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['newsItems', 'tickerMessages', 'quickLinks', 'policies', 'safetySnapshots', 'carouselImages1', 'carouselImages2', 'birthdays', 'videoBytes', 'leadersBoard', 'safetySOPs']
+  whitelist: [
+    'newsItems', 'tickerMessages', 'quickLinks', 'policies', 
+    'safetySnapshots', 'carouselImages1', 'carouselImages2', 
+    'birthdays', 'videoBytes', 'leadersBoard', 'safetySOPs',
+    'wellnessWave', 'wellnessTips', 'victoryVault', 'csrInitiatives',
+    'welcomeOnboard', 'bestKaizens', 'mainHoonZimedaar', 'crownCollection',
+    'bosstomer', 'elevateIQ'
+  ]
 };
 
 const rootReducer = combineReducers({
@@ -193,7 +350,17 @@ const rootReducer = combineReducers({
   birthdays: birthdaysReducer,
   videoBytes: videoBytesReducer,
   leadersBoard: leadersBoardReducer,
-  safetySOPs: safetySOPsReducer
+  safetySOPs: safetySOPsReducer,
+  wellnessWave: wellnessWaveReducer,
+  wellnessTips: wellnessTipsReducer,
+  victoryVault: victoryVaultReducer,
+  csrInitiatives: csrInitiativesReducer,
+  welcomeOnboard: welcomeOnboardReducer,
+  bestKaizens: bestKaizensReducer,
+  mainHoonZimedaar: mainHoonZimedaarReducer,
+  crownCollection: crownCollectionReducer,
+  bosstomer: bosstomerReducer,
+  elevateIQ: elevateIQReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

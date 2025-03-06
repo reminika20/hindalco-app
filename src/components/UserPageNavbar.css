@@ -1,47 +1,49 @@
 /* User Page Navbar Styles */
 .user-page-navbar {
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   background-color: #E6E6E6; /* Light gray for better contrast with the header */
-  padding: 10px;
+  padding: 8px 5px;
   margin-top: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(30, 30, 30, 0.15);
 }
 
 .navbar-section-link {
-  margin: 0 15px;
-  padding: 10px 15px;
-  background-color: #008080; /* Deep Teal */
-  color: white;
+  margin: 4px;
+  padding: 6px 8px;
+  background-color: #8ee3f5; /* Light Blue */
+  color: black; /* Black for better visibility */
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   font-weight: 500;
   box-shadow: 0 2px 8px rgba(30, 30, 30, 0.1);
+  white-space: nowrap;
 }
 
 .navbar-section-link:hover {
-  background-color: #006666; /* Darker Teal */
+  background-color: #5ccad9; /* Darker Light Blue */
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(30, 30, 30, 0.15);
 }
 
 .navbar-navigate-text {
-  margin-right: 15px;
+  margin: 4px 8px 4px 0;
   font-weight: 600;
   color: #B7410E; /* Rust Red */
-  font-size: 1rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   transition: all 0.3s ease;
 }
 
 .user-page-navbar:hover .navbar-navigate-text {
   transform: scale(1.05);
-  letter-spacing: 1.5px;
+  letter-spacing: 0.75px;
 }
