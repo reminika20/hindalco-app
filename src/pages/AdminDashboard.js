@@ -44,7 +44,15 @@ import {
   addBosstomer,
   deleteBosstomer,
   addElevateIQ,
-  deleteElevateIQ
+  deleteElevateIQ,
+  addHappyRetirement,
+  deleteHappyRetirement,
+  addAnniversary,
+  deleteAnniversary,
+  addFestiveMode,
+  deleteFestiveMode,
+  addEmployeeMoment,
+  deleteEmployeeMoment
 } from '../store/actions';
 import "../styles/admin.css";
 
@@ -71,6 +79,10 @@ const AdminDashboard = () => {
   const crownCollection = useSelector((state) => state.crownCollection || []);
   const bosstomer = useSelector((state) => state.bosstomer || []);
   const elevateIQ = useSelector((state) => state.elevateIQ || []);
+  const happyRetirement = useSelector((state) => state.happyRetirement || []);
+  const anniversaries = useSelector((state) => state.anniversaries || []);
+  const festiveMode = useSelector((state) => state.festiveMode || []);
+  const employeeMoments = useSelector((state) => state.employeeMoments || []);
 
   // Listen for changes in localStorage from other tabs
   useEffect(() => {
@@ -107,8 +119,10 @@ const AdminDashboard = () => {
 
   const [policyTitle, setPolicyTitle] = useState('');
   const [policyUrl, setPolicyUrl] = useState('');
+  const [policyIcon, setPolicyIcon] = useState(null);
   const [quickLinkText, setQuickLinkText] = useState('');
   const [quickLinkUrl, setQuickLinkUrl] = useState('');
+  const [quickLinkIcon, setQuickLinkIcon] = useState(null);
   const [newsTitle, setNewsTitle] = useState('');
   const [newsContent, setNewsContent] = useState('');
   const [newsImage, setNewsImage] = useState(null);
@@ -127,6 +141,7 @@ const AdminDashboard = () => {
   const [leaderDescription, setLeaderDescription] = useState('');
   const [sopTitle, setSopTitle] = useState('');
   const [sopUrl, setSopUrl] = useState('');
+  const [sopIcon, setSopIcon] = useState(null);
   
   // State for Wellness Wave
   const [wellnessWaveImage, setWellnessWaveImage] = useState(null);
@@ -167,32 +182,94 @@ const AdminDashboard = () => {
   // State for Elevate IQ
   const [elevateIQImage, setElevateIQImage] = useState(null);
   const [elevateIQTitle, setElevateIQTitle] = useState('');
+  
+  // State for Happy Retirement
+  const [happyRetirementImage, setHappyRetirementImage] = useState(null);
+  const [happyRetirementName, setHappyRetirementName] = useState('');
+  
+  // State for Anniversaries
+  const [anniversaryImage, setAnniversaryImage] = useState(null);
+  const [anniversaryName, setAnniversaryName] = useState('');
+  const [anniversaryYears, setAnniversaryYears] = useState('');
+  
+  // State for Festive Mode
+  const [festiveModeImage, setFestiveModeImage] = useState(null);
+  const [festiveModeTitle, setFestiveModeTitle] = useState('');
+  
+  // State for Employee Moments
+  const [employeeMomentImage, setEmployeeMomentImage] = useState(null);
+  const [employeeMomentCaption, setEmployeeMomentCaption] = useState('');
 
   // Action handlers
   const handleAddPolicy = () => {
     if (policyTitle && policyUrl) {
-      const policy = {
-        id: uuidv4(),
-        title: policyTitle,
-        url: policyUrl
+      const processPolicy = () => {
+        const policy = {
+          id: uuidv4(),
+          title: policyTitle,
+          url: policyUrl,
+          icon: ''
+        };
+        dispatch(addPolicy(policy));
+        setPolicyTitle('');
+        setPolicyUrl('');
+        setPolicyIcon(null);
       };
-      dispatch(addPolicy(policy));
-      setPolicyTitle('');
-      setPolicyUrl('');
+
+      if (policyIcon) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const policy = {
+            id: uuidv4(),
+            title: policyTitle,
+            url: policyUrl,
+            icon: reader.result
+          };
+          dispatch(addPolicy(policy));
+          setPolicyTitle('');
+          setPolicyUrl('');
+          setPolicyIcon(null);
+        };
+        reader.readAsDataURL(policyIcon);
+      } else {
+        processPolicy();
+      }
     }
   };
 
   const handleAddQuickLink = () => {
     if (quickLinkText && quickLinkUrl) {
-      const link = {
-        id: uuidv4(),
-        text: quickLinkText,
-        url: quickLinkUrl,
-        image: '/images/image1.jpg' // Using default image
+      const processQuickLink = () => {
+        const link = {
+          id: uuidv4(),
+          text: quickLinkText,
+          url: quickLinkUrl,
+          icon: ''
+        };
+        dispatch(addQuickLink(link));
+        setQuickLinkText('');
+        setQuickLinkUrl('');
+        setQuickLinkIcon(null);
       };
-      dispatch(addQuickLink(link));
-      setQuickLinkText('');
-      setQuickLinkUrl('');
+
+      if (quickLinkIcon) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const link = {
+            id: uuidv4(),
+            text: quickLinkText,
+            url: quickLinkUrl,
+            icon: reader.result
+          };
+          dispatch(addQuickLink(link));
+          setQuickLinkText('');
+          setQuickLinkUrl('');
+          setQuickLinkIcon(null);
+        };
+        reader.readAsDataURL(quickLinkIcon);
+      } else {
+        processQuickLink();
+      }
     }
   };
 
@@ -325,14 +402,37 @@ const AdminDashboard = () => {
 
   const handleAddSafetySOP = () => {
     if (sopTitle && sopUrl) {
-      const sop = {
-        id: uuidv4(),
-        title: sopTitle,
-        url: sopUrl
+      const processSOP = () => {
+        const sop = {
+          id: uuidv4(),
+          title: sopTitle,
+          url: sopUrl,
+          icon: ''
+        };
+        dispatch(addSafetySOP(sop));
+        setSopTitle('');
+        setSopUrl('');
+        setSopIcon(null);
       };
-      dispatch(addSafetySOP(sop));
-      setSopTitle('');
-      setSopUrl('');
+
+      if (sopIcon) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const sop = {
+            id: uuidv4(),
+            title: sopTitle,
+            url: sopUrl,
+            icon: reader.result
+          };
+          dispatch(addSafetySOP(sop));
+          setSopTitle('');
+          setSopUrl('');
+          setSopIcon(null);
+        };
+        reader.readAsDataURL(sopIcon);
+      } else {
+        processSOP();
+      }
     }
   };
 
@@ -515,6 +615,80 @@ const AdminDashboard = () => {
       reader.readAsDataURL(elevateIQImage);
     }
   };
+  
+  // Handler for Happy Retirement
+  const handleAddHappyRetirement = () => {
+    if (happyRetirementImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          name: happyRetirementName
+        };
+        dispatch(addHappyRetirement(item));
+        setHappyRetirementImage(null);
+        setHappyRetirementName('');
+      };
+      reader.readAsDataURL(happyRetirementImage);
+    }
+  };
+  
+  // Handler for Anniversaries
+  const handleAddAnniversary = () => {
+    if (anniversaryImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          name: anniversaryName,
+          years: anniversaryYears
+        };
+        dispatch(addAnniversary(item));
+        setAnniversaryImage(null);
+        setAnniversaryName('');
+        setAnniversaryYears('');
+      };
+      reader.readAsDataURL(anniversaryImage);
+    }
+  };
+  
+  // Handler for Festive Mode
+  const handleAddFestiveMode = () => {
+    if (festiveModeImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          title: festiveModeTitle
+        };
+        dispatch(addFestiveMode(item));
+        setFestiveModeImage(null);
+        setFestiveModeTitle('');
+      };
+      reader.readAsDataURL(festiveModeImage);
+    }
+  };
+  
+  // Handler for Employee Moments
+  const handleAddEmployeeMoment = () => {
+    if (employeeMomentImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          caption: employeeMomentCaption
+        };
+        dispatch(addEmployeeMoment(item));
+        setEmployeeMomentImage(null);
+        setEmployeeMomentCaption('');
+      };
+      reader.readAsDataURL(employeeMomentImage);
+    }
+  };
 
   return (
     <div className="admin-dashboard">
@@ -523,6 +697,15 @@ const AdminDashboard = () => {
         <div className="header">
           <img src={hindalcoLogo} alt="Hindalco Logo" />
           <h1>Admin Dashboard</h1>
+          <button 
+            onClick={() => {
+              localStorage.clear();
+              window.location.reload();
+            }}
+            style={{ marginLeft: '20px', padding: '5px 10px', backgroundColor: '#f44336', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+          >
+            Reset Store
+          </button>
         </div>
       </div>
 
@@ -540,6 +723,12 @@ const AdminDashboard = () => {
           placeholder="Policy URL"
           value={policyUrl}
           onChange={(e) => setPolicyUrl(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setPolicyIcon(e.target.files[0])}
+          placeholder="Custom Icon (Optional)"
         />
         <button onClick={handleAddPolicy}>Add Policy</button>
         <ul>
@@ -566,6 +755,12 @@ const AdminDashboard = () => {
           placeholder="Quick Link URL"
           value={quickLinkUrl}
           onChange={(e) => setQuickLinkUrl(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setQuickLinkIcon(e.target.files[0])}
+          placeholder="Custom Icon (Optional)"
         />
         <button onClick={handleAddQuickLink}>Add Quick Link</button>
         <ul>
@@ -787,6 +982,12 @@ const AdminDashboard = () => {
             placeholder="SOP URL"
             value={sopUrl}
             onChange={(e) => setSopUrl(e.target.value)}
+          />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setSopIcon(e.target.files[0])}
+            placeholder="Custom Icon (Optional)"
           />
         <button onClick={handleAddSafetySOP}>Add Safety SOP</button>
         <ul>
@@ -1054,6 +1255,119 @@ const AdminDashboard = () => {
               <img src={item.image} alt="Elevate IQ" width="100" />
               <span>{item.title}</span>
               <button onClick={() => dispatch(deleteElevateIQ(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Celebrations Section Header */}
+      <h2 className="celebrations-header">Celebrations Section</h2>
+      
+      {/* Manage Happy Retirement Section */}
+      <div className="section">
+        <h3>Manage Happy Retirement</h3>
+        <input
+          type="text"
+          placeholder="Name"
+          value={happyRetirementName}
+          onChange={(e) => setHappyRetirementName(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setHappyRetirementImage(e.target.files[0])}
+        />
+        <button onClick={handleAddHappyRetirement}>Add Happy Retirement</button>
+        <ul>
+          {happyRetirement.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Happy Retirement" width="100" />
+              <span>{item.name}</span>
+              <button onClick={() => dispatch(deleteHappyRetirement(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Manage Anniversaries Section */}
+      <div className="section">
+        <h3>Manage Anniversaries</h3>
+        <input
+          type="text"
+          placeholder="Name"
+          value={anniversaryName}
+          onChange={(e) => setAnniversaryName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Years of Service"
+          value={anniversaryYears}
+          onChange={(e) => setAnniversaryYears(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setAnniversaryImage(e.target.files[0])}
+        />
+        <button onClick={handleAddAnniversary}>Add Anniversary</button>
+        <ul>
+          {anniversaries.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Anniversary" width="100" />
+              <span>{item.name} - {item.years} years</span>
+              <button onClick={() => dispatch(deleteAnniversary(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Manage Festive Mode Section */}
+      <div className="section">
+        <h3>Manage Festive Mode</h3>
+        <input
+          type="text"
+          placeholder="Title"
+          value={festiveModeTitle}
+          onChange={(e) => setFestiveModeTitle(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setFestiveModeImage(e.target.files[0])}
+        />
+        <button onClick={handleAddFestiveMode}>Add Festive Mode</button>
+        <ul>
+          {festiveMode.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Festive Mode" width="100" />
+              <span>{item.title}</span>
+              <button onClick={() => dispatch(deleteFestiveMode(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Manage Employee Moments Section */}
+      <div className="section">
+        <h3>Manage Employee Moments</h3>
+        <input
+          type="text"
+          placeholder="Caption"
+          value={employeeMomentCaption}
+          onChange={(e) => setEmployeeMomentCaption(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setEmployeeMomentImage(e.target.files[0])}
+        />
+        <button onClick={handleAddEmployeeMoment}>Add Employee Moment</button>
+        <ul>
+          {employeeMoments.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Employee Moment" width="100" />
+              <span>{item.caption}</span>
+              <button onClick={() => dispatch(deleteEmployeeMoment(item.id))}>Delete</button>
             </li>
           ))}
         </ul>

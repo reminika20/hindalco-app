@@ -223,3 +223,47 @@ export const deleteElevateIQ = (id) => ({
   type: 'DELETE_ELEVATE_IQ',
   payload: id,
 });
+
+// Happy Retirement actions
+export const addHappyRetirement = (item) => ({
+  type: 'ADD_HAPPY_RETIREMENT',
+  payload: item,
+});
+
+export const deleteHappyRetirement = (id) => ({
+  type: 'DELETE_HAPPY_RETIREMENT',
+  payload: id,
+});
+
+// Anniversaries actions
+export const addAnniversary = (item) => ({
+  type: 'ADD_ANNIVERSARY',
+  payload: item,
+});
+
+export const deleteAnniversary = (id) => ({
+  type: 'DELETE_ANNIVERSARY',
+  payload: id,
+});
+
+// Festive Mode actions
+export const addFestiveMode = (item) => ({
+  type: 'ADD_FESTIVE_MODE',
+  payload: item,
+});
+
+export const deleteFestiveMode = (id) => ({
+  type: 'DELETE_FESTIVE_MODE',
+  payload: id,
+});
+
+// Employee Moments actions
+export const addEmployeeMoment = (item) => ({
+  type: 'ADD_EMPLOYEE_MOMENT',
+  payload: item,
+});
+
+export const deleteEmployeeMoment = (id) => ({
+  type: 'DELETE_EMPLOYEE_MOMENT',
+  payload: id,
+});

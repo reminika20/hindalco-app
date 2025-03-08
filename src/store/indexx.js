@@ -11,18 +11,25 @@ const initialState = {
   birthdays: [],
   videoBytes: [],
   leadersBoard: [],
-  safetySOPs: [],
+  safetySOPs: [
+    { id: '1', title: 'Fire Safety Protocol', url: 'https://www.example.com/fire-safety.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/785/785116.png' },
+    { id: '2', title: 'Chemical Handling Guidelines', url: 'https://www.example.com/chemical-handling.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/1055/1055183.png' },
+    { id: '3', title: 'Emergency Evacuation Plan', url: 'https://www.example.com/evacuation.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/5553/5553922.png' }
+  ],
   quickLinks: [
-    { id: '1', text: 'Google', url: 'https://www.google.com' },
-    { id: '2', text: 'Facebook', url: 'https://www.facebook.com' },
-    { id: '3', text: 'Twitter', url: 'https://www.twitter.com' },
-    { id: '4', text: 'LinkedIn', url: 'https://www.linkedin.com' },
-    { id: '5', text: 'GitHub', url: 'https://www.github.com' }
+    { id: '1', text: 'Google', url: 'https://www.google.com', icon: 'https://cdn.jsdelivr.net/npm/feather-icons/dist/icons/search.svg' },
+    { id: '2', text: 'Facebook', url: 'https://www.facebook.com', icon: 'https://cdn.jsdelivr.net/npm/feather-icons/dist/icons/facebook.svg' },
+    { id: '3', text: 'Twitter', url: 'https://www.twitter.com', icon: 'https://cdn.jsdelivr.net/npm/feather-icons/dist/icons/twitter.svg' },
+    { id: '4', text: 'LinkedIn', url: 'https://www.linkedin.com', icon: 'https://cdn.jsdelivr.net/npm/feather-icons/dist/icons/linkedin.svg' },
+    { id: '5', text: 'GitHub', url: 'https://www.github.com', icon: 'https://cdn.jsdelivr.net/npm/feather-icons/dist/icons/github.svg' }
   ],
   policies: [
-    { id: '1', title: 'Privacy Policy', url: 'https://www.example.com/privacy-policy.pdf' },
-    { id: '2', title: 'Terms of Service', url: 'https://www.example.com/terms-of-service.pdf' },
-    { id: '3', title: 'Cookie Policy', url: 'https://www.example.com/cookie-policy.pdf' }
+    { id: '1', title: 'Safety', url: 'https://www.example.com/safety-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/1995/1995470.png' },
+    { id: '2', title: 'IT Policy', url: 'https://www.example.com/it-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/1086/1086741.png' },
+    { id: '3', title: 'Sustainability', url: 'https://www.example.com/sustainability-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/2971/2971419.png' },
+    { id: '4', title: 'HR Policy', url: 'https://www.example.com/hr-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/1256/1256650.png' },
+    { id: '5', title: 'Quality Policy', url: 'https://www.example.com/quality-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/3176/3176366.png' },
+    { id: '6', title: 'Health Policy', url: 'https://www.example.com/health-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/2966/2966334.png' }
   ],
   safetySnapshots: [],
   tickerMessages: [],
@@ -35,7 +42,11 @@ const initialState = {
   mainHoonZimedaar: [],
   crownCollection: [],
   bosstomer: [],
-  elevateIQ: []
+  elevateIQ: [],
+  happyRetirement: [],
+  anniversaries: [],
+  festiveMode: [],
+  employeeMoments: []
 };
 
 // Reducers
@@ -326,6 +337,62 @@ const elevateIQReducer = (state = initialState.elevateIQ, action) => {
   }
 };
 
+// Happy Retirement reducer
+const happyRetirementReducer = (state = initialState.happyRetirement, action) => {
+  switch (action.type) {
+    case 'ADD_HAPPY_RETIREMENT':
+      return [...state, action.payload];
+    case 'DELETE_HAPPY_RETIREMENT':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_HAPPYRETIREMENT':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Anniversaries reducer
+const anniversariesReducer = (state = initialState.anniversaries, action) => {
+  switch (action.type) {
+    case 'ADD_ANNIVERSARY':
+      return [...state, action.payload];
+    case 'DELETE_ANNIVERSARY':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_ANNIVERSARIES':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Festive Mode reducer
+const festiveModeReducer = (state = initialState.festiveMode, action) => {
+  switch (action.type) {
+    case 'ADD_FESTIVE_MODE':
+      return [...state, action.payload];
+    case 'DELETE_FESTIVE_MODE':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_FESTIVEMODE':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Employee Moments reducer
+const employeeMomentsReducer = (state = initialState.employeeMoments, action) => {
+  switch (action.type) {
+    case 'ADD_EMPLOYEE_MOMENT':
+      return [...state, action.payload];
+    case 'DELETE_EMPLOYEE_MOMENT':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_EMPLOYEEMOMENTS':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const persistConfig = {
   key: 'root',
   storage,
@@ -335,7 +402,8 @@ const persistConfig = {
     'birthdays', 'videoBytes', 'leadersBoard', 'safetySOPs',
     'wellnessWave', 'wellnessTips', 'victoryVault', 'csrInitiatives',
     'welcomeOnboard', 'bestKaizens', 'mainHoonZimedaar', 'crownCollection',
-    'bosstomer', 'elevateIQ'
+    'bosstomer', 'elevateIQ', 'happyRetirement', 'anniversaries', 
+    'festiveMode', 'employeeMoments'
   ]
 };
 
@@ -360,7 +428,11 @@ const rootReducer = combineReducers({
   mainHoonZimedaar: mainHoonZimedaarReducer,
   crownCollection: crownCollectionReducer,
   bosstomer: bosstomerReducer,
-  elevateIQ: elevateIQReducer
+  elevateIQ: elevateIQReducer,
+  happyRetirement: happyRetirementReducer,
+  anniversaries: anniversariesReducer,
+  festiveMode: festiveModeReducer,
+  employeeMoments: employeeMomentsReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

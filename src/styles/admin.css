@@ -341,3 +341,42 @@
 .section li button[onClick*="delete"]:hover {
   background-color: #c82333;
 }
+
+/* Celebrations Section Header */
+.celebrations-header {
+  grid-column: 1 / -1;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #8ee3f5;
+  color: #2c3e50;
+  text-align: center;
+  font-family: 'Lora', serif;
+}
+
+/* Celebrations Section Styles */
+.section:has(h3:contains("Happy Retirement")),
+.section:has(h3:contains("Anniversaries")),
+.section:has(h3:contains("Festive Mode")),
+.section:has(h3:contains("Employee Moments")) {
+  background-color: #F8F8F8;
+  border-left: 4px solid #8ee3f5;
+}
+
+/* Specific styles for each celebrations section */
+.section:has(h3:contains("Happy Retirement")) h3 {
+  color: #5D4037; /* Brown */
+}
+
+.section:has(h3:contains("Anniversaries")) h3 {
+  color: #C2185B; /* Pink */
+}
+
+.section:has(h3:contains("Festive Mode")) h3 {
+  color: #FFA000; /* Amber */
+}
+
+.section:has(h3:contains("Employee Moments")) h3 {
+  color: #388E3C; /* Green */
+}

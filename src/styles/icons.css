@@ -1,0 +1,110 @@
+/* Icon colors for different sections */
+
+/* Quick Links Icons */
+.quick-links-item svg {
+  stroke: #4285F4; /* Google blue */
+  fill: rgba(66, 133, 244, 0.2); /* Light Google blue */
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+}
+
+.quick-links-item:nth-child(1) svg {
+  stroke: #4285F4; /* Google blue */
+  fill: rgba(66, 133, 244, 0.2); /* Light Google blue */
+}
+
+.quick-links-item:nth-child(2) svg {
+  stroke: #1877F2; /* Facebook blue */
+  fill: rgba(24, 119, 242, 0.2); /* Light Facebook blue */
+}
+
+.quick-links-item:nth-child(3) svg {
+  stroke: #1DA1F2; /* Twitter blue */
+  fill: rgba(29, 161, 242, 0.2); /* Light Twitter blue */
+}
+
+.quick-links-item:nth-child(4) svg {
+  stroke: #0A66C2; /* LinkedIn blue */
+  fill: rgba(10, 102, 194, 0.2); /* Light LinkedIn blue */
+}
+
+.quick-links-item:nth-child(5) svg {
+  stroke: #333333; /* GitHub dark */
+  fill: rgba(51, 51, 51, 0.2); /* Light GitHub dark */
+}
+
+/* Policies Icons */
+.policy-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.policy-item:hover img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Individual policy icon styling */
+.policy-item:nth-child(1) img {
+  /* Safety policy - helmet icon */
+  filter: drop-shadow(0 2px 4px rgba(244, 67, 54, 0.3));
+}
+
+.policy-item:nth-child(2) img {
+  /* IT policy - server icon */
+  filter: drop-shadow(0 2px 4px rgba(33, 150, 243, 0.3));
+}
+
+.policy-item:nth-child(3) img {
+  /* Sustainability policy - green icon */
+  filter: drop-shadow(0 2px 4px rgba(76, 175, 80, 0.3));
+}
+
+.policy-item:nth-child(4) img {
+  /* HR policy */
+  filter: drop-shadow(0 2px 4px rgba(156, 39, 176, 0.3));
+}
+
+.policy-item:nth-child(5) img {
+  /* Quality policy */
+  filter: drop-shadow(0 2px 4px rgba(255, 193, 7, 0.3));
+}
+
+.policy-item:nth-child(6) img {
+  /* Health policy */
+  filter: drop-shadow(0 2px 4px rgba(233, 30, 99, 0.3));
+}
+
+/* Safety SOPs Icons */
+.safety-sop-content .policy-item svg {
+  stroke: #F44336; /* Red for safety */
+  fill: rgba(244, 67, 54, 0.2); /* Light red */
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+}
+
+.safety-sop-content .policy-item:nth-child(1) svg {
+  stroke: #F44336; /* Red for fire safety */
+  fill: rgba(244, 67, 54, 0.2); /* Light red */
+}
+
+.safety-sop-content .policy-item:nth-child(2) svg {
+  stroke: #9C27B0; /* Purple for chemical */
+  fill: rgba(156, 39, 176, 0.2); /* Light purple */
+}
+
+.safety-sop-content .policy-item:nth-child(3) svg {
+  stroke: #4CAF50; /* Green for evacuation */
+  fill: rgba(76, 175, 80, 0.2); /* Light green */
+}
+
+/* Make SVG icons display properly */
+.quick-links-item img {
+  width: 24px;
+  height: 24px;
+}

@@ -63,13 +63,10 @@ button:hover {
 
 /* Link styles */
 a {
-  color: var(--primary-color);
+  color: var(--primary-dark);
+  font-weight: 600;
   text-decoration: none;
   transition: color 0.2s;
-}
-
-a:hover {
-  color: var(--primary-dark);
 }
 
 /* Section headers */

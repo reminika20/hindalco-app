@@ -5,15 +5,17 @@
   justify-content: center;
   align-items: center;
   background-color: #E6E6E6; /* Light gray for better contrast with the header */
-  padding: 8px 5px;
+  padding: 8px 12vw;
   margin-top: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(30, 30, 30, 0.15);
+  width: 100%;
+  gap: 8px;
+  box-sizing: border-box;
 }
 
 .navbar-section-link {
-  margin: 4px;
-  padding: 6px 8px;
+  padding: 6px 12px;
   background-color: #8ee3f5; /* Light Blue */
   color: black; /* Black for better visibility */
   border: none;
@@ -22,9 +24,12 @@
   transition: all 0.3s ease;
   font-size: 0.75rem;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
   box-shadow: 0 2px 8px rgba(30, 30, 30, 0.1);
   white-space: nowrap;
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .navbar-section-link:hover {
@@ -33,15 +38,6 @@
   box-shadow: 0 4px 12px rgba(30, 30, 30, 0.15);
 }
 
-.navbar-navigate-text {
-  margin: 4px 8px 4px 0;
-  font-weight: 600;
-  color: #B7410E; /* Rust Red */
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
 
 .user-page-navbar:hover .navbar-navigate-text {
   transform: scale(1.05);

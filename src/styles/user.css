@@ -461,9 +461,9 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  color: var(--primary-color);
+  color: var(--primary-dark);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .quick-links-item a img {
@@ -701,9 +701,9 @@
 }
 
 .video-url a {
-  color: var(--primary-color);
+  color: var(--primary-dark);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.5rem 1rem;
   background-color: var(--offwhite);
   border-radius: 4px;
@@ -843,7 +843,11 @@ h2 {
 .bosstomer-container h2,
 .elevate-iq-container h2,
 .victory-vault-container h2,
-.crown-collection-container h2 {
+.crown-collection-container h2,
+.happy-retirement-container h2,
+.anniversaries-container h2,
+.festive-mode-container h2,
+.employee-moments-container h2 {
   background-color: #8ee3f5; /* Light Blue */
   color: #000000; /* Black for better visibility */
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -920,7 +924,11 @@ h2 {
 .main-hoon-zimedaar-container > p,
 .crown-collection-container > p,
 .bosstomer-container > p,
-.elevate-iq-container > p {
+.elevate-iq-container > p,
+.happy-retirement-container > p,
+.anniversaries-container > p,
+.festive-mode-container > p,
+.employee-moments-container > p {
   text-align: center;
   font-weight: 500;
   font-style: italic;
@@ -944,4 +952,156 @@ h2 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-secondary);
+}
+
+/* Celebrations section styles */
+.celebrations-section {
+  margin-top: 1.25rem;
+  margin-bottom: 4rem;
+  position: relative;
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 25%, #fad0c4 50%, #a18cd1 75%, #fbc2eb 100%);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  box-shadow: 0 8px 32px rgba(30, 30, 30, 0.25);
+}
+
+.celebrations-section > h2 {
+  background-color: transparent;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  animation: float 6s ease-in-out infinite, celebrationColors 8s ease-in-out infinite;
+  text-align: center;
+  width: 100%;
+}
+
+@keyframes celebrationColors {
+  0% { color: #FF5733; } /* Red-Orange */
+  25% { color: #33FF57; } /* Green */
+  50% { color: #3357FF; } /* Blue */
+  75% { color: #F033FF; } /* Purple */
+  100% { color: #FF5733; } /* Back to Red-Orange */
+}
+
+/* Adjust the grid layout for the celebrations section */
+.celebrations-section .grid-cols-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* Make the celebrations carousels a bit smaller */
+.celebrations-section .carousel-container {
+  height: 400px;
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 3px solid transparent;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+/* Ensure the celebrations carousels don't get too squished */
+.celebrations-section .autoslider-container {
+  height: calc(100% - 5rem);
+}
+
+/* Add some special styling for the celebrations carousels */
+.happy-retirement-container {
+  border-color: #FF9A9E !important;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.anniversaries-container {
+  border-color: #A18CD1 !important;
+  animation: pulse 4s ease-in-out infinite 1s;
+}
+
+.festive-mode-container {
+  border-color: #FBC2EB !important;
+  animation: pulse 4s ease-in-out infinite 2s;
+}
+
+.employee-moments-container {
+  border-color: #FAD0C4 !important;
+  animation: pulse 4s ease-in-out infinite 3s;
+}
+
+.celebrations-section .carousel-container:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+}
+
+/* Override the heading styles for celebrations carousels */
+.celebrations-section .carousel-container h2 {
+  background-color: transparent !important;
+  color: #333 !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.celebrations-section .carousel-container p {
+  color: #555;
+  font-weight: 600;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* Add a special animation for the celebrations section */
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.celebrations-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0) 0%, 
+    rgba(255,255,255,0.2) 50%, 
+    rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 8s infinite;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+/* Celebrations canvas styling */
+.celebrations-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Make sure the celebrations content is above the canvas */
+.celebrations-section h2,
+.celebrations-section .grid {
+  position: relative;
+  z-index: 2;
 }
