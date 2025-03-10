@@ -14,6 +14,22 @@ import "../styles/user.css";
 import "../styles/icons.css";
 import confetti from 'canvas-confetti';
 
+// Import icons for links
+import poornataIcon from '../assets/icons/links/Poornata.png';
+import ekayaanIcon from '../assets/icons/links/Ekayaan.png';
+import hsdIcon from '../assets/icons/links/HSD.png';
+import qwIcon from '../assets/icons/links/QW.png';
+import ePermitIcon from '../assets/icons/links/E-PERMIT.png';
+import enablonIcon from '../assets/icons/links/ENABLON.png';
+import trsIcon from '../assets/icons/links/TRS.png';
+import emSignerIcon from '../assets/icons/links/emsigner.gif';
+import hiimsIcon from '../assets/icons/links/hiims.png';
+import payrollIcon from '../assets/icons/links/payroll.png';
+import abgTravelIcon from '../assets/icons/links/abg_travel.png';
+import myGateIcon from '../assets/icons/links/My-gate.png';
+import attendanceIcon from '../assets/icons/links/Attendance.png';
+import prepIcon from '../assets/icons/links/prep.png';
+
 const createConfetti = (canvas) => {
   const myConfetti = confetti.create(canvas, {
     resize: true,
@@ -26,7 +42,29 @@ const Home = () => {
   const newsItems = useSelector((state) => state.newsItems || []);
   const tickerMessages = useSelector((state) => state.tickerMessages || []);
   const policies = useSelector((state) => state.policies || []);
-  const quickLinks = useSelector((state) => state.quickLinks || []);
+  // Define the links from links.txt file
+  const predefinedLinks = [
+    { id: 'predefined-1', text: 'Poornata', url: 'https://www.portal.poornata.com/', icon: poornataIcon },
+    { id: 'predefined-2', text: 'Ekayaan', url: 'https://onehindalco.adityabirla.com/', icon: ekayaanIcon },
+    { id: 'predefined-3', text: 'HSD', url: 'https://hsd.adityabirla.com/', icon: hsdIcon },
+    { id: 'predefined-4', text: 'Know Your IT', url: 'https://adityabirla.sharepoint.com/:f:/r/sites/HindalcoBelagavi/BLG_IT/KNOW%20YOUR%20IT?csf=1&web=1&e=fiwAKf', icon: qwIcon },
+    { id: 'predefined-5', text: 'e-Permit', url: 'http://10.36.121.75/PTW/', icon: ePermitIcon },
+    { id: 'predefined-6', text: 'ABG Sustainability', url: 'https://www.abgsustainability.com/', icon: enablonIcon },
+    { id: 'predefined-7', text: 'Travel Requisition System', url: 'https://hil.moveinsync.com/BLG/', icon: trsIcon },
+    { id: 'predefined-8', text: 'em-Signer', url: 'https://esign.adityabirla.com/Areas/AD/Login', icon: emSignerIcon },
+    { id: 'predefined-9', text: 'HIIMS', url: 'https://hilims.adityabirla.com/', icon: hiimsIcon },
+    { id: 'predefined-10', text: 'Payroll', url: 'https://hindalco.peoplestrong.com/', icon: payrollIcon },
+    { id: 'predefined-11', text: 'ABG travel', url: 'https://www.abgtravelportal.com/', icon: abgTravelIcon },
+    { id: 'predefined-12', text: 'MyGate', url: 'https://dashboard.mygate.com/login', icon: myGateIcon },
+    { id: 'predefined-13', text: 'Smart Face', url: 'http://10.36.20.4/SmartFace/Home/Login', icon: attendanceIcon },
+    { id: 'predefined-14', text: 'Ekayaan-Prep', url: 'https://ekaayanebsprep.adityabirla.com', icon: prepIcon }
+  ];
+  
+  // Get links from Redux store
+  const storeLinks = useSelector((state) => state.quickLinks || []);
+  
+  // Combine predefined links with links from the store
+  const allLinks = [...predefinedLinks, ...storeLinks];
   const safetySOPs = useSelector((state) => state.safetySOPs || []);
   const carouselImages1 = useSelector((state) => state.carouselImages1 || []);
   const carouselImages2 = useSelector((state) => state.carouselImages2 || []);
@@ -261,9 +299,9 @@ const Home = () => {
   // Debug logging
   useEffect(() => {
     console.log("🔄 State updated in Home Page:", {
-      newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetySnapshots, leadersBoard, videoBytes
+      newsItems, tickerMessages, policies, allLinks, carouselImages1, carouselImages2, safetySnapshots, leadersBoard, videoBytes
     });
-  }, [newsItems, tickerMessages, policies, quickLinks, carouselImages1, carouselImages2, safetySnapshots, leadersBoard, videoBytes]);
+  }, [newsItems, tickerMessages, policies, allLinks, carouselImages1, carouselImages2, safetySnapshots, leadersBoard, videoBytes]);
 
 
   return (
@@ -353,7 +391,7 @@ const Home = () => {
         />
         <GridSection 
           title="Quick Links"
-          items={quickLinks}
+          items={allLinks}
           containerClassName="quick-links-container"
           contentClassName="quick-links-content"
           itemClassName="quick-links-item"
@@ -361,7 +399,7 @@ const Home = () => {
             <div key={link.id} className={className}>
               <a href={link.url} target="_blank" rel="noopener noreferrer">
                 {link.icon ? (
-                  <img src={link.icon} alt="Custom Icon" />
+                  <img src={link.icon} alt={`${link.text} Icon`} />
                 ) : (
                   <img src="https://img.icons8.com/ios-filled/50/000000/link.png" alt="Link Icon" />
                 )}

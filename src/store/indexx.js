@@ -16,13 +16,7 @@ const initialState = {
     { id: '2', title: 'Chemical Handling Guidelines', url: 'https://www.example.com/chemical-handling.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/1055/1055183.png' },
     { id: '3', title: 'Emergency Evacuation Plan', url: 'https://www.example.com/evacuation.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/5553/5553922.png' }
   ],
-  quickLinks: [
-    { id: '1', text: 'Google', url: 'https://www.google.com', icon: 'https://cdn.jsdelivr.net/npm/feather-icons/dist/icons/search.svg' },
-    { id: '2', text: 'Facebook', url: 'https://www.facebook.com', icon: 'https://cdn.jsdelivr.net/npm/feather-icons/dist/icons/facebook.svg' },
-    { id: '3', text: 'Twitter', url: 'https://www.twitter.com', icon: 'https://cdn.jsdelivr.net/npm/feather-icons/dist/icons/twitter.svg' },
-    { id: '4', text: 'LinkedIn', url: 'https://www.linkedin.com', icon: 'https://cdn.jsdelivr.net/npm/feather-icons/dist/icons/linkedin.svg' },
-    { id: '5', text: 'GitHub', url: 'https://www.github.com', icon: 'https://cdn.jsdelivr.net/npm/feather-icons/dist/icons/github.svg' }
-  ],
+  quickLinks: [],
   policies: [
     { id: '1', title: 'Safety', url: 'https://www.example.com/safety-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/1995/1995470.png' },
     { id: '2', title: 'IT Policy', url: 'https://www.example.com/it-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/1086/1086741.png' },
