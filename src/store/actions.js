@@ -267,3 +267,25 @@ export const deleteEmployeeMoment = (id) => ({
   type: 'DELETE_EMPLOYEE_MOMENT',
   payload: id,
 });
+
+// Monthly Performance actions
+export const addMonthlyPerformance = (item) => ({
+  type: 'ADD_MONTHLY_PERFORMANCE',
+  payload: item,
+});
+
+export const deleteMonthlyPerformance = (id) => ({
+  type: 'DELETE_MONTHLY_PERFORMANCE',
+  payload: id,
+});
+
+// Quarterly Performance actions
+export const addQuarterlyPerformance = (item) => ({
+  type: 'ADD_QUARTERLY_PERFORMANCE',
+  payload: item,
+});
+
+export const deleteQuarterlyPerformance = (id) => ({
+  type: 'DELETE_QUARTERLY_PERFORMANCE',
+  payload: id,
+});

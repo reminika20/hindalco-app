@@ -52,7 +52,11 @@ import {
   addFestiveMode,
   deleteFestiveMode,
   addEmployeeMoment,
-  deleteEmployeeMoment
+  deleteEmployeeMoment,
+  addMonthlyPerformance,
+  deleteMonthlyPerformance,
+  addQuarterlyPerformance,
+  deleteQuarterlyPerformance
 } from '../store/actions';
 import "../styles/admin.css";
 
@@ -83,6 +87,8 @@ const AdminDashboard = () => {
   const anniversaries = useSelector((state) => state.anniversaries || []);
   const festiveMode = useSelector((state) => state.festiveMode || []);
   const employeeMoments = useSelector((state) => state.employeeMoments || []);
+  const monthlyPerformance = useSelector((state) => state.monthlyPerformance || []);
+  const quarterlyPerformance = useSelector((state) => state.quarterlyPerformance || []);
 
   // Listen for changes in localStorage from other tabs
   useEffect(() => {
@@ -199,6 +205,14 @@ const AdminDashboard = () => {
   // State for Employee Moments
   const [employeeMomentImage, setEmployeeMomentImage] = useState(null);
   const [employeeMomentCaption, setEmployeeMomentCaption] = useState('');
+  
+  // State for Monthly Performance
+  const [monthlyPerformanceImage, setMonthlyPerformanceImage] = useState(null);
+  const [monthlyPerformanceTitle, setMonthlyPerformanceTitle] = useState('');
+  
+  // State for Quarterly Performance
+  const [quarterlyPerformanceImage, setQuarterlyPerformanceImage] = useState(null);
+  const [quarterlyPerformanceTitle, setQuarterlyPerformanceTitle] = useState('');
 
   // Action handlers
   const handleAddPolicy = () => {
@@ -687,6 +701,42 @@ const AdminDashboard = () => {
         setEmployeeMomentCaption('');
       };
       reader.readAsDataURL(employeeMomentImage);
+    }
+  };
+  
+  // Handler for Monthly Performance
+  const handleAddMonthlyPerformance = () => {
+    if (monthlyPerformanceImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          title: monthlyPerformanceTitle
+        };
+        dispatch(addMonthlyPerformance(item));
+        setMonthlyPerformanceImage(null);
+        setMonthlyPerformanceTitle('');
+      };
+      reader.readAsDataURL(monthlyPerformanceImage);
+    }
+  };
+  
+  // Handler for Quarterly Performance
+  const handleAddQuarterlyPerformance = () => {
+    if (quarterlyPerformanceImage) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const item = {
+          id: uuidv4(),
+          image: reader.result,
+          title: quarterlyPerformanceTitle
+        };
+        dispatch(addQuarterlyPerformance(item));
+        setQuarterlyPerformanceImage(null);
+        setQuarterlyPerformanceTitle('');
+      };
+      reader.readAsDataURL(quarterlyPerformanceImage);
     }
   };
 
@@ -1368,6 +1418,61 @@ const AdminDashboard = () => {
               <img src={item.image} alt="Employee Moment" width="100" />
               <span>{item.caption}</span>
               <button onClick={() => dispatch(deleteEmployeeMoment(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Performance Section Header */}
+      <h2 className="performance-header">Performance Section</h2>
+      
+      {/* Manage Monthly Performance Section */}
+      <div className="section">
+        <h3>Manage Monthly Performance</h3>
+        <input
+          type="text"
+          placeholder="Title"
+          value={monthlyPerformanceTitle}
+          onChange={(e) => setMonthlyPerformanceTitle(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setMonthlyPerformanceImage(e.target.files[0])}
+        />
+        <button onClick={handleAddMonthlyPerformance}>Add Monthly Performance</button>
+        <ul>
+          {monthlyPerformance.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Monthly Performance" width="100" />
+              <span>{item.title}</span>
+              <button onClick={() => dispatch(deleteMonthlyPerformance(item.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Manage Quarterly Performance Section */}
+      <div className="section">
+        <h3>Manage Quarterly Performance</h3>
+        <input
+          type="text"
+          placeholder="Title"
+          value={quarterlyPerformanceTitle}
+          onChange={(e) => setQuarterlyPerformanceTitle(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setQuarterlyPerformanceImage(e.target.files[0])}
+        />
+        <button onClick={handleAddQuarterlyPerformance}>Add Quarterly Performance</button>
+        <ul>
+          {quarterlyPerformance.map(item => (
+            <li key={item.id}>
+              <img src={item.image} alt="Quarterly Performance" width="100" />
+              <span>{item.title}</span>
+              <button onClick={() => dispatch(deleteQuarterlyPerformance(item.id))}>Delete</button>
             </li>
           ))}
         </ul>

@@ -30,6 +30,14 @@ import myGateIcon from '../assets/icons/links/My-gate.png';
 import attendanceIcon from '../assets/icons/links/Attendance.png';
 import prepIcon from '../assets/icons/links/prep.png';
 
+// Import policy icons
+import safetyIcon from '../assets/icons/policies/safety.gif';
+import itIcon from '../assets/icons/policies/IT.gif';
+import sustainabilityIcon from '../assets/icons/policies/sustainability.gif';
+import hrIcon from '../assets/icons/policies/HR.gif';
+import qualityIcon from '../assets/icons/policies/quality1.gif';
+import healthIcon from '../assets/icons/policies/health.gif';
+
 const createConfetti = (canvas) => {
   const myConfetti = confetti.create(canvas, {
     resize: true,
@@ -41,7 +49,22 @@ const createConfetti = (canvas) => {
 const Home = () => {
   const newsItems = useSelector((state) => state.newsItems || []);
   const tickerMessages = useSelector((state) => state.tickerMessages || []);
-  const policies = useSelector((state) => state.policies || []);
+  
+  // Define permanent policies with local icons
+  const permanentPolicies = [
+    { id: 'permanent-1', title: 'Safety', url: 'https://www.example.com/safety-policy.pdf', icon: safetyIcon },
+    { id: 'permanent-2', title: 'IT Policy', url: 'https://www.example.com/it-policy.pdf', icon: itIcon },
+    { id: 'permanent-3', title: 'Sustainability', url: 'https://www.example.com/sustainability-policy.pdf', icon: sustainabilityIcon },
+    { id: 'permanent-4', title: 'HR Policy', url: 'https://www.example.com/hr-policy.pdf', icon: hrIcon },
+    { id: 'permanent-5', title: 'Quality Policy', url: 'https://www.example.com/quality-policy.pdf', icon: qualityIcon },
+    { id: 'permanent-6', title: 'Health Policy', url: 'https://www.example.com/health-policy.pdf', icon: healthIcon }
+  ];
+  
+  // Get additional policies from Redux store
+  const additionalPolicies = useSelector((state) => state.policies || []);
+  
+  // Combine permanent policies with additional policies from the store
+  const allPolicies = [...permanentPolicies, ...additionalPolicies];
   // Define the links from links.txt file
   const predefinedLinks = [
     { id: 'predefined-1', text: 'Poornata', url: 'https://www.portal.poornata.com/', icon: poornataIcon },
@@ -83,6 +106,8 @@ const Home = () => {
   const anniversaries = useSelector((state) => state.anniversaries || []);
   const festiveMode = useSelector((state) => state.festiveMode || []);
   const employeeMoments = useSelector((state) => state.employeeMoments || []);
+  const monthlyPerformance = useSelector((state) => state.monthlyPerformance || []);
+  const quarterlyPerformance = useSelector((state) => state.quarterlyPerformance || []);
   const birthdays = useSelector((state) => {
     const today = new Date();
     const todayMonth = today.getMonth() + 1; // getMonth() returns 0-11
@@ -299,9 +324,9 @@ const Home = () => {
   // Debug logging
   useEffect(() => {
     console.log("🔄 State updated in Home Page:", {
-      newsItems, tickerMessages, policies, allLinks, carouselImages1, carouselImages2, safetySnapshots, leadersBoard, videoBytes
+      newsItems, tickerMessages, additionalPolicies, allLinks, carouselImages1, carouselImages2, safetySnapshots, leadersBoard, videoBytes
     });
-  }, [newsItems, tickerMessages, policies, allLinks, carouselImages1, carouselImages2, safetySnapshots, leadersBoard, videoBytes]);
+  }, [newsItems, tickerMessages, additionalPolicies, allLinks, carouselImages1, carouselImages2, safetySnapshots, leadersBoard, videoBytes]);
 
 
   return (
@@ -352,6 +377,25 @@ const Home = () => {
         />
       </div>
 
+      {/* Row 2.5: Performance Section */}
+      <div className="performance-section">
+        <h2>Performance</h2>
+        <div className="grid grid-cols-2 gap-4">
+          <CarouselSection 
+            title="Monthly Performance" 
+            description="Monthly performance metrics and achievements" 
+            slides={monthlyPerformance} 
+            containerClassName="monthly-performance-container" 
+          />
+          <CarouselSection 
+            title="Quarterly Performance" 
+            description="Quarterly performance metrics and achievements" 
+            slides={quarterlyPerformance} 
+            containerClassName="quarterly-performance-container" 
+          />
+        </div>
+      </div>
+
       {/* Row 3: What's New and Birthday List */}
       <div className="grid grid-cols-2 gap-4">
         <NewsSection 
@@ -371,7 +415,7 @@ const Home = () => {
       <div className="grid grid-cols-2 gap-4">
         <GridSection 
           title="Policies"
-          items={policies}
+          items={allPolicies}
           containerClassName="policies-container"
           contentClassName="policies-content"
           itemClassName="policy-item"

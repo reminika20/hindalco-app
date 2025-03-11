@@ -17,14 +17,7 @@ const initialState = {
     { id: '3', title: 'Emergency Evacuation Plan', url: 'https://www.example.com/evacuation.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/5553/5553922.png' }
   ],
   quickLinks: [],
-  policies: [
-    { id: '1', title: 'Safety', url: 'https://www.example.com/safety-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/1995/1995470.png' },
-    { id: '2', title: 'IT Policy', url: 'https://www.example.com/it-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/1086/1086741.png' },
-    { id: '3', title: 'Sustainability', url: 'https://www.example.com/sustainability-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/2971/2971419.png' },
-    { id: '4', title: 'HR Policy', url: 'https://www.example.com/hr-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/1256/1256650.png' },
-    { id: '5', title: 'Quality Policy', url: 'https://www.example.com/quality-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/3176/3176366.png' },
-    { id: '6', title: 'Health Policy', url: 'https://www.example.com/health-policy.pdf', icon: 'https://cdn-icons-png.flaticon.com/512/2966/2966334.png' }
-  ],
+  policies: [], // Policies are now defined directly in User.js
   safetySnapshots: [],
   tickerMessages: [],
   wellnessWave: [],
@@ -40,7 +33,9 @@ const initialState = {
   happyRetirement: [],
   anniversaries: [],
   festiveMode: [],
-  employeeMoments: []
+  employeeMoments: [],
+  monthlyPerformance: [],
+  quarterlyPerformance: []
 };
 
 // Reducers
@@ -387,6 +382,34 @@ const employeeMomentsReducer = (state = initialState.employeeMoments, action) =>
   }
 };
 
+// Monthly Performance reducer
+const monthlyPerformanceReducer = (state = initialState.monthlyPerformance, action) => {
+  switch (action.type) {
+    case 'ADD_MONTHLY_PERFORMANCE':
+      return [...state, action.payload];
+    case 'DELETE_MONTHLY_PERFORMANCE':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_MONTHLYPERFORMANCE':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+// Quarterly Performance reducer
+const quarterlyPerformanceReducer = (state = initialState.quarterlyPerformance, action) => {
+  switch (action.type) {
+    case 'ADD_QUARTERLY_PERFORMANCE':
+      return [...state, action.payload];
+    case 'DELETE_QUARTERLY_PERFORMANCE':
+      return state.filter(item => item.id !== action.payload);
+    case 'SYNC_QUARTERLYPERFORMANCE':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const persistConfig = {
   key: 'root',
   storage,
@@ -397,7 +420,7 @@ const persistConfig = {
     'wellnessWave', 'wellnessTips', 'victoryVault', 'csrInitiatives',
     'welcomeOnboard', 'bestKaizens', 'mainHoonZimedaar', 'crownCollection',
     'bosstomer', 'elevateIQ', 'happyRetirement', 'anniversaries', 
-    'festiveMode', 'employeeMoments'
+    'festiveMode', 'employeeMoments', 'monthlyPerformance', 'quarterlyPerformance'
   ]
 };
 
@@ -426,7 +449,9 @@ const rootReducer = combineReducers({
   happyRetirement: happyRetirementReducer,
   anniversaries: anniversariesReducer,
   festiveMode: festiveModeReducer,
-  employeeMoments: employeeMomentsReducer
+  employeeMoments: employeeMomentsReducer,
+  monthlyPerformance: monthlyPerformanceReducer,
+  quarterlyPerformance: quarterlyPerformanceReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
