@@ -16,7 +16,7 @@
 }
 
 body {
-  background-color: var(--bg-bluegray);
+  background-color: #5031e8;
 }
 
 .flex {
@@ -35,8 +35,8 @@ body {
   padding: 1rem;
 }
 
-.bg-gray-100 {
-  background: var(--bg-bluegray);
+.bg-color {
+  background: #049195;
 }
 
 .min-h-screen {
@@ -103,12 +103,7 @@ textarea:focus {
 }
 
 body {
-  background: linear-gradient(
-    180deg,
-    var(--gradient-start),
-    var(--gradient-middle),
-    var(--gradient-end)
-  );
+  background-color: #5031e8; /* Replace with your desired color */
   min-height: 100vh;
   font-size: 16px;
   line-height: 1.5;

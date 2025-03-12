@@ -217,6 +217,7 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 0.5rem;
   color: #FFFFFF;
 }
@@ -519,6 +520,7 @@ html, body {
 .quick-links-item a img {
   width: 80px;
   height: 80px;
+  box-shadow: inset;
   object-fit: contain;
   transition: transform 0.2s ease;
 }
@@ -547,7 +549,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(30, 30, 30, 0.1);
+  box-shadow: 0 8px 10px rgba(30, 30, 30, 0.1);
 }
 
 .policy-item h3 {
@@ -561,6 +563,7 @@ html, body {
   width: 80px;
   height: 80px;
   object-fit: contain;
+  box-shadow: inset 0 0 10px rgba(30, 30, 30, 0.1);
   transition: transform 0.2s ease;
 }
 
@@ -1280,7 +1283,7 @@ h2 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 90%;
   background: linear-gradient(90deg, 
     rgba(255,255,255,0) 0%, 
     rgba(255,255,255,0.2) 50%, 

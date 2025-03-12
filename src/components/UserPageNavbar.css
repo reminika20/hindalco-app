@@ -4,25 +4,28 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: #E6E6E6; /* Light gray for better contrast with the header */
-  padding: 8px 12vw;
+  background: rgba(230, 230, 230, 0.8);
+  padding: 8px 4vw;
   margin-top: 10px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(30, 30, 30, 0.15);
+  box-shadow: 0 4px 12px rgba(30, 30, 30, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.5); /* Enhanced inner highlight */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* More visible border */
   width: 100%;
   gap: 8px;
   box-sizing: border-box;
+  position: relative; /* For the pseudo-element */
+  overflow: hidden; /* Keep the pseudo-element within bounds */
 }
 
 .navbar-section-link {
-  padding: 6px 12px;
+  padding: 10px 16px;
   background-color: #8ee3f5; /* Light Blue */
   color: black; /* Black for better visibility */
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.75rem;
+  font-size: 1rem;
   text-transform: uppercase;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(30, 30, 30, 0.1);

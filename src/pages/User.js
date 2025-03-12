@@ -330,7 +330,7 @@ const Home = () => {
 
 
   return (
-    <div className="flex flex-col p-4 bg-gray-100 min-h-screen">
+    <div className="flex flex-col p-4 bg-color min-h-screen">
       {/* Header Section */}
       <div className="header-container">
         <div className="header-bar"></div>
