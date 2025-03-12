@@ -1,5 +1,41 @@
 /* Add your user-specific styles here */
+/* Navbar container */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #F2BB05; /* Adjust background color as needed */
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
+/* Navbar items */
+.navbar-item {
+  flex: 1 1 20%; /* Adjust the flex-basis to distribute items equally */
+  text-align: center;
+  margin: 0.5rem;
+  font-size: 1.5rem; /* Double the size */
+  font-weight: bold;
+  color: #FFFFFF; /* White text color */
+  text-transform: uppercase;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-item:hover {
+  background-color: #C1666B; /* Adjust hover background color as needed */
+}
+
+/* Ensure the navbar items wrap to the next line */
+.navbar-item:nth-child(odd) {
+  order: 1;
+}
+
+.navbar-item:nth-child(even) {
+  order: 2;
+}
 :root {
   /* Brand Colors */
   --primary-color: #8ee3f5;
@@ -45,6 +81,19 @@
   --birthday-blue: #3366ff;
   --birthday-red: #ff0000;
   --birthday-yellow: #ffff00;
+
+
+  /* Page background color */
+  --page-background: #D4EDEB; /* Light gray */
+}
+
+/* Set the background color for the entire page */
+html, body {
+  background-color: var(--page-background) !important; /* Light gray background */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif; /* Adjust the font family as needed */
 }
 
 /* Replace all gradient backgrounds with off-white */
@@ -121,14 +170,14 @@
 }
 
 .header-container {
-  background-color: var(--offwhite) !important;
+  background-color:  #C1666B;;
   padding: 0.25rem !important;
   box-shadow: 0 4px 12px rgba(142, 227, 245, 0.15);
 }
 
 .header-bar {
   height: 4px;
-  background-color: #8ee3f5; /* Light Blue */
+  background-color:  #C1666B; /* Light Blue */
 }
 
 .header {
@@ -136,7 +185,7 @@
   align-items: center !important;
   padding: 0.25rem 1.0rem !important;
   margin-bottom: 0 !important;
-  background-color: transparent !important;
+  background-color: #F2BB05 !important;
   border-radius: 0 !important;
   border-bottom: none !important;
   justify-content: space-between;
@@ -161,7 +210,7 @@
   text-transform: uppercase;
   font-family: 'Lora', serif !important;
   font-weight: 800;
-  color: var(--text-primary);
+  color: #FFFFFF;
 }
 
 .header-text {
@@ -169,7 +218,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
-  color: var(--text-primary);
+  color: #FFFFFF;
 }
 
 .header-text h2, .header-text h3 {
@@ -183,6 +232,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(30, 30, 30, 0.15);
   height: 500px;
+  background-color: #4281A4; 
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -802,8 +852,8 @@
 
 /* Ticker styles */
 .ticker {
-  background-color: var(--text-primary);
-  color: #fff;
+  background-color:  #C1666B;
+  color: #C1666B;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -848,9 +898,52 @@ h2 {
 .anniversaries-container h2,
 .festive-mode-container h2,
 .employee-moments-container h2 {
-  background-color: #8ee3f5; /* Light Blue */
+  background-color: #B8E0DF; /* Columbia blue */
   color: #000000; /* Black for better visibility */
   border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.6rem 1.2rem; /* Adjust padding as needed */
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 1.6rem; /* Adjust font size as needed */
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+/* Common container styles for all sections */
+.whats-new-container,
+.quick-links-container,
+.policies-container,
+.safety-policies-container,
+.carousel-container,
+.safety-snapshots-container,
+.safety-sop-container,
+.video-bytes-container,
+.leaders-board-container,
+.wellness-wave-container,
+.wellness-tips-container,
+.welcome-onboard-container,
+.best-kaizens-container,
+.main-hoon-zimedaar-container,
+.csr-initiatives-container,
+.bosstomer-container,
+.elevate-iq-container,
+.victory-vault-container,
+.crown-collection-container,
+.happy-retirement-container,
+.anniversaries-container,
+.festive-mode-container,
+.employee-moments-container,
+.celebrations-section {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(30, 30, 30, 0.15);
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  border: 2px solid #E5D1B3; /* Light Beige */
 }
 
 .policies-container h2{
@@ -888,7 +981,7 @@ h2 {
 /* Apply light blue background to Safety Snapshots and Safety SOP container headings with bigger size */
 .safety-snapshots-container > h3,
 .safety-sop-container > h3 {
-  background-color: #8ee3f5; /* Light Blue */
+  background-color: #48A9A6; /* Light Blue */
   color: #000000; /* Black for better visibility */
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 0.6rem 1.2rem; /* Increased padding */
