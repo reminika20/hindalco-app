@@ -4,12 +4,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background: rgba(230, 230, 230, 0.8);
+  margin-top: 1rem;
   padding: 8px 4vw;
-  margin-top: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(30, 30, 30, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.5); /* Enhanced inner highlight */
-  border: 1px solid rgba(255, 255, 255, 0.4); /* More visible border */
   width: 100%;
   gap: 8px;
   box-sizing: border-box;
@@ -19,8 +15,8 @@
 
 .navbar-section-link {
   padding: 10px 16px;
-  background-color: #8ee3f5; /* Light Blue */
-  color: black; /* Black for better visibility */
+  background-color: #111d4a; /* Light Blue */
+  color: #adeee3; /* Black for better visibility */
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -36,7 +32,8 @@
 }
 
 .navbar-section-link:hover {
-  background-color: #5ccad9; /* Darker Light Blue */
+  background-color: #adeee3; /* Darker Light Blue */
+  color: #111d4a;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(30, 30, 30, 0.15);
 }

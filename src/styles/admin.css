@@ -59,22 +59,14 @@
 
 /* Header Styles */
 .header-container {
-  padding: 0.25rem;
-  box-shadow: 0 4px 12px rgba(142, 227, 245, 0.15);
+  background-color: #d8effd;
   margin-bottom: 2rem;
   width: 100%;
 }
 
 .header-bar {
   height: 4px;
-  background-color: #8ee3f5; /* Light Blue */
-  background-size: 200% 200%;
-}
-
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  background-color: #8ee3f5;
 }
 
 .header {
@@ -82,14 +74,12 @@
   align-items: center;
   gap: 1rem;
   padding: 0.5rem 1rem;
-  margin-bottom: 0;
 }
 
 .header img {
   width: 112px;
   height: auto;
   object-fit: contain;
-  margin-right: 0;
 }
 
 .header h1 {
@@ -98,7 +88,6 @@
   margin: 0;
   font-size: 1.8rem;
   text-transform: uppercase;
-  color: var(--text-primary);
   font-family: 'Lora', serif;
   font-weight: 500;
 }
@@ -130,29 +119,12 @@
 }
 
 /* Section title colors */
-.section:nth-child(1) h3 {
-  color: #8ee3f5; /* Light Blue */
-}
-
-.section:nth-child(2) h3 {
-  color: #B7410E; /* Rust Red */
-}
-
-.section:nth-child(3) h3 {
-  color: #4B0082; /* Deep Purple */
-}
-
-.section:nth-child(4) h3 {
-  color: #228B22; /* Forest Green */
-}
-
-.section:nth-child(5) h3 {
-  color: #CC5500; /* Burnt Orange */
-}
-
-.section:nth-child(6) h3 {
-  color: #000080; /* Navy Blue */
-}
+.section:nth-child(1) h3 { color: #8ee3f5; }
+.section:nth-child(2) h3 { color: #B7410E; }
+.section:nth-child(3) h3 { color: #4B0082; }
+.section:nth-child(4) h3 { color: #228B22; }
+.section:nth-child(5) h3 { color: #CC5500; }
+.section:nth-child(6) h3 { color: #000080; }
 
 /* Form Elements */
 .section input[type="text"],
@@ -175,7 +147,7 @@
   border: 2px dashed var(--bg-bluegray-dark);
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease;
   font-size: 0.9rem;
 }
 
@@ -186,7 +158,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
   margin-right: 1rem;
 }
 
@@ -218,7 +190,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   font-weight: 500;
   font-size: 1rem;
 }
@@ -245,7 +217,7 @@
   background-color: #F8F8F8;
   border-radius: 4px;
   margin-bottom: 0.75rem;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   border: 1px solid var(--bg-bluegray-dark);
 }
 
@@ -254,7 +226,7 @@
 }
 
 .section li:hover {
-  background-color: #F0F0F0; /* Slightly darker white */
+  background-color: #F0F0F0;
   transform: translateX(2px);
 }
 
@@ -330,19 +302,9 @@
   margin-bottom: 1rem;
 }
 
-/* Delete Button Specific Styles */
-.section li button[onClick*="delete"] {
-  background-color: #dc3545;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-}
-
-.section li button[onClick*="delete"]:hover {
-  background-color: #c82333;
-}
-
-/* Celebrations Section Header */
-.celebrations-header {
+/* Headers */
+.celebrations-header,
+.performance-header {
   grid-column: 1 / -1;
   font-size: 2rem;
   font-weight: 600;
@@ -355,27 +317,7 @@
 }
 
 /* Celebrations Section Styles */
-.section:has(h3:contains("Happy Retirement")),
-.section:has(h3:contains("Anniversaries")),
-.section:has(h3:contains("Festive Mode")),
-.section:has(h3:contains("Employee Moments")) {
-  background-color: #F8F8F8;
-  border-left: 4px solid #8ee3f5;
-}
-
-/* Specific styles for each celebrations section */
-.section:has(h3:contains("Happy Retirement")) h3 {
-  color: #5D4037; /* Brown */
-}
-
-.section:has(h3:contains("Anniversaries")) h3 {
-  color: #C2185B; /* Pink */
-}
-
-.section:has(h3:contains("Festive Mode")) h3 {
-  color: #FFA000; /* Amber */
-}
-
-.section:has(h3:contains("Employee Moments")) h3 {
-  color: #388E3C; /* Green */
-}
+.section h3[id*="happy-retirement"] { color: #5D4037; }
+.section h3[id*="anniversaries"] { color: #C2185B; }
+.section h3[id*="festive-mode"] { color: #FFA000; }
+.section h3[id*="employee-moments"] { color: #388E3C; }

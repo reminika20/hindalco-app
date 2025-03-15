@@ -1315,7 +1315,7 @@ const AdminDashboard = () => {
       
       {/* Manage Happy Retirement Section */}
       <div className="section">
-        <h3>Manage Happy Retirement</h3>
+        <h3 id="happy-retirement">Manage Happy Retirement</h3>
         <input
           type="text"
           placeholder="Name"
@@ -1341,7 +1341,7 @@ const AdminDashboard = () => {
       
       {/* Manage Anniversaries Section */}
       <div className="section">
-        <h3>Manage Anniversaries</h3>
+        <h3 id="anniversaries">Manage Anniversaries</h3>
         <input
           type="text"
           placeholder="Name"
@@ -1373,7 +1373,7 @@ const AdminDashboard = () => {
       
       {/* Manage Festive Mode Section */}
       <div className="section">
-        <h3>Manage Festive Mode</h3>
+        <h3 id="festive-mode">Manage Festive Mode</h3>
         <input
           type="text"
           placeholder="Title"
@@ -1399,7 +1399,7 @@ const AdminDashboard = () => {
       
       {/* Manage Employee Moments Section */}
       <div className="section">
-        <h3>Manage Employee Moments</h3>
+        <h3 id="employee-moments">Manage Employee Moments</h3>
         <input
           type="text"
           placeholder="Caption"

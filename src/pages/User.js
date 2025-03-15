@@ -18,7 +18,6 @@ import confetti from 'canvas-confetti';
 import poornataIcon from '../assets/icons/links/Poornata.png';
 import ekayaanIcon from '../assets/icons/links/Ekayaan.png';
 import hsdIcon from '../assets/icons/links/HSD.png';
-import qwIcon from '../assets/icons/links/QW.png';
 import ePermitIcon from '../assets/icons/links/E-PERMIT.png';
 import enablonIcon from '../assets/icons/links/ENABLON.png';
 import trsIcon from '../assets/icons/links/TRS.png';
@@ -29,6 +28,7 @@ import abgTravelIcon from '../assets/icons/links/abg_travel.png';
 import myGateIcon from '../assets/icons/links/My-gate.png';
 import attendanceIcon from '../assets/icons/links/Attendance.png';
 import prepIcon from '../assets/icons/links/prep.png';
+import sharePointIcon from '../assets/icons/links/sharepoint.gif';
 
 // Import policy icons
 import safetyIcon from '../assets/icons/policies/safety.gif';
@@ -70,7 +70,7 @@ const Home = () => {
     { id: 'predefined-1', text: 'Poornata', url: 'https://www.portal.poornata.com/', icon: poornataIcon },
     { id: 'predefined-2', text: 'Ekayaan', url: 'https://onehindalco.adityabirla.com/', icon: ekayaanIcon },
     { id: 'predefined-3', text: 'HSD', url: 'https://hsd.adityabirla.com/', icon: hsdIcon },
-    { id: 'predefined-4', text: 'Know Your IT', url: 'https://adityabirla.sharepoint.com/:f:/r/sites/HindalcoBelagavi/BLG_IT/KNOW%20YOUR%20IT?csf=1&web=1&e=fiwAKf', icon: qwIcon },
+    { id: 'predefined-4', text: 'Know Your IT', url: 'https://adityabirla.sharepoint.com/:f:/r/sites/HindalcoBelagavi/BLG_IT/KNOW%20YOUR%20IT?csf=1&web=1&e=fiwAKf', icon: sharePointIcon },
     { id: 'predefined-5', text: 'e-Permit', url: 'http://10.36.121.75/PTW/', icon: ePermitIcon },
     { id: 'predefined-6', text: 'ABG Sustainability', url: 'https://www.abgsustainability.com/', icon: enablonIcon },
     { id: 'predefined-7', text: 'Travel Requisition System', url: 'https://hil.moveinsync.com/BLG/', icon: trsIcon },
@@ -332,7 +332,7 @@ const Home = () => {
   return (
     <div className="flex flex-col p-4 bg-color min-h-screen">
       {/* Header Section */}
-      <div className="header-container">
+      <div className="header-section">
         <div className="header-bar"></div>
         <div className="header flex items-center mb-4">
           <img src={hindalcoLogo} alt="Hindalco Logo" className="logo mr-4" />
@@ -352,12 +352,12 @@ const Home = () => {
         <CarouselSection 
           title="Buzz" 
           slides={carouselImages1} 
-          containerClassName="" 
+          containerClassName="buzz-container" 
         />
         <CarouselSection 
           title="Snapshots" 
           slides={carouselImages2} 
-          containerClassName="" 
+          containerClassName="snapshots-container" 
         />
       </div>
 
@@ -378,20 +378,16 @@ const Home = () => {
       </div>
 
       {/* Row 2.5: Performance Section */}
-      <div className="performance-section">
+      <div className="performance-corner">
         <h2>Performance</h2>
         <div className="grid grid-cols-2 gap-4">
-          <CarouselSection 
+          <SafetySnapshotsSection 
             title="Monthly Performance" 
-            description="Monthly performance metrics and achievements" 
             slides={monthlyPerformance} 
-            containerClassName="monthly-performance-container" 
           />
-          <CarouselSection 
+          <SafetySnapshotsSection 
             title="Quarterly Performance" 
-            description="Quarterly performance metrics and achievements" 
             slides={quarterlyPerformance} 
-            containerClassName="quarterly-performance-container" 
           />
         </div>
       </div>

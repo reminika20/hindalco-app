@@ -14,9 +14,8 @@
   --text-primary: #1e293b;
   --text-secondary: #475569;
 }
-
-body {
-  background-color: #5031e8;
+body{
+  background-color: #d8effd;
 }
 
 .flex {
@@ -36,7 +35,7 @@ body {
 }
 
 .bg-color {
-  background: #049195;
+  background: #d8effd;
 }
 
 .min-h-screen {
@@ -103,7 +102,6 @@ textarea:focus {
 }
 
 body {
-  background-color: #5031e8; /* Replace with your desired color */
   min-height: 100vh;
   font-size: 16px;
   line-height: 1.5;
