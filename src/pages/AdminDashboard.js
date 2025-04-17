@@ -59,6 +59,7 @@ import {
   deleteQuarterlyPerformance
 } from '../store/actions';
 import "../styles/admin.css";
+import "../styles/seamless.css";
 
 const AdminDashboard = () => {
   const dispatch = useDispatch();

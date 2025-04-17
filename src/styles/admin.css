@@ -86,7 +86,7 @@
   flex: 1;
   text-align: center;
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.44rem;
   text-transform: uppercase;
   font-family: 'Lora', serif;
   font-weight: 500;
@@ -110,7 +110,7 @@
 }
 
 .section h3 {
-  font-size: 1.4rem;
+  font-size: 1.12rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
@@ -135,7 +135,7 @@
   border: 1px solid var(--bg-bluegray-dark);
   border-radius: 4px;
   transition: border-color 0.2s ease;
-  font-size: 1rem;
+  font-size: 0.8rem;
   background: var(--bg-bluegray-light);
 }
 
@@ -148,7 +148,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: border-color 0.2s ease;
-  font-size: 0.9rem;
+  font-size: 0.72rem;
 }
 
 .section input[type="file"]::-webkit-file-upload-button {
@@ -192,7 +192,7 @@
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .section button:hover {
@@ -234,7 +234,7 @@
   padding: 0.5rem 1rem;
   background-color: #dc3545;
   margin-left: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.72rem;
   min-width: 80px;
 }
 
@@ -306,7 +306,7 @@
 .celebrations-header,
 .performance-header {
   grid-column: 1 / -1;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
   margin: 2rem 0 1rem;
   padding-bottom: 0.5rem;

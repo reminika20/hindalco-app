@@ -28,6 +28,7 @@
   text-shadow: none !important;
   transition: color 0.3s ease;
   font-weight: 600 !important; /* Slightly bolder for better visibility */
+  font-size: 0.8rem !important;
 }
 
 .ticker-item:hover {

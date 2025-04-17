@@ -12,6 +12,7 @@ import SafetySnapshotsSection from '../components/SafetySnapshotsSection';
 import hindalcoLogo from '../assets/hindalco-logo.png';
 import "../styles/user.css";
 import "../styles/icons.css";
+import "../styles/seamless.css";
 import confetti from 'canvas-confetti';
 
 // Import icons for links

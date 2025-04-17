@@ -1,0 +1,152 @@
+/* Seamless Design Overrides */
+
+/* Remove borders from all container elements and adjust shadows for a more seamless look */
+.whats-new-container,
+.quick-links-container,
+.policies-container,
+.safety-policies-container,
+.carousel-container,
+.safety-snapshots-container,
+.safety-sop-container,
+.video-bytes-container,
+.leaders-board-container,
+.wellness-wave-container,
+.wellness-tips-container,
+.welcome-onboard-container,
+.best-kaizens-container,
+.main-hoon-zimedaar-container,
+.csr-initiatives-container,
+.bosstomer-container,
+.elevate-iq-container,
+.victory-vault-container,
+.crown-collection-container,
+.happy-retirement-container,
+.anniversaries-container,
+.festive-mode-container,
+.employee-moments-container,
+.celebrations-section {
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(30, 30, 30, 0.08) !important;
+  border-radius: 12px !important;
+}
+
+/* Remove borders from smaller elements */
+.smaller-news-item,
+.quick-links-item,
+.policy-item,
+.video-item,
+.leaders-board-item {
+  border: none !important;
+  box-shadow: 0 1px 4px rgba(30, 30, 30, 0.06) !important;
+  border-radius: 10px !important;
+}
+
+/* Adjust birthday container to remove borders but keep the festive look */
+.birthday-container {
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(255, 51, 102, 0.2), 0 4px 16px rgba(51, 102, 255, 0.2) !important;
+}
+
+.birthday-content {
+  border: none !important;
+  box-shadow: 0 2px 10px rgba(255, 51, 102, 0.15) !important;
+}
+
+.birthday-item {
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(255, 255, 0, 0.2) !important;
+}
+
+.no-birthday-image {
+  border: none !important;
+  box-shadow: 0 0 12px rgba(255, 51, 102, 0.3) !important;
+}
+
+/* Remove borders from celebration containers but keep their unique styling */
+.celebrations-section .carousel-container {
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Adjust header styles for a more seamless look */
+h2, h3 {
+  border: none !important;
+}
+
+.whats-new-container h2,
+.quick-links-container h2,
+.safety-policies-container h2,
+.carousel-container h2,
+.safety-sop-container h2,
+.video-bytes-container h2,
+.leaders-board-container h2,
+.safety-snapshots-container h2,
+.wellness-wave-container h2,
+.wellness-tips-container h2,
+.welcome-onboard-container h2,
+.best-kaizens-container h2,
+.main-hoon-zimedaar-container h2,
+.csr-initiatives-container h2,
+.bosstomer-container h2,
+.elevate-iq-container h2,
+.victory-vault-container h2,
+.crown-collection-container h2,
+.happy-retirement-container h2,
+.anniversaries-container h2,
+.festive-mode-container h2,
+.employee-moments-container h2,
+.policies-container h2,
+.safety-snapshots-container > h3,
+.safety-sop-container > h3 {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+  background-color: rgba(3, 178, 201, 0.9) !important;
+}
+
+/* Improve spacing between elements for better visual flow */
+.whats-new-content,
+.quick-links-content,
+.policies-content,
+.safety-sop-content,
+.leaders-board-content {
+  gap: 1.25rem !important;
+}
+
+/* Enhance hover effects for a more interactive feel */
+.smaller-news-item:hover,
+.quick-links-item:hover,
+.policy-item:hover,
+.leaders-board-item:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 4px 12px rgba(30, 30, 30, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Improve image styling */
+.highlighted-news-image,
+.smaller-news-image,
+.leaders-board-image {
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+
+/* Enhance video play button */
+.video-play-icon {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Adjust celebrations section for a more seamless look */
+.celebrations-section {
+  box-shadow: 0 6px 24px rgba(30, 30, 30, 0.15) !important;
+}
+
+.celebrations-section .carousel-container:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Improve overall spacing */
+.grid {
+  gap: 1.5rem !important;
+}
