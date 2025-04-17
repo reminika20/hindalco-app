@@ -56,7 +56,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: Arial, sans-serif; /* Adjust the font family as needed */
+  font-family: 'Times New Roman', Times, serif; /* Changed to Times New Roman */
 }
 
 /* Replace all gradient backgrounds with off-white */
@@ -165,7 +165,7 @@ html, body {
   margin: 0;
   font-size: 2.0rem !important;
   text-transform: uppercase;
-  font-family: 'Lora', serif !important;
+  font-family: 'Times New Roman', Times, serif !important;
   font-weight: 800;
   color: #ebedff;
 }
@@ -821,7 +821,7 @@ h2 {
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 1rem;
-  font-family: 'Lora', serif !important;
+  font-family: 'Times New Roman', Times, serif !important;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   color: white;
@@ -1035,7 +1035,7 @@ h2 {
   border-radius: 0;
   box-shadow: none;
   display: block;
-  font-size: 2rem; /* Increased font size */
+  font-size: 1.5rem; /* Increased font size */
   font-weight: 600;
   margin-bottom: 1.5rem;
 }

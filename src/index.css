@@ -96,7 +96,7 @@ textarea:focus {
 
 /* Global font settings */
 * {
-  font-family: 'Lato', 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -109,7 +109,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lora', serif;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: 500;
   line-height: 1.2;
   color: var(--text-primary);
